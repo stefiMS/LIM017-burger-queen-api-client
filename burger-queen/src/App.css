@@ -44,28 +44,43 @@
     transform: rotate(360deg);
   }
 }
+
+#headerLogin{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px; 
+}
+#logoBurguer{
+  width:20%;
+  margin: 2%;
+}
 main{
   display:flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 #containerLogin{
   display:flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   flex-direction: column;
+  padding: 3%;
 }
 label{
   display:flex;
+  margin:5px;
 }
-input{
-  border-radius: solid 10px;
+.inputLogin{
+  border-radius: 20px;
   padding: 10px;
   margin:10px;
 }
 #buttonLogin{
-  border-radius: 10px solid;
-  padding: 10px;
-  
+  border-radius: 20px;
+  padding: 20px;
+  margin: 5%;
+  background-color: #bf861B;
 }
