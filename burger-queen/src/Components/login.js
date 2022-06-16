@@ -2,26 +2,37 @@ import React from 'react';
 import logoBurguer from './../Assets/logoBurguer.png';
 import { useState } from 'react';
 import axios from 'axios';
+import {
+   Routes,
+   // Switch,
+   Route,
+   // Link
+ } from "react-router-dom";
+ const goTohome = () =>{
+   e.preventDefault();
+   axios.post('http://localhost:3001/auth', {email, password})
+   .then((response) => {
+      const { status } = response
+      const { token } = response.data
+      if (status === 200){
+         // <routes> <Route path='/Home'  element={ <Home/>}/></routes>
+         console.log(response.data)
+      }
+         
+      }
+   )
+      .catch((error)  => {
+      console.log('errorcito');
+   })
+}
 
-// const baseUrl = 'http://localhost:3001';
+
+
 
 const login = () =>{
 
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
-
-   // const {errorMsg} = validateInput(email, password);
-//    const handleSubmit = (e) =>{
-//       e.preventDefault();
-//       axios.post('http://localhost:3001/auth')
-//           .then((response) => {
-//               console.log(response);
-//           })
-//           .catch((error)  => {
-//               console.log(error)
-//           })
-//   }
-
 
    return (
       <>
@@ -30,25 +41,7 @@ const login = () =>{
          </header>
          <main>
             <div id='containerLogin'>
-               <form
-                  onSubmit= { (e) => {
-                     e.preventDefault();
-                     axios.post('http://localhost:3001/auth', {email, password})
-                        .then((response) => {
-                          
-                           const { status } = response
-                           const { token } = response.data
-                           if (status === 200){
-                              // poner ruteo
-                              console.log(response.data)
-                           }
-                        })
-                        .catch((error)  => {
-                           console.log('errorsote')
-                        })
-                     //  logearse(email,password);
-                  }}
-               >
+               <form>
 
                   <label>USUARIO</label>
                   <input
@@ -76,14 +69,20 @@ const login = () =>{
                type='submit'
                id='buttonLogin'
                className='btn btn-warning'
+               onSubmit= { (goTohome) }
                >
-               INICIAR SESIÓN</button>
+               INICIAR SESIÓN
+               </button>
                </form>
                </div>
          </main>
       </>
    )
-};
 
+
+//<routes> <Route path='/Home'  element={ <Home/>}/></routes>
+
+
+};
 
 export default  login;

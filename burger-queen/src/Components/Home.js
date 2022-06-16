@@ -15,14 +15,14 @@ const home = () => {
                 </nav>
             </header>
 
-            <main>
+            {/* <main>
                 <div>
 
                 </div>
                 <section>
                     
                 </section>
-            </main>
+            </main> */}
 
         </>
         
