@@ -84,3 +84,31 @@ label{
   margin: 5%;
   background-color: #bf861B;
 }
+
+/*styles on breakfast*/
+
+#loginHeader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+#loginNav{
+  display: flex;
+  width: 100%;
+}
+#optionNav{
+  display: flex;
+  list-style: none;
+  align-items: center ;
+  justify-content: flex-start;
+  width: 80%;
+}
+#logoBurguerNav{
+  width:12%;
+  padding: 3%;
+}
+#optionNav>li{
+  padding: 3%;
+  cursor: pointer;
+}
