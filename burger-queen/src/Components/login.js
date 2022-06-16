@@ -2,29 +2,16 @@ import React from 'react';
 import logoBurguer from './../Assets/logoBurguer.png';
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import {
    Routes,
    // Switch,
    Route,
-   // Link
- } from "react-router-dom";
- const goTohome = () =>{
-   e.preventDefault();
-   axios.post('http://localhost:3001/auth', {email, password})
-   .then((response) => {
-      const { status } = response
-      const { token } = response.data
-      if (status === 200){
-         // <routes> <Route path='/Home'  element={ <Home/>}/></routes>
-         console.log(response.data)
-      }
-         
-      }
-   )
-      .catch((error)  => {
-      console.log('errorcito');
-   })
-}
+// Link
+} from "react-router-dom";
+
+
+
 
 
 
@@ -41,7 +28,28 @@ const login = () =>{
          </header>
          <main>
             <div id='containerLogin'>
-               <form>
+               <form
+                onSubmit= {(e) => {
+                  e.preventDefault();
+                  const navigate = useNavigate();
+                  axios.post('http://localhost:3001/auth', {email, password})
+                  .then((response) => {
+                     const { status } = response
+                     const { token } = response.data
+                     if (status === 200){
+                        // <routes> <Route path='/Home'  element={ <Home/>}/></routes>
+                        navigate("/home");
+                        // console.log(response.data)
+                     }
+                        
+                     }
+                  )
+                     .catch((error)  => {
+                     console.log('errorcito');
+                  })
+               }
+               } 
+               >
 
                   <label>USUARIO</label>
                   <input
@@ -69,7 +77,6 @@ const login = () =>{
                type='submit'
                id='buttonLogin'
                className='btn btn-warning'
-               onSubmit= { (goTohome) }
                >
                INICIAR SESIÓN
                </button>
@@ -86,3 +93,5 @@ const login = () =>{
 };
 
 export default  login;
+
+

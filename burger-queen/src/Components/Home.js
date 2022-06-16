@@ -14,16 +14,9 @@ const home = () => {
                     </ul>
                 </nav>
             </header>
-
-            {/* <main>
-                <div>
-
-                </div>
-                <section>
-                    
-                </section>
-            </main> */}
-
+            <section>
+                <h1> estás en el home </h1>
+            </section>
         </>
         
     )
