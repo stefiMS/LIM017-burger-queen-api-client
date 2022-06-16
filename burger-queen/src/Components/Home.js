@@ -16,8 +16,12 @@ const home = () => {
             </header>
 
             <main>
+                <div>
 
-
+                </div>
+                <section>
+                    
+                </section>
             </main>
 
         </>
