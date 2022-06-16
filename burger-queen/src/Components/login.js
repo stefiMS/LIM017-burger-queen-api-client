@@ -1,8 +1,27 @@
-import React from 'react'
-// import './App.css';
-import logoBurguer from './../Assets/logoBurguer.png'
+import React from 'react';
+import logoBurguer from './../Assets/logoBurguer.png';
+import { useState } from 'react';
+import axios from 'axios';
+
+// const baseUrl = 'http://localhost:3001';
 
 const login = () =>{
+
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+
+   // const {errorMsg} = validateInput(email, password);
+//    const handleSubmit = (e) =>{
+//       e.preventDefault();
+//       axios.post('http://localhost:3001/auth')
+//           .then((response) => {
+//               console.log(response);
+//           })
+//           .catch((error)  => {
+//               console.log(error)
+//           })
+//   }
+
 
    return (
       <>
@@ -11,16 +30,60 @@ const login = () =>{
          </header>
          <main>
             <div id='containerLogin'>
-               <label>USUARIO</label>
-               <input type='text'  placeholder='Ingrese su usuario' className='inputLogin'/>
-               <label>CONTRASEÑA</label>
-               <input type='password' placeholder='Ingrese contraseña' className='inputLogin'/>
-            </div>
-             {/* <button id='buttonLogin'>INICIAR SESIÓN</button> */}
-            <button type="button" id="buttonLogin" classame="btn btn-warning">INICIAR SESIÓN</button>
+               <form
+                  onSubmit= { (e) => {
+                     e.preventDefault();
+                     axios.post('http://localhost:3001/auth', {email, password})
+                        .then((response) => {
+                          
+                           const { status } = response
+                           const { token } = response.data
+                           if (status === 200){
+                              // poner ruteo
+                              console.log(response.data)
+                           }
+                        })
+                        .catch((error)  => {
+                           console.log('errorsote')
+                        })
+                     //  logearse(email,password);
+                  }}
+               >
+
+                  <label>USUARIO</label>
+                  <input
+                     name='email'
+                     type='text'
+                     placeholder='Ingrese su usuario'
+                     className='inputLogin'
+                     value= {email}
+                     onChange={(e) => setEmail(e.target.value)}
+                     />
+                     <p> resultado: {email}</p>
+
+                  <label>CONTRASEÑA</label>
+
+                  <input
+                     name='password'
+                     type='password'
+                     placeholder='Ingrese contraseña'
+                     className='inputLogin'
+                     value={password}
+                     onChange={(e) => setPassword(e.target.value)}
+
+                  />
+            <button
+               type='submit'
+               id='buttonLogin'
+               className='btn btn-warning'
+               >
+               INICIAR SESIÓN</button>
+               </form>
+               </div>
          </main>
       </>
    )
 };
+
 
 export default  login;
