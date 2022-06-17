@@ -18,8 +18,7 @@ const Home = () => {
                 <h1> estás en el home </h1>
             </section>
         </>
-        
     )
-}
+};
 
 export default Home;

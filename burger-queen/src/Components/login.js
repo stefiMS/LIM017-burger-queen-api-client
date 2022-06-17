@@ -55,8 +55,8 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit" 
-              id="buttonLogin" 
+            <button type="submit"
+              id="buttonLogin"
               className="btn btn-warning"
             >
               INICIAR SESIÓN
@@ -69,3 +69,5 @@ const Login = () => {
 };
 
 export default Login;
+
+//los componentes van en minuscula
