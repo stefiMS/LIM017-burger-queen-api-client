@@ -9,9 +9,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate("");
 
-
-const login = () =>{
-
   return (
     <>
       <header>
@@ -46,7 +43,7 @@ const login = () =>{
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <p> resultado: {email}</p
+            <p> resultado: {email}</p>
 
             <label>CONTRASEÑA</label>
 
