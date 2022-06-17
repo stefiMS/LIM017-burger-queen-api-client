@@ -1,7 +1,7 @@
 import React from 'react';
 import logoBurguer from './../Assets/logoBurguer.png'
 
-const home = () => {
+const Home = () => {
     return (
         <>
             <header id='loginHeader'>
@@ -14,19 +14,12 @@ const home = () => {
                     </ul>
                 </nav>
             </header>
-
-            <main>
-                <div>
-
-                </div>
-                <section>
-                    
-                </section>
-            </main>
-
+            <section>
+                <h1> estás en el home </h1>
+            </section>
         </>
         
     )
 }
 
-export default home;
+export default Home;
