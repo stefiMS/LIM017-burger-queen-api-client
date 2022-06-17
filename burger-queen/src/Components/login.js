@@ -12,7 +12,7 @@ const Login = () => {
   return (
     <>
       <header>
-        <img src={logoBurguer} id='logoBurguer' alt="logoBurguer" />
+        <img src={logoBurguer} id="logoBurguer" alt="logoBurguer" />
       </header>
       <main>
         <div id="containerLogin">
@@ -55,10 +55,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit"
-              id="buttonLogin"
-              className="btn btn-warning"
-            >
+            <button type="submit" id="buttonLogin" className="btn btn-warning">
               INICIAR SESIÓN
             </button>
           </form>
@@ -69,5 +66,3 @@ const Login = () => {
 };
 
 export default Login;
-
-//los componentes van en minuscula

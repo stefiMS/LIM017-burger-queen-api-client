@@ -1,16 +1,18 @@
-// import React from 'react';
+import React from 'react';
 
 
-// export const breakfast = () => {
-//     return (
-//         <section>
+const Breakfast = () => {
+  return (
+    <section>
+      <div id="card">
+        <div id="product">
+          <div id="product-name">
+            <p id="price"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-
-//         </section>
-            
-         
-
-        
-        
-//     )
-// }
+export default Breakfast;
