@@ -5,6 +5,7 @@ import axios from 'axios';
 
 // const baseUrl = 'http://localhost:3001';
 
+
 const login = () =>{
 
    const [email, setEmail] = useState('');
@@ -21,6 +22,23 @@ const login = () =>{
 //               console.log(error)
 //           })
 //   }
+const goToHome=  (e) => {
+   e.preventDefault();
+   axios.post('http://localhost:3001/auth', {email, password})
+      .then((response) => {
+        
+         const { status } = response
+         const { token } = response.data
+         if (status === 200){
+            // poner ruteo
+            console.log(response.data)
+         }
+      })
+      .catch((error)  => {
+         console.log('errorsote')
+      })
+   //  logearse(email,password);
+   };
 
 
    return (
@@ -31,23 +49,24 @@ const login = () =>{
          <main>
             <div id='containerLogin'>
                <form
-                  onSubmit= { (e) => {
-                     e.preventDefault();
-                     axios.post('http://localhost:3001/auth', {email, password})
-                        .then((response) => {
+               // 
+               //    onSubmit= { (e) => {
+               //       e.preventDefault();
+               //       axios.post('http://localhost:3001/auth', {email, password})
+               //          .then((response) => {
                           
-                           const { status } = response
-                           const { token } = response.data
-                           if (status === 200){
-                              // poner ruteo
-                              console.log(response.data)
-                           }
-                        })
-                        .catch((error)  => {
-                           console.log('errorsote')
-                        })
-                     //  logearse(email,password);
-                  }}
+               //             const { status } = response
+               //             const { token } = response.data
+               //             if (status === 200){
+               //                // poner ruteo
+               //                console.log(response.data)
+               //             }
+               //          })
+               //          .catch((error)  => {
+               //             console.log('errorsote')
+               //          })
+               //       //  logearse(email,password);
+               //    }}
                >
 
                   <label>USUARIO</label>
@@ -76,6 +95,9 @@ const login = () =>{
                type='submit'
                id='buttonLogin'
                className='btn btn-warning'
+               onSubmit= {() => {
+                  goToHome
+               }}
                >
                INICIAR SESIÓN</button>
                </form>
