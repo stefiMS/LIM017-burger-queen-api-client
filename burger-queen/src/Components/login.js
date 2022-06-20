@@ -1,7 +1,8 @@
 import React from "react";
 import logoBurguer from "./../Assets/logoBurguer.png";
 import { useState } from "react";
-import axios from "axios";
+import { useAuthentication } from "../util/Authentication.js";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -19,19 +20,9 @@ const Login = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              axios
-                .post("http://localhost:3001/auth", { email, password })
-                .then((response) => {
-                  const { status } = response;
-                  const { token } = response.data;
-                  if (status === 200) {
-                    navigate("/home");
-                    console.log(response.data);
-                  }
-                })
-                .catch((error) => {
-                  console.log("errorcito");
-                });
+              useAuthentication(email,password)
+              .then(response => navigate("/home"))
+              .catch(error => console.log(error))
             }}
           >
             <label>USUARIO</label>
