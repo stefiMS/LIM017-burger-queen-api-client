@@ -38,33 +38,21 @@ const Home = () => {
         </nav>
       </header>
        {/* <main id="menuContainer"> */}
-        {/* <section id="menu">
+        <section id="menu">
             <div className="buttonsType">
-              {/* <Routes> */}
-            {/* <Link to="/Breakfast">
-              <button className="buttonMeal" 
-              id="btnBreakfast" 
-              onClick={(e)=>{
-                e.preventDefault;
-                 */}
-                // navigate("/Breakfast")
-              {/* </Link> */}
-              {/* </Routes>
-              <button className="buttonMeal" id="btnMenu" 
-              onClick={(e) => {
-                e.preventDefault;
-                navigate("/Dinner")
-              }}> Almuerzo/Cena</button>
-            </div> */}
+           
+              <button className="buttonMeal" id="btnBreakfast">Desayuno</button>
+              <button className="buttonMeal" id="btnMenu"> Almuerzo/Cena</button>
+            </div> 
             {/* <Breakfast/> */}
-        {/* </section>
-        
+        </section>
+{/*         
         <section id= 'section-ticket'>
             <div>
                 <h3> Aqui se renderiza el ticket </h3>
             </div>
         </section>
-      </main>  */}
+      </main>   */}
 
       
       {/* </section> */}

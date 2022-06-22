@@ -4,7 +4,7 @@
      "name":"Sandwich de jamon y queso",
      "price":10,
      "image":"https://i.imgur.com/kqnYsST.jpg",
-     "type":"Desayuno",
+     "type":"Breakfast",
      "dateEntry":"2022-06-21 17:52:10"
   },
   {
@@ -12,7 +12,7 @@
      "name":"Cafe Americano",
      "price":5,
      "image":"https://i.imgur.com/PrPhPnm.jpg",
-     "type":"Desayuno",
+     "type":"Breakfast",
      "dataEntry":"2022-06-21 17:52:10"
   },
   {
@@ -20,7 +20,7 @@
      "name":"Cafe con Leche",
      "price":7,
      "image":"https://i.imgur.com/2aF2b29.jpg",
-     "type":"Desayuno",
+     "type":"Breakfast",
      "dataEntry":"2022-06-21 17:52:10"
   },
   {
@@ -28,7 +28,7 @@
      "name":"Jugo de frutas",
      "price":7,
      "image":"https://i.imgur.com/1z519KK.jpg",
-     "type":"Desayuno",
+     "type":"Breakfast",
      "dataEntry":"2022-06-21 17:52:10"
   },
   {
@@ -60,7 +60,7 @@
      "name":"Aros de Cebolla",
      "price":7,
      "image":"https://imgur.com/ZkA3t5m",
-     "type":"Desayuno",
+     "type":"Breakfast",
      "dataEntry":"2022-06-21 17:52:10"
   },
   {
