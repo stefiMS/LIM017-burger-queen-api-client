@@ -1,8 +1,7 @@
 import React from "react";
 import logoBurguer from "./../Assets/logoBurguer.png";
 import { useState } from "react";
-import { useAuthentication } from "../util/Authentication.js";
-// import axios from "axios";
+import { authentication } from "../util/Authentication.js";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -20,7 +19,7 @@ const Login = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              useAuthentication(email,password)
+              authentication(email,password)
               .then(response => navigate("/home"))
               .catch(error => console.log(error))
             }}
