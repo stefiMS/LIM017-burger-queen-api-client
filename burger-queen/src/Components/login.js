@@ -2,7 +2,10 @@ import React from "react";
 import logoBurguer from "./../Assets/logoBurguer.png";
 import { useState } from "react";
 import { authentication } from "../util/Authentication.js";
+<<<<<<< HEAD
 // import axios from "axios";
+=======
+>>>>>>> f2823d51d29be4076118ae37b0cf06fb52786cdf
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
