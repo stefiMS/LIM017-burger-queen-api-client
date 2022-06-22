@@ -46,49 +46,22 @@ const Home = () => {
             <section className="mealContainer">
                   <div className="productContainer">
                     {/* <h3> SANDWICHES </h3> */}
-                    {/* <div className="sandwichProduct"> */}
-                      
+                   
                       {products.map((item) => {
                         // console.log(`Entered ${item.id}`);
                         return (
                           <div className="productCard">
-                            <p key={item.id}><img className="productImg" src={item.image}/> </p>
-                            <p >{item.name}</p>
-                            <p>{item.price}</p>
+                            <img className="productImg cardP" key={item.id} src={item.image}/> 
+                            <div className="textCard">
+                              <span className= "productName cardP">{item.name}</span><br/>
+                              <span className= "productprice carP">{item.price}</span>
+                            </div>
                           </div> 
                         );
                       })}
-                        {/* <p>imagen renderizada aqui
-                        <p>Aqui se va nombre renderizado </p>
-                        <p>costo</p> */}
-                      
-                    {/* </div> */}
                   </div>
-                  {/* <div className="beveragesContainer">
-                    <h3> BEBIDAS </h3>
-                    <div className="beveragesContent">
-                      <div className="productCard">
-                        <p>imagen renderizada aqui</p>
-                        <p>Aqui se va nombre renderizado </p>
-                        <p>costo</p>
-                      </div>
-                    </div>
-                  </div>   */}
                 </section>
       </section>
-      {/* <section id="menu">
-        <div>
-          <h3> Aqui van los items del desayuno o almuerzo</h3>
-          {products.map((item) => {
-            console.log(`Entered ${item.id}`);
-            return (
-              <p key={item.id}>
-                {item.id} | {item.name} | {item.price}
-              </p>
-            );
-          })}
-        </div>
-      </section> */}
       <section id="section-ticket">
         <div>
           <h3> Aqui se renderiza el ticket </h3>
