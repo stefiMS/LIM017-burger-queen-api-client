@@ -105,10 +105,114 @@ label{
   width: 80%;
 }
 #logoBurguerNav{
-  width:12%;
-  padding: 3%;
+  width: 9%;
+  padding: 2%;
 }
 #optionNav>li{
   padding: 3%;
   cursor: pointer;
+}
+
+#menuContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width:100%;
+  padding:10px;
+  background-color: white;
+  color:#262626
+}
+
+.buttonsType{
+  display: flex;
+  margin:5px;
+  align-items: center;
+  justify-content: center;
+}
+.buttonMeal{
+  border-radius: 5px;
+  background-color: #F2C53D;
+  color: #262626;
+  font-weight: bolder;
+  padding: 15px;
+  margin: 10px;
+}
+#menu{
+  display: flex;
+  flex-direction: column;
+  width:70%;
+}
+
+/*Breakfast*/
+/* .breakfastContainer{ */
+.mealContainer{
+  border: solid 3px;
+}
+
+/* .breakfastContainer>div>h3{ */
+/* .mealContainer>div>h3{
+  background-color: #F2F2F2;
+  padding: 5px;
+  margin: 5px;
+  align-items: center;
+  justify-content: center;
+} */
+
+.productContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.beveragesContent, .sandwichProduct{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+.productCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  /* padding: 10px; */
+  /* background-color: #F2F2F2; */
+  width: 40%;
+  box-shadow: 3px 3px 3px 3px #00000021;
+  border-radius: 15px;
+}
+
+#section-ticket{
+  display: flex;
+  flex-direction: column;
+  width:30%;
+  background-color: #F2F2F2;
+  margin: 10px;
+  padding: 10px;
+}
+
+.productImg{
+  /* width:70%; */
+  height: 70%;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.cardP{
+  width:100%;
+}
+
+.textCard{
+  padding: 10px;
+  background: #ecd941;
+    border-radius: 0px 0px 10px 10px;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
 }
