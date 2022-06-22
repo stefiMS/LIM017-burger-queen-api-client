@@ -1,0 +1,98 @@
+[
+  {
+     "id":1,
+     "name":"Sandwich de jamon y queso",
+     "price":10,
+     "image":"https://i.imgur.com/kqnYsST.jpg",
+     "type":"Desayuno",
+     "dateEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":2,
+     "name":"Cafe Americano",
+     "price":5,
+     "image":"https://i.imgur.com/PrPhPnm.jpg",
+     "type":"Desayuno",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":3,
+     "name":"Cafe con Leche",
+     "price":7,
+     "image":"https://i.imgur.com/2aF2b29.jpg",
+     "type":"Desayuno",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":4,
+     "name":"Jugo de frutas",
+     "price":7,
+     "image":"https://i.imgur.com/1z519KK.jpg",
+     "type":"Desayuno",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":5,
+     "name":"Hamburguesa simple",
+     "price":10,
+     "image":"https://i.imgur.com/AHeEwjA.jpg",
+     "type":"Dinner",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":6,
+     "name":"Hamburguesa c/ queso",
+     "price":15,
+     "image":"https://i.imgur.com/16PplzC.jpg",
+     "type":"Dinner",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":7,
+     "name":"Papas Fritas",
+     "price":7,
+     "image":"https://i.imgur.com/l2GNmcy.jpg",
+     "type":"Dinner",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":8,
+     "name":"Aros de Cebolla",
+     "price":7,
+     "image":"https://imgur.com/ZkA3t5m",
+     "type":"Desayuno",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":9,
+     "name":"Agua 500ml",
+     "price":5,
+     "image":"https://i.imgur.com//cwBl2lb.jpg",
+     "type":"Dinner",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":10,
+     "name":"Agua 750ml",
+     "price":7,
+     "image":"https://i.imgur.com/CKh5tMv.jpg",
+     "type":"Dinner",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":11,
+     "name":"Bebida/gaseosa 500ml",
+     "price":7,
+     "image":"https://i.imgur.com/OEFvkVa.jpg",
+     "type":"Dinner",
+     "dataEntry":"2022-06-21 17:52:10"
+  },
+  {
+     "id":12,
+     "name":"Bebida/gaseosa 750ml",
+     "price":7,
+     "image":"https://i.imgur.com/4P6bY9Q.jpg",
+     "type":"Dinner",
+     "dataEntry":"2022-06-21 17:52:10"
+  }
+]

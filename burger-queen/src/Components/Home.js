@@ -1,7 +1,24 @@
-import React from 'react';
-import logoBurguer from './../Assets/logoBurguer.png'
-
+import React, { useState, useEffect } from "react";
+import logoBurguer from "./../Assets/logoBurguer.png";
+import { getProductsData } from "../util/getProducts";
+ 
 const Home = () => {
+  const [products, setProducts] = useState([]);
+ 
+  useEffect(() => {
+    const getBreakfastProducts = () => {
+      getProductsData()
+        .then((response) => {
+          setProducts(response);
+        })
+        .catch((error) => console.log(error));
+    };
+ 
+    getBreakfastProducts();
+  }, []);
+ 
+  console.log(products);
+ 
   return (
     <>
       <header id="loginHeader">
@@ -23,14 +40,19 @@ const Home = () => {
       <section id="menu">
         <div>
           <h3> Aqui van los items del desayuno o almuerzo</h3>
-          <div>
-            <p>Aqui se va a renderizar </p>
-          </div>
+          {products.map((item) => {
+            console.log(`Entered ${item.id}`);
+            return (
+              <p key={item.id}>
+                {item.id} | {item.name} | {item.price}
+              </p>
+            );
+          })}
         </div>
       </section>
-      <section id= 'section-ticket'>
+      <section id="section-ticket">
         <div>
-            <h3> Aqui se renderiza el ticket </h3>
+          <h3> Aqui se renderiza el ticket </h3>
         </div>
       </section>
     </>
@@ -38,3 +60,4 @@ const Home = () => {
 };
 
 export default Home;
+ 
