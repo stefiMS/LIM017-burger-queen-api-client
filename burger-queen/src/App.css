@@ -145,16 +145,24 @@ label{
 }
 
 /*Breakfast*/
-.breakfastContainer{
+/* .breakfastContainer{ */
+.mealContainer{
   border: solid 3px;
 }
 
-.breakfastContainer>div>h3{
+/* .breakfastContainer>div>h3{ */
+/* .mealContainer>div>h3{
   background-color: #F2F2F2;
   padding: 5px;
   margin: 5px;
   align-items: center;
   justify-content: center;
+} */
+
+.productContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .beveragesContent, .sandwichProduct{
@@ -171,6 +179,7 @@ label{
   margin: 10px;
   padding: 10px;
   background-color: #F2F2F2;
+  width: 40%;
 }
 /* 
 .breakfastContainer::-webkit-scrollbar{
@@ -186,4 +195,8 @@ label{
   background-color: #F2F2F2;
   margin: 10px;
   padding: 10px;
+}
+
+.productImg{
+  width:60%;
 }
