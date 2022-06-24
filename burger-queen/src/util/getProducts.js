@@ -1,6 +1,6 @@
 import axios from "axios";
  
-const urlApiProducts = "http://localhost:8080/products?_page=1&_limit=10";
+const urlApiProducts = "http://localhost:8080/products";
  
 const accessToken = localStorage.getItem("accessToken");
  
