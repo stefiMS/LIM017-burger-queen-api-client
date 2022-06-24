@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import logoBurguer from "./../Assets/logoBurguer.png";
 import { getProductsData } from "../util/getProducts";
- 
+
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
- 
+
   useEffect(() => {
     const getBreakfastProducts = () => {
       getProductsData()
@@ -15,12 +15,10 @@ const Home = () => {
         })
         .catch((error) => console.log(error));
     };
- 
+
     getBreakfastProducts();
   }, []);
- 
-  console.log(products);
- 
+
   return (
     <>
     <header id="loginHeader">
@@ -48,18 +46,18 @@ const Home = () => {
               setFilteredData(dinnerProducts)}
             }
             > Almuerzo/Cena</button>
-          </div> 
+          </div>
           <section className="mealContainer">
                 <div className="productContainer">
                     {filteredData.map((item) => {
                       return (
                         <div className="productCard">
-                          <img className="productImg cardP" key={item.id} src={item.image}/> 
+                          <img className="productImg cardP" key={item.id} src={item.image}/>
                           <div className="textCard">
                             <span className= "productName cardP">{item.name}</span><br/>
                             <span className= "productprice carP">{item.price}</span>
                           </div>
-                        </div> 
+                        </div>
                       );
                     })}
                 </div>
@@ -70,7 +68,7 @@ const Home = () => {
         <h3> Aqui se renderiza el ticket </h3>
       </div>
     </section>
-   </main>
+  </main>
   </>
 );
 };
