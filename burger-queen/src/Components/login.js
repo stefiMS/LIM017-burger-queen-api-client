@@ -3,12 +3,12 @@ import logoBurguer from "./../Assets/logoBurguer.png";
 import { useState } from "react";
 import { authentication } from "../util/Authentication.js";
 import { useNavigate } from "react-router-dom";
-
+ 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate("");
-
+ 
   return (
     <>
       <header>
@@ -36,7 +36,7 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <p> resultado: {email}</p>
+            {/* <p> resultado: {email}</p> */}
 
             <label>CONTRASEÑA</label>
 

@@ -7,12 +7,11 @@ import { Routes } from 'react-router';
 import React, { useState, useEffect } from "react";
 import { getProductsData } from "../util/getProducts";
 
- 
 const Home = () => {
   const [products, setProducts] = useState([]);
   // const navigate = useNavigate("");
   const [filteredData, setFilteredData] = useState([]);
-  
+
   useEffect(() => {
     const getBreakfastProducts = () => {
       getProductsData()
@@ -22,10 +21,10 @@ const Home = () => {
         })
         .catch((error) => console.log(error));
     };
- 
+
     getBreakfastProducts();
   }, []);
- 
+
 //función contador
   const [counter, setCounter] = useState(0);
   const plusCounter = () => setCounter(counter +1);
@@ -34,7 +33,6 @@ const Home = () => {
 //función llamada a producto
 
 
- 
   return (
     <>
     <header id="loginHeader">
@@ -62,13 +60,13 @@ const Home = () => {
               setFilteredData(dinnerProducts)}
             }
             > Almuerzo/Cena</button>
-          </div> 
+          </div>
           <section className="mealContainer">
                 <div className="productContainer">
                     {filteredData.map((item) => {
                       return (
                         <div className="productCard">
-                          <img className="productImg cardP" key={item.id} src={item.image}/> 
+                          <img className="productImg cardP" key={item.id} src={item.image}/>
                           <div className="textCard">
                             <span className= "productName cardP">{item.name}</span><br/>
                             <span className= "productprice carP">{item.price}</span>
@@ -78,7 +76,7 @@ const Home = () => {
                               <button className='quantity' onClick={plusCounter}>+</button>
                             </div> */}
                           </div>
-                        </div> 
+                        </div>
                       );
                     })}
                 </div>
@@ -126,6 +124,7 @@ const Home = () => {
         </section>
       </section>
     </main>
+
   </>
 );
 };
