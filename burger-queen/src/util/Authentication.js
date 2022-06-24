@@ -14,7 +14,7 @@ import axios from "axios";
       })
       .catch((error) => {
         reject(error);
-      });
+      }); 
   });
 };
 
