@@ -3,6 +3,9 @@ import axios from "axios";
 const urlApiProducts = "http://localhost:8080/products";
  
 const accessToken = localStorage.getItem("accessToken");
+
+// console.log(accessToken)
+
  
 const config = {
   headers: {

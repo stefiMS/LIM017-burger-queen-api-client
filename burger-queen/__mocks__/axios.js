@@ -1,5 +1,5 @@
-const axios = jest.fn(() => {
-    return Promise.resolve({})
- })
+// const axios = jest.fn(() => {
+//     return Promise.resolve({})
+//  })
 
- export default axios;
+//  export default axios;

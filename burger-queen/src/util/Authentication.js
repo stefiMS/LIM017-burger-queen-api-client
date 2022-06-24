@@ -15,6 +15,31 @@ export const authentication = (email, password) => {
       })
       .catch((error) => {
         reject(error);
-      });
+      }); 
   });
 };
+
+
+
+//   export const authentication = (email, password) => {
+
+//   return new Promise((resolve, reject) => {
+//     axios.post(urlAxios, { email, password })
+//     .then((response) => {   
+//       const  { status  }  = response;  
+//       if (status === 200) {
+//         const  { token }  = response.data;
+//         resolve(token);
+//       }else{
+//         reject(response.data);
+       
+//       }
+//     })
+//     .catch((error) => {
+//       console.log(error)
+//       reject(error);
+//       // console.log(error)
+//     })
+//   });
+// }
+

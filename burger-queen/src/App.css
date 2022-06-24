@@ -141,7 +141,7 @@ label{
 #menu{
   display: flex;
   flex-direction: column;
-  width:70%;
+  width:55%;
 }
 
 /*Breakfast*/
@@ -179,19 +179,12 @@ label{
   margin: 10px;
   /* padding: 10px; */
   /* background-color: #F2F2F2; */
-  width: 40%;
+  width: 30%;
   box-shadow: 3px 3px 3px 3px #00000021;
   border-radius: 15px;
 }
 
-#section-ticket{
-  display: flex;
-  flex-direction: column;
-  width:30%;
-  background-color: #F2F2F2;
-  margin: 10px;
-  padding: 10px;
-}
+
 
 .productImg{
   /* width:70%; */
@@ -215,4 +208,86 @@ label{
     align-items: center;
     align-content: center;
 
+}
+
+/*estilos CSS*/
+#section-ticket{
+  display: flex;
+  flex-direction: column;
+  width:45%;
+  background-color: #F2F2F2;
+  margin: 10px;
+  /* padding: 10px; */
+  flex-shrink: flex-start;
+}
+.customerInformation{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.orderContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.ordersTitle{
+  display: flex;
+  background-color: #262626;
+  color: #F2F2F2;
+}
+
+/* .ordersTitle>span{
+  width: 33.33%;
+} */
+
+/* .orderProduct>ol{
+list-style: none;
+    display: flex;
+    flex-direction: column;
+} */
+/* .orderProductContainer{
+  display: flex;
+} */
+.orderProduct{
+  display: flex;
+}
+/* .orderProduct>ol>li{
+      display: flex;
+  } */
+.column1{
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.column2{
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.quantity{
+  width:20px;
+  margin: 3px;
+  height:20px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column3{
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
