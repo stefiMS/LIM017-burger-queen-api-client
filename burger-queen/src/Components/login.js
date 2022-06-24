@@ -19,9 +19,12 @@ const Login = () => {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              authentication(email,password)
-              .then(response => navigate("/home"))
-              .catch(error => console.log(error))
+              authentication(email, password)
+                .then((response) => {
+                  localStorage.setItem("accessToken", response.accessToken);
+                  navigate("/home");
+                })
+                .catch((error) => console.log(error));
             }}
           >
             <label>USUARIO</label>

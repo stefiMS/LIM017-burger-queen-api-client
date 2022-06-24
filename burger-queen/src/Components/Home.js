@@ -12,7 +12,7 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   // const navigate = useNavigate("");
   const [filteredData, setFilteredData] = useState([]);
- 
+  
   useEffect(() => {
     const getBreakfastProducts = () => {
       getProductsData()
@@ -26,7 +26,14 @@ const Home = () => {
     getBreakfastProducts();
   }, []);
  
-  // console.log(products);
+//función contador
+  const [counter, setCounter] = useState(0);
+  const plusCounter = () => setCounter(counter +1);
+  const lessCounter = () => setCounter(counter -1)
+
+//función llamada a producto
+
+
  
   return (
     <>
@@ -65,19 +72,60 @@ const Home = () => {
                           <div className="textCard">
                             <span className= "productName cardP">{item.name}</span><br/>
                             <span className= "productprice carP">{item.price}</span>
+                            {/* <div>
+                              <button className='quantity' onClick={lessCounter}>-</button>
+                              <span className='quantity'>{counter}</span> 
+                              <button className='quantity' onClick={plusCounter}>+</button>
+                            </div> */}
                           </div>
                         </div> 
                       );
                     })}
                 </div>
-              </section>
-    </section>
-    <section id="section-ticket">
-      <div>
-        <h3> Aqui se renderiza el ticket </h3>
-      </div>
-    </section>
-   </main>
+          </section>
+      </section>
+      <section id="section-ticket">
+        <h3> PEDIDOS </h3>
+        <section>
+          <div className="customerInformation">
+            <fieldset>
+              <legend>Información de Pedido</legend>
+              Nombre de Cliente: <input/><br/>
+              Número de mesa: <input/><br/>
+              Nombre de mesero: <input/>
+            </fieldset>
+          </div>
+          <section className="orderContainer">
+            <div className="ordersTitle">
+              <span id="itemTitle" className='column1'>Items</span>
+              <span id="itemTitle" className='column2'>Cantidad</span>
+              <span id="itemTitle" className='column3'>Precio</span>
+            </div>
+            <section className='orderProductContainer'>
+              {/* <ol>
+                <li> */}
+                <div className='orderProduct'>
+                  <div className='order column1'>
+                      {/* <img src={}/> */}
+                      <p>{}</p>
+                  </div>
+                  <div className='order column2'>
+                      <button className='quantity' onClick={lessCounter}>-</button>
+                      <span className='quantity'>{counter}</span> 
+                      <button className='quantity' onClick={plusCounter}>+</button>
+                  </div>
+                  <div className='order column3'>
+                      <span></span>
+                      <span><i class="fa-solid fa-trash-can"></i></span>
+                  </div>
+                </div>
+                {/* </li>
+              </ol>   */}
+            </section>
+          </section>
+        </section>
+      </section>
+    </main>
   </>
 );
 };
