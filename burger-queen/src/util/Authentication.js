@@ -1,6 +1,6 @@
 import axios from "axios";
  
-// const urlAxios = "http://localhost:8081/login";
+const urlAxios = "http://localhost:8081/login";
  
 // export const authentication = (email, password) => {
 //   return new Promise((resolve, reject) => {
@@ -19,7 +19,7 @@ import axios from "axios";
 //   });
 // };
 
-const urlAxios = "http://localhost:3001/auth";
+// const urlAxios = "http://localhost:3001/auth";
 
   export const authentication = (email, password) => {
 
@@ -28,8 +28,8 @@ const urlAxios = "http://localhost:3001/auth";
     .then((response) => {   
       const  { status  }  = response;  
       if (status === 200) {
-        const  { token }  = response.data;
-        resolve(token);
+        const  { accessToken }  = response.data;
+        resolve(accessToken);
       }else{
         reject(response.data);
        

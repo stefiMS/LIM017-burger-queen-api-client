@@ -41,17 +41,17 @@
 
 import { getProductsData } from "../../util/getProducts.js";
 import React, { useEffect, useState, useReducer } from "react";
-import { TYPES } from "../../Actions/shoppingActions";
-import { shoppingReducer } from "../../reducer/shoppingReducer.js";
+// import { TYPES } from "../../Actions/shoppingActions";
+import { shoppingReducer, shoppingInitialState, TYPES } from "../../reducer/shoppingReducer.js";
 // import { ShoppingCart } from "./ShoppingCart";
 
 export const ProductItem = () => {
   
   const [filteredData, setFilteredData] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [state, dispatch] = useReducer(shoppingReducer, getProductsData());
+  const [menu, setMenu] = useState([]);
+  const [state, dispatch] = useReducer(shoppingReducer, shoppingInitialState);
 
-  const { product, cart } = state;
+  const { products, cart } = state;
 
   const addToCart = (id) => {
     //console.log(id);
@@ -65,7 +65,7 @@ export const ProductItem = () => {
       getProductsData()
         .then((response) => {
           setFilteredData(response);
-          setProducts(response);
+          setMenu(response);
         })
         .catch((error) => console.log(error));
     };
@@ -88,13 +88,13 @@ const lessCounter = () => setCounter(counter -1)
           <div className="buttonsType">
             <button className="buttonMeal" id="btnBreakfast" 
             onClick = {(e) => {
-              let breakfastProducts = products.filter(product => product.type === "Breakfast")
+              let breakfastProducts = menu.filter(product => product.type === "Breakfast")
               setFilteredData(breakfastProducts)} //boton de reset setFilteredData(products)
             }
             >Desayuno</button>
             <button className="buttonMeal" id="btnMenu"
             onClick = {(e) => {
-              let dinnerProducts = products.filter(product => product.type === "Dinner")
+              let dinnerProducts = menu.filter(product => product.type === "Dinner")
               setFilteredData(dinnerProducts)}
             }
             > Almuerzo/Cena</button>
@@ -110,7 +110,7 @@ const lessCounter = () => setCounter(counter -1)
                           <div className="textCard">
                             <span className= "productName cardP">{item.name}</span><br/>
                             <span className= "productprice carP">{item.price}</span>
-                            <button onClick={() => addToCart(item.id)}>Agregar</button>
+                            <button onClick={(el) => addToCart(el.id)} >Agregar</button>
                           </div>
                         </div>
                       );
@@ -142,7 +142,7 @@ const lessCounter = () => setCounter(counter -1)
                 <span id="itemTitle" className='column3'>Precio</span>
               </div>
               <section className='orderProductContainer'>
-                {filteredData.map((item) => {
+                {cart.map((item, index) => {
                   return(
                   <div className='orderProduct'>
                     <div className='order column1'>
@@ -159,7 +159,9 @@ const lessCounter = () => setCounter(counter -1)
                         <span><i className="fa-solid fa-trash-can"></i></span>
                     </div>
                   </div>
-                )}
+                
+                )
+                }
                 )}
               </section>
             </section>
