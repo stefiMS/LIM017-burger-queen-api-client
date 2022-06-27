@@ -48,14 +48,19 @@ import { shoppingReducer, shoppingInitialState, TYPES } from "../../reducer/shop
 export const ProductItem = () => {
   
   const [filteredData, setFilteredData] = useState([]);
-  const [menu, setMenu] = useState([]);
-  const [state, dispatch] = useReducer(shoppingReducer, shoppingInitialState);
+  const [products, setProducts] = useState([]);
+  const [state, dispatch] = useReducer(shoppingReducer, getProductsData());
+  const [productsSelected, setProductsSelected ] = useState([]);
 
-  const { products, cart } = state;
+  // const { products, cart } = state;
 
   const addToCart = (id) => {
-    //console.log(id);
-    dispatch({ type: TYPES.ADD_TO_CART, payload: id });
+    console.log(filteredData);
+    const filteredProduct = filteredData.filter((item) => item.id === id)
+    console.log(filteredProduct);
+    setProductsSelected([...productsSelected, ...filteredProduct])
+  
+    // dispatch({ type: TYPES.ADD_TO_CART, payload: id });
   };
 
 
@@ -99,14 +104,14 @@ const lessCounter = () => setCounter(counter -1)
             }
             > Almuerzo/Cena</button>
           </div>
-         
+
 
           <section className="mealContainer">
-                <div className="productContainer">
+                <div className="productContainer" >
                     {filteredData.map((item) => {
                       return (
-                        <div className="productCard">
-                          <img className="productImg cardP" key={item.id} src={item.image}/>
+                        <div className="productCard" key={item.id}>
+                          <img className="productImg cardP" src={item.image}/>
                           <div className="textCard">
                             <span className= "productName cardP">{item.name}</span><br/>
                             <span className= "productprice carP">{item.price}</span>
@@ -142,9 +147,9 @@ const lessCounter = () => setCounter(counter -1)
                 <span id="itemTitle" className='column3'>Precio</span>
               </div>
               <section className='orderProductContainer'>
-                {cart.map((item, index) => {
+                {productsSelected.map((item, index) => {
                   return(
-                  <div className='orderProduct'>
+                  <div className='orderProduct' key= {index} >
                     <div className='order column1'>
                         <img />
                         <p>{item.name}</p>
