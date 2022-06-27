@@ -5,30 +5,31 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Routes } from 'react-router';
 import React, { useState, useEffect } from "react";
-import { getProductsData } from "../util/getProducts";
+// import { getProductsData } from "../util/getProducts";
+import { ProductItem } from './Shop/ProductItem';
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
   // const navigate = useNavigate("");
-  const [filteredData, setFilteredData] = useState([]);
+  // const [filteredData, setFilteredData] = useState([]);
 
-  useEffect(() => {
-    const getBreakfastProducts = () => {
-      getProductsData()
-        .then((response) => {
-          setFilteredData(response);
-          setProducts(response);
-        })
-        .catch((error) => console.log(error));
-    };
+  // useEffect(() => {
+  //   const getBreakfastProducts = () => {
+  //     getProductsData()
+  //       .then((response) => {
+  //         setFilteredData(response);
+  //         setProducts(response);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   };
 
-    getBreakfastProducts();
-  }, []);
+  //   getBreakfastProducts();
+  // }, []);
 
-//función contador
-  const [counter, setCounter] = useState(0);
-  const plusCounter = () => setCounter(counter +1);
-  const lessCounter = () => setCounter(counter -1)
+// //función contador
+//   const [counter, setCounter] = useState(0);
+//   const plusCounter = () => setCounter(counter +1);
+//   const lessCounter = () => setCounter(counter -1)
 
 //función llamada a producto
 
@@ -46,12 +47,12 @@ const Home = () => {
       </nav>
     </header>
     <main id="menuContainer"> 
-      <section id="menu">
+      {/* <section id="menu">
           <div className="buttonsType">
             <button className="buttonMeal" id="btnBreakfast" 
             onClick = {(e) => {
               let breakfastProducts = products.filter(product => product.type === "Breakfast")
-              setFilteredData(breakfastProducts)} //boton de reset setFilteredData(products)
+               setFilteredData(breakfastProducts)} //boton de reset setFilteredData(products)
             }
             >Desayuno</button>
             <button className="buttonMeal" id="btnMenu"
@@ -60,8 +61,10 @@ const Home = () => {
               setFilteredData(dinnerProducts)}
             }
             > Almuerzo/Cena</button>
-          </div>
-          <section className="mealContainer">
+          </div> */}
+         
+          <ProductItem/>
+          {/* <section className="mealContainer">
                 <div className="productContainer">
                     {filteredData.map((item) => {
                       return (
@@ -69,20 +72,20 @@ const Home = () => {
                           <img className="productImg cardP" key={item.id} src={item.image}/>
                           <div className="textCard">
                             <span className= "productName cardP">{item.name}</span><br/>
-                            <span className= "productprice carP">{item.price}</span>
+                            <span className= "productprice carP">{item.price}</span> */}
                             {/* <div>
                               <button className='quantity' onClick={lessCounter}>-</button>
                               <span className='quantity'>{counter}</span> 
                               <button className='quantity' onClick={plusCounter}>+</button>
                             </div> */}
-                          </div>
+                          {/* </div>
                         </div>
                       );
                     })}
                 </div>
-          </section>
-      </section>
-      <section id="section-ticket">
+          </section> 
+      </section>*/}
+      {/* <section id="section-ticket">
         <h3> PEDIDOS </h3>
         <section>
           <div className="customerInformation">
@@ -100,11 +103,10 @@ const Home = () => {
               <span id="itemTitle" className='column3'>Precio</span>
             </div>
             <section className='orderProductContainer'>
-              {/* <ol>
-                <li> */}
+            
                 <div className='orderProduct'>
                   <div className='order column1'>
-                      {/* <img src={}/> */}
+                      <img />
                       <p>{}</p>
                   </div>
                   <div className='order column2'>
@@ -114,15 +116,13 @@ const Home = () => {
                   </div>
                   <div className='order column3'>
                       <span></span>
-                      <span><i class="fa-solid fa-trash-can"></i></span>
+                      <span><i className="fa-solid fa-trash-can"></i></span>
                   </div>
                 </div>
-                {/* </li>
-              </ol>   */}
             </section>
           </section>
         </section>
-      </section>
+      </section> */}
     </main>
 
   </>
