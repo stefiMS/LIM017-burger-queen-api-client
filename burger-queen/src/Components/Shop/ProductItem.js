@@ -1,8 +1,8 @@
 import { getProductsData } from "../../util/getProducts.js";
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 
 export const ProductItem = () => {
-  
+
   const [filteredData, setFilteredData] = useState([]);
   const [products, setProducts] = useState([]);
   const [productsSelected, setProductsSelected ] = useState([]);
@@ -10,7 +10,8 @@ export const ProductItem = () => {
   const addToCart = (id) => {
     // console.log(filteredData);
     const filteredProduct = filteredData.filter((item) => item.id === id)
-    // console.log(filteredProduct);
+     filteredProduct[0].counter = 1
+     console.log(filteredProduct);
     setProductsSelected([...productsSelected, ...filteredProduct])
 
   };
@@ -32,13 +33,29 @@ export const ProductItem = () => {
 
 //función contador
 const [counter, setCounter] = useState(1);
-const plusCounter = () => setCounter(counter +1);
-const lessCounter = () => {
-  if(counter >= 1){
-    setCounter(counter -1);
-  }else{
-    counter === 0;
+// const plusCounter = () => setCounter(counter +1);
+// const lessCounter = () => {
+//   if(counter >= 1){
+//     setCounter(counter -1);
+//   }else{
+//     counter === 0;
+//   }
+// }
+
+const handlePlusCounter = (index) => {
+  const newTicketProducts = [...productsSelected];
+  newTicketProducts[index].counter++;
+  setProductsSelected(newTicketProducts)
+}
+
+const handleMinusCounter = (index) => {
+  const newTicketProducts = [...productsSelected];
+  if(newTicketProducts[index].counter >= 1){
+  newTicketProducts[index].counter--;
+  } else{
+    newTicketProducts[index].counter = 0
   }
+  setProductsSelected(newTicketProducts)
 }
 
 
@@ -110,14 +127,14 @@ const lessCounter = () => {
                     {/* Cantidad de Item */}
 
                     <div className='order column2'>
-                        <button className='quantity' key={index} onClick={lessCounter}>-</button>
-                        <span className='quantity'>{counter}</span>
-                        <button className='quantity' key={index} onClick={plusCounter}>+</button>
+                        <button className='quantity'  onClick={() => handleMinusCounter(index)}>-</button>
+                        <span className='quantity'>{item.counter}</span>
+                        <button className='quantity' onClick={() => handlePlusCounter(index)}>+</button>
                     </div>
 
                     {/* Precio  */}
                     <div className='order column3'>
-                        <span>{item.price*counter}</span>
+                        <span>{item.price*item.counter}</span>
                         <span><i className="fa-solid fa-trash-can"></i></span>
                     </div>
                   </div>
