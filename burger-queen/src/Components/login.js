@@ -21,7 +21,6 @@ const Login = () => {
               e.preventDefault();
               authentication(email, password)
                 .then((response) => {
-                  console.log(response);
                   localStorage.setItem("accessToken", response);
                   navigate("/home");
                 })
