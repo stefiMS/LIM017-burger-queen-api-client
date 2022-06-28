@@ -37,16 +37,8 @@ export const ProductItem = () => {
   
 //función contador
 const [counter, setCounter] = useState(1);
-// const plusCounter = (id) => {
-//   const plusProduct = productsSelected.filter((item) => item.id === id)
-//   setProductsSelected([ ...plusProduct, setCounter(counter +1)])
 
-// }
 const plusCounter = () => setCounter(counter +1)
-// const plusCounter = () => setCounter(counter +1)
-
-  // const plusProduct = productsSelected.filter((item) => item.id === id,  )
-  // setProductsSelected([ ...plusProduct, setCounter(counter +1)])
 
 const lessCounter = () => { 
     if (counter>=1){
@@ -122,8 +114,8 @@ const lessCounter = () => {
                         <button className='quantity' onClick={lessCounter}>-</button>
                         {/* <button className='quantity' onClick={() => lessCounter(item.id)}>-</button> */}
                         <span className='quantity'>{counter}</span> 
-                        {/* <button className='quantity' onClick={ plusCounter}>+</button> */}
-                        <button className='quantity' onClick={() => plusCounter(item.id)}>+</button>
+                        <button className='quantity' onClick={ plusCounter}>+</button>
+                        
                     </div>
                     <div className='order column3'>
                         <span>{item.price*counter}</span>
