@@ -7,9 +7,9 @@ describe('authentication',() =>{
     test('should auth successful when  the status: 200 ',() =>{
       const objStatus = {
           status:200, 
-          data: {token:"mesero1"}  
+          data: {accessToken:"mesero1"}  
       } 
-      const emailAuth ="alf@burger.com";
+      const emailAuth ="anita.borg@systers.xyz";
       const passwordAuth = "123456"; 
       axios.post.mockResolvedValue(objStatus)
       return authentication(emailAuth,passwordAuth)

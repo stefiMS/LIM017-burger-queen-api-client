@@ -1,39 +1,39 @@
 // import { TYPES } from "../Actions/shoppingActions";
-import { getProductsData } from "../util/getProducts"
+// import { getProductsData } from "../util/getProducts"
 
 
-export const TYPES = {
-  ADD_TO_CART: "ADD_TO_CART",
-};
+// export const TYPES = {
+//   ADD_TO_CART: "ADD_TO_CART",
+// };
 
 
-export const shoppingInitialState = {
-  products: getProductsData(),
-  cart: [],
-};
+// export const shoppingInitialState = {
+//   products: getProductsData(),
+//   cart: [],
+// };
 
 
-export function shoppingReducer(state, action) {
-    switch (action.type) {
-      case TYPES.ADD_TO_CART: {
-        let newItem = shoppingInitialState.getProductsData((prod) => prod.find( (product) => product.id === action.payload))
+// export function shoppingReducer(state, action) {
+//     switch (action.type) {
+//       case TYPES.ADD_TO_CART: {
+//         let newItem = shoppingInitialState.getProductsData((prod) => prod.find( (product) => product.id === action.payload))
 
 
-        // state.products.find(
-        //   (product) => product.id === action.payload
-        // )
-        return {
-          ...state,
-          cart:[...state.cart,newItem],
+//         // state.products.find(
+//         //   (product) => product.id === action.payload
+//         // )
+//         return {
+//           ...state,
+//           cart:[...state.cart,newItem],
             
-            };
-      }
+//             };
+//       }
       
-    }}
+//     }}
 
 
-        // let newItem = state.products.find(
-        //   (product) => product.id === action.payload
+//         // let newItem = state.products.find(
+//         //   (product) => product.id === action.payload
         // );
         // console.log(newItem);
   

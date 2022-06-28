@@ -31,14 +31,15 @@ export const authentication = (email, password) => {
       if (status === 200) {
         const  {accessToken }  = response.data;
         resolve(accessToken);
+        // console.log(resolve(accessToken))
       }else{
         reject(response.data);
       }
     })
     .catch((error) => {
-      console.log(error)
+      // console.log(error)
       reject(error);
-      console.log(error)
+      // console.log(error)
     })
   });
 }

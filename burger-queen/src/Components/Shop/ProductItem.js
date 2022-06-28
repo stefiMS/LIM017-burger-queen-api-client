@@ -1,68 +1,25 @@
-
-
-
-
-// const ProductItem = ({ data, addToCart }) => {
-//     let { id, name, price } = data;
-//     return (
-//       <div style={{ border: "thin solid gray", padding: "1rem" }}>
-//         <h4>{name}</h4>
-//         <h5>${price}.00</h5>
-//         <button onClick={() => addToCart(id)}>Agregar</button>
-//       </div>
-//     );
-//   };
-  
-//   export default ProductItem;
-
-
-// export const ProductItem = ({ addToCart }) => {
-//     return (
-
-//           <section className="mealContainer">
-//                 <div className="productContainer">
-//                     {filteredData.map((item) => {
-//                       return (
-//                         <div className="productCard">
-//                           <img className="productImg cardP" key={item.id} src={item.image}/>
-//                           <div className="textCard">
-//                             <span className= "productName cardP">{item.name}</span><br/>
-//                             <span className= "productprice carP">{item.price}</span>
-//                             <button onClick={() => addToCart(id)}>Agregar</button>
-//                           </div>
-//                         </div>
-//                       );
-//                     })}
-//                 </div>
-//           </section>
-
-//     )}
-
-
 import { getProductsData } from "../../util/getProducts.js";
-import React, { useEffect, useState, useReducer } from "react";
-// import { TYPES } from "../../Actions/shoppingActions";
-import { shoppingReducer, shoppingInitialState, TYPES } from "../../reducer/shoppingReducer.js";
-// import { ShoppingCart } from "./ShoppingCart";
+import React, { useEffect, useState} from "react";
 
 export const ProductItem = () => {
   
   const [filteredData, setFilteredData] = useState([]);
   const [products, setProducts] = useState([]);
-  const [state, dispatch] = useReducer(shoppingReducer, getProductsData());
+
   const [productsSelected, setProductsSelected ] = useState([]);
 
-  // const { products, cart } = state;
-
   const addToCart = (id) => {
-    console.log(filteredData);
+    // console.log(filteredData);
     const filteredProduct = filteredData.filter((item) => item.id === id)
-    console.log(filteredProduct);
+    // console.log(filteredProduct);
     setProductsSelected([...productsSelected, ...filteredProduct])
   
-    // dispatch({ type: TYPES.ADD_TO_CART, payload: id });
   };
 
+  const removeToCart = (id) => {
+    const removeProduct = productsSelected.filter((item) => item.id !== id)
+    setProductsSelected([ ...removeProduct])
+  }
 
 
   useEffect(() => {
@@ -70,7 +27,7 @@ export const ProductItem = () => {
       getProductsData()
         .then((response) => {
           setFilteredData(response);
-          setMenu(response);
+          setProducts(response);
         })
         .catch((error) => console.log(error));
     };
@@ -79,27 +36,39 @@ export const ProductItem = () => {
   }, []);
   
 //función contador
-const [counter, setCounter] = useState(0);
-const plusCounter = () => setCounter(counter +1);
-const lessCounter = () => setCounter(counter -1)
+const [counter, setCounter] = useState(1);
+// const plusCounter = (id) => {
+//   const plusProduct = productsSelected.filter((item) => item.id === id)
+//   setProductsSelected([ ...plusProduct, setCounter(counter +1)])
 
+// }
+const plusCounter = () => setCounter(counter +1)
+// const plusCounter = () => setCounter(counter +1)
 
+  // const plusProduct = productsSelected.filter((item) => item.id === id,  )
+  // setProductsSelected([ ...plusProduct, setCounter(counter +1)])
 
+const lessCounter = () => { 
+    if (counter>=1){
+      setCounter(counter -1);
+    }else{
+      counter= 0;
+    }
+  }
 
-  
   return (
     <>
       <section id="menu">
           <div className="buttonsType">
             <button className="buttonMeal" id="btnBreakfast" 
             onClick = {(e) => {
-              let breakfastProducts = menu.filter(product => product.type === "Breakfast")
+              let breakfastProducts = products.filter(product => product.type === "Breakfast")
               setFilteredData(breakfastProducts)} //boton de reset setFilteredData(products)
             }
             >Desayuno</button>
             <button className="buttonMeal" id="btnMenu"
             onClick = {(e) => {
-              let dinnerProducts = menu.filter(product => product.type === "Dinner")
+              let dinnerProducts = products.filter(product => product.type === "Dinner")
               setFilteredData(dinnerProducts)}
             }
             > Almuerzo/Cena</button>
@@ -115,7 +84,7 @@ const lessCounter = () => setCounter(counter -1)
                           <div className="textCard">
                             <span className= "productName cardP">{item.name}</span><br/>
                             <span className= "productprice carP">{item.price}</span>
-                            <button onClick={(el) => addToCart(el.id)} >Agregar</button>
+                            <button onClick={() => addToCart(item.id)}>Agregar</button>
                           </div>
                         </div>
                       );
@@ -123,12 +92,7 @@ const lessCounter = () => setCounter(counter -1)
                 </div>
           </section>
       </section>
-      {/* <ShoppingCart/> */}
-      {/* {cart.map((item, index) => ( */}
           
-        {/* ))} */}
-
-      
       <section id="section-ticket">
           <h3> PEDIDOS </h3>
           <section>
@@ -156,17 +120,17 @@ const lessCounter = () => setCounter(counter -1)
                     </div>
                     <div className='order column2'>
                         <button className='quantity' onClick={lessCounter}>-</button>
+                        {/* <button className='quantity' onClick={() => lessCounter(item.id)}>-</button> */}
                         <span className='quantity'>{counter}</span> 
-                        <button className='quantity' onClick={plusCounter}>+</button>
+                        {/* <button className='quantity' onClick={ plusCounter}>+</button> */}
+                        <button className='quantity' onClick={() => plusCounter(item.id)}>+</button>
                     </div>
                     <div className='order column3'>
                         <span>{item.price*counter}</span>
-                        <span><i className="fa-solid fa-trash-can"></i></span>
+                        <span   onClick={() =>removeToCart(item.id)}><i className="fa-solid fa-trash-can"></i></span>
                     </div>
                   </div>
-                
-                )
-                }
+                )}
                 )}
               </section>
             </section>
@@ -177,3 +141,15 @@ const lessCounter = () => setCounter(counter -1)
 
       
     )}
+
+
+
+
+
+
+
+
+
+
+
+
