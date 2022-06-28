@@ -1,26 +1,20 @@
 import { getProductsData } from "../../util/getProducts.js";
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 export const ProductItem = () => {
-  
+
   const [filteredData, setFilteredData] = useState([]);
   const [products, setProducts] = useState([]);
-
   const [productsSelected, setProductsSelected ] = useState([]);
+  const [totalSum, setTotalSum] = useState([]);
 
   const addToCart = (id) => {
-    // console.log(filteredData);
     const filteredProduct = filteredData.filter((item) => item.id === id)
+    filteredProduct[0].counter = 1
     // console.log(filteredProduct);
     setProductsSelected([...productsSelected, ...filteredProduct])
-  
+
   };
-
-  const removeToCart = (id) => {
-    const removeProduct = productsSelected.filter((item) => item.id !== id)
-    setProductsSelected([ ...removeProduct])
-  }
-
 
   useEffect(() => {
     const getBreakfastProducts = () => {
@@ -34,25 +28,61 @@ export const ProductItem = () => {
 
     getBreakfastProducts();
   }, []);
-  
+
 //función contador
 const [counter, setCounter] = useState(1);
 
-const plusCounter = () => setCounter(counter +1)
 
-const lessCounter = () => { 
-    if (counter>=1){
-      setCounter(counter -1);
-    }else{
-      counter= 0;
-    }
+const handlePlusCounter = (index) => {
+  const newTicketProducts = [...productsSelected];
+  newTicketProducts[index].counter++;
+  setProductsSelected(newTicketProducts)
+}
+
+const handleMinusCounter = (index) => {
+  const newTicketProducts = [...productsSelected];
+  if(newTicketProducts[index].counter >= 1){
+  newTicketProducts[index].counter--;
+  } else{
+    newTicketProducts[index].counter = 0
   }
+  setProductsSelected(newTicketProducts)
+}
+const removeToCart = (id) => {
+  const removeProduct = productsSelected.filter((item) => item.id !== id)
+  setProductsSelected([ ...removeProduct])
+}
+
+//funcion sumar
+
+
+const totalOrderSum = () => {
+  const total = productsSelected.reduce((acc, value) => {
+    
+  }, 0 )
+
+}
+
+
+const addTotalProduct = (idProduct, price, operationType) => {
+  setTotalSum(currentSum => {
+    const productToSum = currentSum.filter(product => product.id === idProduct)
+    if(productToSum){
+      currentSum.id //si existe uno con el id, sumarle a ese producto el price  (o restarle)
+    } //sino, al estado agegarle : el objeto V
+    { id: idProduct,
+    price }
+  })
+
+}
+
 
   return (
     <>
+    {/* filtro por tipo de item (desayuno/cena) */}
       <section id="menu">
           <div className="buttonsType">
-            <button className="buttonMeal" id="btnBreakfast" 
+            <button className="buttonMeal" id="btnBreakfast"
             onClick = {(e) => {
               let breakfastProducts = products.filter(product => product.type === "Breakfast")
               setFilteredData(breakfastProducts)} //boton de reset setFilteredData(products)
@@ -84,17 +114,22 @@ const lessCounter = () => {
                 </div>
           </section>
       </section>
-          
       <section id="section-ticket">
           <h3> PEDIDOS </h3>
           <section>
             <div className="customerInformation">
-              <fieldset>
-                <legend>Información de Pedido</legend>
-                Nombre de Cliente: <input/><br/>
-                Número de mesa: <input/><br/>
-                Nombre de mesero: <input/>
-              </fieldset>
+              <div>
+                <h3>nformación de Pedido</h3>
+                Número de mesa:
+                <select>
+                  <option> -- </option>
+                  <option> 1 </option>
+                  <option> 2 </option>
+                  <option> 3 </option>
+                  <option> 4 </option>
+                </select>
+                {/* Nombre de mesero: <input/> */}
+              </div>
             </div>
             <section className="orderContainer">
               <div className="ordersTitle">
@@ -102,46 +137,53 @@ const lessCounter = () => {
                 <span id="itemTitle" className='column2'>Cantidad</span>
                 <span id="itemTitle" className='column3'>Precio</span>
               </div>
+              {/* Nombre de item */}
               <section className='orderProductContainer'>
                 {productsSelected.map((item, index) => {
                   return(
-                  <div className='orderProduct' key= {index} >
+                  <div className='orderProduct' key={index} >
                     <div className='order column1'>
                         <img />
                         <p>{item.name}</p>
                     </div>
+                    {/* Cantidad de Item */}
+
                     <div className='order column2'>
-                        <button className='quantity' onClick={lessCounter}>-</button>
-                        {/* <button className='quantity' onClick={() => lessCounter(item.id)}>-</button> */}
-                        <span className='quantity'>{counter}</span> 
-                        <button className='quantity' onClick={ plusCounter}>+</button>
-                        
+                        <button className='quantity'  onClick={() => handleMinusCounter(index)}>-</button>
+                        <span className='quantity'>{item.counter}</span>
+                        <button className='quantity' onClick={() => handlePlusCounter(index)}>+</button>
                     </div>
+
+                    {/* Precio  */}
                     <div className='order column3'>
-                        <span>{item.price*counter}</span>
-                        <span   onClick={() =>removeToCart(item.id)}><i className="fa-solid fa-trash-can"></i></span>
+                        <span>{item.price*item.counter}</span>
+                        <div id='trashCan'>
+                          <span  onClick={() =>removeToCart(item.id)}><i className="fa-solid fa-trash-can"></i></span>
+                        </div>
                     </div>
+
                   </div>
+
                 )}
                 )}
+                <div className='order total'>
+                  {productsSelected.map((item, index) => {
+                  return(
+                    <div>
+                        <span> TOTAL</span>
+                        <span className='orderTotal'> valor </span>
+                  </div>
+                  )}
+                  )}
+                </div>
               </section>
             </section>
+            <button id='sendOrdButton'>
+            Mandar a cocina
+            </button>
           </section>
       </section>
-          
     </>
 
       
     )}
-
-
-
-
-
-
-
-
-
-
-
-

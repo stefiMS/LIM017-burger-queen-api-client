@@ -18,7 +18,7 @@ export const getProductsData = () => {
     axios.get(urlApiProducts, config)
       .then((res) => {
 
-        console.log(res)
+        // console.log(res)
         resolve(res.data);
         // console.log(res.data)
       })
