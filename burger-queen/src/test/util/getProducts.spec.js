@@ -7,27 +7,29 @@ const urlApiProducts = "http://localhost:8081/products";
 describe('getProducts',() =>{
     test('should get products from API ',() =>{
      
-     const objProduct = {
+     const objProduct = 
+     {
         config: {
           headers: {
             Authorization:"Bearer eyJhbGciOiJIUzI1",
           }
-        },}
-      //   data: [
-      //     {
-      //      id: 1,
-      //      image: "https://i.imgur.com/kqnYsST.jpg",
-      //      name: "Sandwich de jamon y queso",
-      //      price: 10,
-      //      type: "Breakfast"},
+        },
+        data: 
+          [{
+           id: 1,
+           image: "https://i.imgur.com/kqnYsST.jpg",
+           name: "Sandwich de jamon y queso",
+           price: 10,
+           type: "Breakfast"},
 
-      //      {
-      //       id: 2,
-      //       image: "https://i.imgur.com/PrPhPnm.jpg",
-      //       name: "Cafe Americano",
-      //       price: 5,
-      //       type: "Breakfast"}] 
-      //  }
+           {
+            id: 2,
+            image: "https://i.imgur.com/PrPhPnm.jpg",
+            name: "Cafe Americano",
+            price: 5,
+            type: "Breakfast"}] 
+       };
+
       const data = [
            {
             id: 1,

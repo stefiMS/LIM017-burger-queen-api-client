@@ -23,7 +23,7 @@ export const getProductsData = () => {
         // console.log(res.data)
       })
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
         reject(error);
         
       });

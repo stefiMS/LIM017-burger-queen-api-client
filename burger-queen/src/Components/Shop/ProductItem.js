@@ -7,13 +7,23 @@ export const ProductItem = () => {
   const [products, setProducts] = useState([]);
   const [productsSelected, setProductsSelected ] = useState([]);
   const [totalSum, setTotalSum] = useState(0);
+  const [indexesProductsSelected, setIndexesProductsSelected] = useState([]);
+  // const [indexesProductsDeselected, setIndexesProductsDeselected] = useState([]);
 
+  //Función añadir al carrito de compras
   const addToCart = (id) => {
     const filteredProduct = filteredData.filter((item) => item.id === id)
+    const filteredProductValidation = productsSelected.filter((item) => item.id === id)
+    // console.log(filteredProductValidation)
+    setIndexesProductsSelected([...indexesProductsSelected, id])
+    if(filteredProductValidation.length > 0){
+      return 
+    }
     filteredProduct[0].counter = 1
     setTotalSum(totalSum + filteredProduct[0].price)
     setProductsSelected([...productsSelected, ...filteredProduct])
   };
+
 
   useEffect(() => {
     const getBreakfastProducts = () => {
@@ -29,7 +39,7 @@ export const ProductItem = () => {
   }, []);
 
 //función contador
-const [counter, setCounter] = useState(1);
+// const [counter, setCounter] = useState(1);
 
 
 const handlePlusCounter = (index) => {
@@ -49,6 +59,8 @@ const handleMinusCounter = (index) => {
   }
   setProductsSelected(newTicketProducts)
 }
+
+//función Eliminar 
 const removeToCart = (id) => {
   const removeProduct = productsSelected.filter((item) => item.id !== id)
   const removeProductPrice = productsSelected.find((item) => item.id === id)
@@ -64,7 +76,7 @@ const removeToCart = (id) => {
             <button className="buttonMeal" id="btnBreakfast"
             onClick = {(e) => {
               let breakfastProducts = products.filter(product => product.type === "Breakfast")
-              setFilteredData(breakfastProducts)} //boton de reset setFilteredData(products)
+              setFilteredData(breakfastProducts)} 
             }
             >Desayuno</button>
             <button className="buttonMeal" id="btnMenu"
@@ -75,7 +87,6 @@ const removeToCart = (id) => {
             > Almuerzo/Cena</button>
           </div>
 
-
           <section className="mealContainer">
                 <div className="productContainer" >
                     {filteredData.map((item) => {
@@ -85,7 +96,7 @@ const removeToCart = (id) => {
                           <div className="textCard">
                             <span className= "productName cardP">{item.name}</span><br/>
                             <span className= "productprice carP">{item.price}</span>
-                            <button onClick={() => addToCart(item.id)}>Agregar</button>
+                            <button  disabled={indexesProductsSelected.includes(item.id)} onClick={() => addToCart(item.id)}>Agregar</button>
                           </div>
                         </div>
                       );
