@@ -6,14 +6,13 @@ export const ProductItem = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [products, setProducts] = useState([]);
   const [productsSelected, setProductsSelected ] = useState([]);
-  const [totalSum, setTotalSum] = useState([]);
+  const [totalSum, setTotalSum] = useState(0);
 
   const addToCart = (id) => {
     const filteredProduct = filteredData.filter((item) => item.id === id)
     filteredProduct[0].counter = 1
-    console.log(filteredProduct);
+    setTotalSum(totalSum + filteredProduct[0].price)
     setProductsSelected([...productsSelected, ...filteredProduct])
-
   };
 
   useEffect(() => {
@@ -34,6 +33,7 @@ export const ProductItem = () => {
 const handlePlusCounter = (index) => {
   const newTicketProducts = [...productsSelected];
   newTicketProducts[index].counter++;
+  setTotalSum(totalSum + newTicketProducts[index].price )
   setProductsSelected(newTicketProducts)
 }
 
@@ -41,6 +41,7 @@ const handleMinusCounter = (index) => {
   const newTicketProducts = [...productsSelected];
   if(newTicketProducts[index].counter >= 1){
   newTicketProducts[index].counter--;
+  setTotalSum(totalSum - newTicketProducts[index].price )
   } else{
     newTicketProducts[index].counter = 0
   }
@@ -48,32 +49,10 @@ const handleMinusCounter = (index) => {
 }
 const removeToCart = (id) => {
   const removeProduct = productsSelected.filter((item) => item.id !== id)
+  const removeProductPrice = productsSelected.find((item) => item.id === id)
+  setTotalSum( totalSum - (removeProductPrice.counter*removeProductPrice.price) )
   setProductsSelected([ ...removeProduct])
 }
-
-//funcion sumar
-
-
-const totalOrderSum = () => {
-  const total = productsSelected.reduce((acc, value) => {
-    
-  }, 0 )
-
-}
-
-
-const addTotalProduct = (idProduct, price, operationType) => {
-  setTotalSum(currentSum => {
-    const productToSum = currentSum.filter(product => product.id === idProduct)
-    if(productToSum){
-      currentSum.id //si existe uno con el id, sumarle a ese producto el price  (o restarle)
-    } //sino, al estado agegarle : el objeto V
-    { id: idProduct,
-    price }
-  })
-
-}
-
 
   return (
     <>
@@ -118,7 +97,7 @@ const addTotalProduct = (idProduct, price, operationType) => {
           <section>
             <div className="customerInformation">
               <div>
-                <h3>nformación de Pedido</h3>
+                <h3>Información de Pedido</h3>
                 Número de mesa:
                 <select>
                   <option> -- </option>
@@ -165,17 +144,14 @@ const addTotalProduct = (idProduct, price, operationType) => {
 
                 )}
                 )}
-                <div className='order total'>
-                  {productsSelected.map((item, index) => {
-                  return(
+
+              </section>
+              <div className='order total'>
                     <div>
                         <span> TOTAL</span>
-                        <span className='orderTotal'> valor </span>
+                        <span className='orderTotal'> {totalSum} </span>
                   </div>
-                  )}
-                  )}
                 </div>
-              </section>
             </section>
             <button id='sendOrdButton'>
             Mandar a cocina
