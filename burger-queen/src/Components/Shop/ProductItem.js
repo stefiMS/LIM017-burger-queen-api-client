@@ -29,6 +29,8 @@ export const ProductItem = () => {
   }, []);
 
 //función contador
+const [counter, setCounter] = useState(1);
+
 
 const handlePlusCounter = (index) => {
   const newTicketProducts = [...productsSelected];
@@ -91,7 +93,6 @@ const removeToCart = (id) => {
                 </div>
           </section>
       </section>
-
       <section id="section-ticket">
           <h3> PEDIDOS </h3>
           <section>
@@ -159,4 +160,6 @@ const removeToCart = (id) => {
           </section>
       </section>
     </>
+
+      
     )}
