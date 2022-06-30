@@ -1,14 +1,14 @@
 import axios from "axios";
  
-const urlApiProducts = "http://localhost:8081/products";
+const urlApiProducts = "http://localhost:8080/products";
  
-const accessToken = localStorage.getItem("accessToken");
+export const accessToken = localStorage.getItem("accessToken");
 // console.log(accessToken)
 
-const config = {
+export const config = {
   headers: {
     Authorization: `Bearer ${accessToken}`,
-  },
+  }
 };
 
 // console.log(config)

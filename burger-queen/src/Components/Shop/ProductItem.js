@@ -1,5 +1,6 @@
 import { getProductsData } from "../../util/getProducts.js";
 import React, { useEffect, useState } from "react";
+import { sendToKitchen } from "../../util/sendOrder.js";
 
 export const ProductItem = () => {
 
@@ -8,7 +9,13 @@ export const ProductItem = () => {
   const [productsSelected, setProductsSelected ] = useState([]);
   const [totalSum, setTotalSum] = useState(0);
   const [indexesProductsSelected, setIndexesProductsSelected] = useState([]);
-  // const [indexesProductsDeselected, setIndexesProductsDeselected] = useState([]);
+
+  const [clientName, setClientName] = useState("");
+  const [tableNum, setTableNum] = useState("");
+  // const [waiterId, setWaiterId] = useState("");
+  // const [finalTicket, setFinalTicket] = useState("");
+  const  userId = localStorage.getItem("userId");
+
 
   //Función añadir al carrito de compras
   const addToCart = (id) => {
@@ -17,12 +24,15 @@ export const ProductItem = () => {
     // console.log(filteredProductValidation)
     setIndexesProductsSelected([...indexesProductsSelected, id])
     if(filteredProductValidation.length > 0){
-      return 
+      return
     }
     filteredProduct[0].counter = 1
     setTotalSum(totalSum + filteredProduct[0].price)
     setProductsSelected([...productsSelected, ...filteredProduct])
   };
+
+    //console.log(productsSelected);
+    // console.log(setProductsSelected);
 
 
   useEffect(() => {
@@ -39,8 +49,6 @@ export const ProductItem = () => {
   }, []);
 
 //función contador
-// const [counter, setCounter] = useState(1);
-
 
 const handlePlusCounter = (index) => {
   const newTicketProducts = [...productsSelected];
@@ -60,13 +68,21 @@ const handleMinusCounter = (index) => {
   setProductsSelected(newTicketProducts)
 }
 
-//función Eliminar 
+//función Eliminar
+
 const removeToCart = (id) => {
   const removeProduct = productsSelected.filter((item) => item.id !== id)
   const removeProductPrice = productsSelected.find((item) => item.id === id)
   setTotalSum( totalSum - (removeProductPrice.counter*removeProductPrice.price) )
   setProductsSelected([ ...removeProduct])
 }
+
+//funcion boton enviar a cocina
+
+
+
+
+
 
   return (
     <>
@@ -104,19 +120,42 @@ const removeToCart = (id) => {
                 </div>
           </section>
       </section>
+
+      {/* // Ticket */}
+
       <section id="section-ticket">
           <h3> PEDIDOS </h3>
           <section>
             <div className="customerInformation">
               <div>
                 <h3>Información de Pedido</h3>
+                <label> Cliente: </label>
+                <input
+                  type= "text" 
+                  placeholder="Nombre de cliente" 
+                  id="clientName"
+                  name="clientName"
+                  value={clientName}
+                  onChange = {(e) => setClientName(e.target.value)}
+                  >
+                </input>
                 Número de mesa:
-                <select>
-                  <option> -- </option>
-                  <option> 1 </option>
-                  <option> 2 </option>
-                  <option> 3 </option>
-                  <option> 4 </option>
+                <select 
+                className="tableNum"
+                name="tableNum"
+                onChange={(e) => setTableNum(e.target.value)}
+                >
+                  <option
+                  value="Null"
+                  > -- </option>
+                  <option
+                  value= "table1" > 1 </option>
+                  <option
+                  value = "table2" > 2 </option>
+                  <option
+                  value= "table3"> 3 </option>
+                  <option
+                  value= "table4" > 4 </option>
                 </select>
                 {/* Nombre de mesero: <input/> */}
               </div>
@@ -133,7 +172,6 @@ const removeToCart = (id) => {
                   return(
                   <div className='orderProduct' key={index} >
                     <div className='order column1'>
-                        <img />
                         <p>{item.name}</p>
                     </div>
                     {/* Cantidad de Item */}
@@ -165,7 +203,19 @@ const removeToCart = (id) => {
                   </div>
                 </div>
             </section>
-            <button id='sendOrdButton'>
+            <button id='sendOrdButton' onClick= { (e) => {
+              
+              e.preventDefault();
+
+              sendToKitchen(userId, clientName, productsSelected, tableNum)
+              .then((response) => {
+                console.log(response)
+              })
+              .catch((error) => console.log(error));
+              alert('Enviado a cocina');
+              // console.log('hola')
+            
+            }}>
             Mandar a cocina
             </button>
           </section>
