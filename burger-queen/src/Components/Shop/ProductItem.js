@@ -164,7 +164,7 @@ export const ProductItem = () => {
               {/* Nombre de mesero: <input/> */}
             </div>
           </div>
-          <section className="orderContainer">
+          <section className="cartContainer">
             <div className="ordersTitle">
               <span id="itemTitle" className="column1">
                 Items
@@ -229,9 +229,12 @@ export const ProductItem = () => {
               const orderToKitchen = {
                 userId: userId,
                 client: clientName,
+                tableNum: tableNum,
                 products: productsSelected.map((x) => ({
                   productId: x.id,
+                  name:x.name,
                   qty: x.counter,
+
                 })),
               };
               console.log(orderToKitchen);

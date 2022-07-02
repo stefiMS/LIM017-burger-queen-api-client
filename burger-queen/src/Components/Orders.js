@@ -36,25 +36,60 @@ const Orders = () => {
       <main>
         <h1> Aqui van las ordenes </h1>
         <section id="orders">
-          <div id="orderContainer">
-            {orders.map((item, index) => {
+          <div className ="orderContainer">
+            {orders.map((item) => {
               return (
-                <div key={item.id}>
-                  <p id="orderId">Orden N°: {item.id} </p>
+                <div className="cardOrder" key={item.id}>
+                  <p id="orderId">Orden N°: 00{item.id} </p>
                   <p id="waiterId"> Mesero: {item.userId}</p>
                   <p id="orderClient">Cliente: {item.client}</p>
-
+                  <p>Mesa: {item.tableNum}</p>
                   <div id="orderProducts">
-                    {/* {productsOrder.map((el, position)=>{
-                      return (
-                        <p>{item[index].el[position].qty}</p>
-                      )
-                    })} */}
-                    
+                      <table>
+                        <thead>
+                          <tr>
+                            <td>PRODUCTOS</td> 
+                            <td>CANTIDAD</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {item.products.map((prod)=>{
+                          return (
+                            <tr key={prod.id}>
+                              <td>{prod.name}</td> 
+                              <td>{prod.qty}</td>
+                            </tr>
+                          )}
+                        )}
+                        </tbody>
+                      </table>
+                       
+                   {/* <p>Cliente: {order.client}</p>
+                    <p>Mesa: {order.table}</p>
+                    <p>Estado: {order.state}</p>
+                    <details>
+                        <summary>Orden</summary>
+                        <table>
+                        <tbody>
+                        {order.order.map((e) => (
+                            <tr key={e.id}>
+                                <td>{e.item}</td>
+                                <td>{e.count}</td>
+                            </tr>)
+                        )}
+                        </tbody>
+                        </table>
+                    </details>
+                    <button className="btnState" onClick={changeState}> {btnText} </button> */}
+                    {/* export default function OrdersItem({ order, btnText, setState}) { */}
+    
+                  {/* Funcion que cambia el estado de una orden en la coleccion de Firebase
+                    function changeState() {
+                        setState(order.id, btnText);
+                    } */}
 
                   </div>
-                  {/* <p id="orderProducts"> {item.products} </p>
-                  <p id="orderProductsName"> {item.products.name} </p> */}
+                  <button className="btnState"> PENDING </button>
                 </div>
               );
             })}
