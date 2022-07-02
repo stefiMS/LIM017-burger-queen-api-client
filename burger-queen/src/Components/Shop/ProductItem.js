@@ -1,27 +1,32 @@
 import { getProductsData } from "../../util/getProducts.js";
 import React, { useEffect, useState } from "react";
+import { sendToKitchen } from "../../util/sendOrder.js";
 
 export const ProductItem = () => {
-
   const [filteredData, setFilteredData] = useState([]);
   const [products, setProducts] = useState([]);
-  const [productsSelected, setProductsSelected ] = useState([]);
+  const [productsSelected, setProductsSelected] = useState([]);
   const [totalSum, setTotalSum] = useState(0);
   const [indexesProductsSelected, setIndexesProductsSelected] = useState([]);
-  // const [indexesProductsDeselected, setIndexesProductsDeselected] = useState([]);
+
+  const [clientName, setClientName] = useState("");
+  const [tableNum, setTableNum] = useState("");
+  const userId = localStorage.getItem("userId");
 
   //Función añadir al carrito de compras
   const addToCart = (id) => {
-    const filteredProduct = filteredData.filter((item) => item.id === id)
-    const filteredProductValidation = productsSelected.filter((item) => item.id === id)
+    const filteredProduct = filteredData.filter((item) => item.id === id);
+    const filteredProductValidation = productsSelected.filter(
+      (item) => item.id === id
+    );
     // console.log(filteredProductValidation)
-    setIndexesProductsSelected([...indexesProductsSelected, id])
-    if(filteredProductValidation.length > 0){
-      return 
+    setIndexesProductsSelected([...indexesProductsSelected, id]);
+    if (filteredProductValidation.length > 0) {
+      return;
     }
-    filteredProduct[0].counter = 1
-    setTotalSum(totalSum + filteredProduct[0].price)
-    setProductsSelected([...productsSelected, ...filteredProduct])
+    filteredProduct[0].counter = 1;
+    setTotalSum(totalSum + filteredProduct[0].price);
+    setProductsSelected([...productsSelected, ...filteredProduct]);
   };
 
 
@@ -38,139 +43,212 @@ export const ProductItem = () => {
     getBreakfastProducts();
   }, []);
 
-//función contador
-// const [counter, setCounter] = useState(1);
+  //función contador
 
+  const handlePlusCounter = (index) => {
+    const newTicketProducts = [...productsSelected];
+    newTicketProducts[index].counter++;
+    setTotalSum(totalSum + newTicketProducts[index].price);
+    setProductsSelected(newTicketProducts);
+  };
 
-const handlePlusCounter = (index) => {
-  const newTicketProducts = [...productsSelected];
-  newTicketProducts[index].counter++;
-  setTotalSum(totalSum + newTicketProducts[index].price )
-  setProductsSelected(newTicketProducts)
-}
+  const handleMinusCounter = (index) => {
+    const newTicketProducts = [...productsSelected];
+    if (newTicketProducts[index].counter >= 1) {
+      newTicketProducts[index].counter--;
+      setTotalSum(totalSum - newTicketProducts[index].price);
+    } else {
+      newTicketProducts[index].counter = 0;
+    }
+    setProductsSelected(newTicketProducts);
+  };
 
-const handleMinusCounter = (index) => {
-  const newTicketProducts = [...productsSelected];
-  if(newTicketProducts[index].counter >= 1){
-  newTicketProducts[index].counter--;
-  setTotalSum(totalSum - newTicketProducts[index].price )
-  } else{
-    newTicketProducts[index].counter = 0
-  }
-  setProductsSelected(newTicketProducts)
-}
+  //función Eliminar
 
-//función Eliminar 
-const removeToCart = (id) => {
-  const removeProduct = productsSelected.filter((item) => item.id !== id)
-  const removeProductPrice = productsSelected.find((item) => item.id === id)
-  setTotalSum( totalSum - (removeProductPrice.counter*removeProductPrice.price) )
-  setProductsSelected([ ...removeProduct])
-}
+  const removeToCart = (id) => {
+    const removeProduct = productsSelected.filter((item) => item.id !== id);
+    const removeProductPrice = productsSelected.find((item) => item.id === id);
+    setTotalSum(
+      totalSum - removeProductPrice.counter * removeProductPrice.price
+    );
+    setProductsSelected([...removeProduct]);
+  };
+
+  //funcion boton enviar a cocina
 
   return (
     <>
-    {/* filtro por tipo de item (desayuno/cena) */}
+      {/* filtro por tipo de item (desayuno/cena) */}
       <section id="menu">
-          <div className="buttonsType">
-            <button className="buttonMeal" id="btnBreakfast"
-            onClick = {(e) => {
-              let breakfastProducts = products.filter(product => product.type === "Breakfast")
-              setFilteredData(breakfastProducts)} 
-            }
-            >Desayuno</button>
-            <button className="buttonMeal" id="btnMenu"
-            onClick = {(e) => {
-              let dinnerProducts = products.filter(product => product.type === "Dinner")
-              setFilteredData(dinnerProducts)}
-            }
-            > Almuerzo/Cena</button>
-          </div>
+        <div className="buttonsType">
+          <button
+            className="buttonMeal"
+            id="btnBreakfast"
+            onClick={(e) => {
+              let breakfastProducts = products.filter(
+                (product) => product.type === "Breakfast"
+              );
+              setFilteredData(breakfastProducts);
+            }}
+          >
+            Desayuno
+          </button>
+          <button
+            className="buttonMeal"
+            id="btnMenu"
+            onClick={(e) => {
+              let dinnerProducts = products.filter(
+                (product) => product.type === "Dinner"
+              );
+              setFilteredData(dinnerProducts);
+            }}
+          >
+            {" "}
+            Almuerzo/Cena
+          </button>
+        </div>
 
-          <section className="mealContainer">
-                <div className="productContainer" >
-                    {filteredData.map((item) => {
-                      return (
-                        <div className="productCard" key={item.id}>
-                          <img className="productImg cardP" src={item.image}/>
-                          <div className="textCard">
-                            <span className= "productName cardP">{item.name}</span><br/>
-                            <span className= "productprice carP">{item.price}</span>
-                            <button  disabled={indexesProductsSelected.includes(item.id)} onClick={() => addToCart(item.id)}>Agregar</button>
-                          </div>
-                        </div>
-                      );
-                    })}
+        <section className="mealContainer">
+          <div className="productContainer">
+            {filteredData.map((item) => {
+              return (
+                <div className="productCard" key={item.id}>
+                  <img className="productImg cardP" src={item.image} />
+                  <div className="textCard">
+                    <span className="productName cardP">{item.name}</span>
+                    <br />
+                    <span className="productprice carP">{item.price}</span>
+                    <button
+                      disabled={indexesProductsSelected.includes(item.id)}
+                      onClick={() => addToCart(item.id)}
+                    >
+                      Agregar
+                    </button>
+                  </div>
                 </div>
-          </section>
+              );
+            })}
+          </div>
+        </section>
       </section>
+
+      {/* // Ticket */}
+
       <section id="section-ticket">
-          <h3> PEDIDOS </h3>
-          <section>
-            <div className="customerInformation">
-              <div>
-                <h3>Información de Pedido</h3>
-                Número de mesa:
-                <select>
-                  <option> -- </option>
-                  <option> 1 </option>
-                  <option> 2 </option>
-                  <option> 3 </option>
-                  <option> 4 </option>
-                </select>
-                {/* Nombre de mesero: <input/> */}
-              </div>
+        <h3> PEDIDOS </h3>
+        <section>
+          <div className="customerInformation">
+            <div>
+              <h3>Información de Pedido</h3>
+              <label> Cliente: </label>
+              <input
+                type="text"
+                placeholder="Nombre de cliente"
+                id="clientName"
+                name="clientName"
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
+              ></input>
+              Número de mesa:
+              <select
+                className="tableNum"
+                name="tableNum"
+                onChange={(e) => setTableNum(e.target.value)}
+              >
+                <option value="Null"> -- </option>
+                <option value="table1"> 1 </option>
+                <option value="table2"> 2 </option>
+                <option value="table3"> 3 </option>
+                <option value="table4"> 4 </option>
+              </select>
+              {/* Nombre de mesero: <input/> */}
             </div>
-            <section className="orderContainer">
-              <div className="ordersTitle">
-                <span id="itemTitle" className='column1'>Items</span>
-                <span id="itemTitle" className='column2'>Cantidad</span>
-                <span id="itemTitle" className='column3'>Precio</span>
-              </div>
-              {/* Nombre de item */}
-              <section className='orderProductContainer'>
-                {productsSelected.map((item, index) => {
-                  return(
-                  <div className='orderProduct' key={index} >
-                    <div className='order column1'>
-                        <img />
-                        <p>{item.name}</p>
+          </div>
+          <section className="cartContainer">
+            <div className="ordersTitle">
+              <span id="itemTitle" className="column1">
+                Items
+              </span>
+              <span id="itemTitle" className="column2">
+                Cantidad
+              </span>
+              <span id="itemTitle" className="column3">
+                Precio
+              </span>
+            </div>
+            {/* Nombre de item */}
+            <section className="orderProductContainer">
+              {productsSelected.map((item, index) => {
+                return (
+                  <div className="orderProduct" key={index}>
+                    <div className="order column1">
+                      <p>{item.name}</p>
                     </div>
                     {/* Cantidad de Item */}
 
-                    <div className='order column2'>
-                        <button className='quantity'  onClick={() => handleMinusCounter(index)}>-</button>
-                        <span className='quantity'>{item.counter}</span>
-                        <button className='quantity' onClick={() => handlePlusCounter(index)}>+</button>
+                    <div className="order column2">
+                      <button
+                        className="quantity"
+                        onClick={() => handleMinusCounter(index)}
+                      >
+                        -
+                      </button>
+                      <span className="quantity">{item.counter}</span>
+                      <button
+                        className="quantity"
+                        onClick={() => handlePlusCounter(index)}
+                      >
+                        +
+                      </button>
                     </div>
 
                     {/* Precio  */}
-                    <div className='order column3'>
-                        <span>{item.price*item.counter}</span>
-                        <div id='trashCan'>
-                          <span  onClick={() =>removeToCart(item.id)}><i className="fa-solid fa-trash-can"></i></span>
-                        </div>
+                    <div className="order column3">
+                      <span>{item.price * item.counter}</span>
+                      <div id="trashCan">
+                        <span onClick={() => removeToCart(item.id)}>
+                          <i className="fa-solid fa-trash-can"></i>
+                        </span>
+                      </div>
                     </div>
-
                   </div>
-
-                )}
-                )}
-
-              </section>
-              <div className='order total'>
-                    <div>
-                        <span> TOTAL</span>
-                        <span className='orderTotal'> {totalSum} </span>
-                  </div>
-                </div>
+                );
+              })}
             </section>
-            <button id='sendOrdButton'>
-            Mandar a cocina
-            </button>
+            <div className="order total">
+              <div>
+                <span> TOTAL</span>
+                <span className="orderTotal"> {totalSum} </span>
+              </div>
+            </div>
           </section>
+          <button
+            id="sendOrdButton"
+            onClick={(e) => {
+              e.preventDefault();
+              const orderToKitchen = {
+                userId: userId,
+                client: clientName,
+                tableNum: tableNum,
+                products: productsSelected.map((x) => ({
+                  productId: x.id,
+                  name:x.name,
+                  qty: x.counter,
+
+                })),
+              };
+              console.log(orderToKitchen);
+              sendToKitchen(orderToKitchen)
+                .then((response) => {
+                  alert("Enviado a cocina");
+                })
+                .catch((error) => console.log(error));
+            }}
+          >
+            Mandar a cocina
+          </button>
+        </section>
       </section>
     </>
-
-      
-    )}
+  );
+};

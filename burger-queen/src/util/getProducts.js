@@ -1,11 +1,12 @@
 import axios from "axios";
- 
+
 const urlApiProducts = "http://localhost:8081/products";
- 
-const accessToken = localStorage.getItem("accessToken");
+const urlApiOrders = "http://localhost:8081/orders";
+
+export const accessToken = localStorage.getItem("accessToken");
 // console.log(accessToken)
 
-const config = {
+export const config = {
   headers: {
     Authorization: `Bearer ${accessToken}`,
   },
@@ -15,9 +16,9 @@ const config = {
 
 export const getProductsData = () => {
   return new Promise((resolve, reject) => {
-    axios.get(urlApiProducts, config)
+    axios
+      .get(urlApiProducts, config)
       .then((res) => {
-
         // console.log(res)
         resolve(res.data);
         // console.log(res.data)
@@ -25,7 +26,19 @@ export const getProductsData = () => {
       .catch((error) => {
         // console.log(error)
         reject(error);
-        
+      });
+  });
+};
+
+export const getOrders = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(urlApiOrders, config)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject(error);
       });
   });
 };
@@ -48,4 +61,3 @@ export const getProductsData = () => {
 //   })
 // })
 // };
-
