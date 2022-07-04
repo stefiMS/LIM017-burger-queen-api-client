@@ -111,21 +111,21 @@ export const ProductItem = () => {
         </div>
 
         <section className="mealContainer">
-          <div className="productContainer">
+          <div className="productContainer" >
             {filteredData.map((item) => {
               return (
-                <div className="productCard" key={item.id}>
+                <div className="productCard" key={item.id} onClick= { () => addToCart (item.id)}>
                   <img className="productImg cardP" src={item.image} />
                   <div className="textCard">
                     <span className="productName cardP">{item.name}</span>
                     <br />
                     <span className="productprice carP">{item.price}</span>
-                    <button
+                    {/* <button
                       disabled={indexesProductsSelected.includes(item.id)}
                       onClick={() => addToCart(item.id)}
                     >
                       Agregar
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               );
@@ -151,18 +151,19 @@ export const ProductItem = () => {
                 value={clientName}
                 onChange={(e) => setClientName(e.target.value)}
               ></input>
-              Número de mesa:
+              <label>N de mesa</label>
               <select
                 className="tableNum"
                 name="tableNum"
                 onChange={(e) => setTableNum(e.target.value)}
               >
-                <option value="Null"> -- </option>
-                <option value="table1"> 1 </option>
-                <option value="table2"> 2 </option>
-                <option value="table3"> 3 </option>
-                <option value="table4"> 4 </option>
-                <option value="table5"> 5 </option>
+
+                <option value="null"> -- </option>
+                <option value="1"> 1 </option>
+                <option value="2"> 2 </option>
+                <option value="3"> 3 </option>
+                <option value="4"> 4 </option>
+
               </select>
               {/* Nombre de mesero: <input/> */}
             </div>
@@ -218,7 +219,7 @@ export const ProductItem = () => {
                 );
               })}
             </section>
-            <div className="order total">
+            <div className="order total" class= "orderTotal">
               <div>
                 <span> TOTAL</span>
                 <span className="orderTotal"> {totalSum} </span>
@@ -226,7 +227,7 @@ export const ProductItem = () => {
             </div>
           </section>
           <button
-            id="sendOrdButton"
+            id="sendOrderButton"
             onClick={(e) => {
               e.preventDefault();
               const orderToKitchen = {
@@ -237,7 +238,6 @@ export const ProductItem = () => {
                   productId: x.id,
                   name:x.name,
                   qty: x.counter,
-
                 })),
               };
               console.log(orderToKitchen);
