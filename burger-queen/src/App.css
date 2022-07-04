@@ -307,3 +307,35 @@ fieldset{
     justify-content: center;
     margin:20px;
 }
+
+/* ERROR NO ACCESS*/
+
+.sectionError{
+  background-color: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#noAccessText{
+  color: #262626;
+  margin: 20px;
+  font-size: 30px;
+  align-content: center;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+#imageNoAccess{
+  width: 30%;
+}
+
+#noAccessButton{
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #262626;
+  color: #F2F2F2;
+  font-weight: bold;
+  margin: 20px;
+}

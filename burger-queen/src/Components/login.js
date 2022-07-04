@@ -8,6 +8,23 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate("");
+
+  const handleSubmit = (e) =>{
+      e.preventDefault();
+      authentication(email, password)
+        .then((response) => {
+          // if(email === '' || password === ''){
+          //   const message = document.createElement('p');
+          //   const showMessage =message.setAttribute('class','showMessage')
+          //   showMessage.textContent = 'Debes completar todos los campos solicitados';
+          // }else{
+           localStorage.setItem("accessToken", response);
+          navigate("/home");
+          // }
+        })
+        .catch((error) => console.log(error));
+  }
+
  
   return (
     <>
@@ -17,15 +34,7 @@ const Login = () => {
       <main>
         <div id="containerLogin">
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              authentication(email, password)
-                .then((response) => {
-                   localStorage.setItem("accessToken", response);
-                  navigate("/home");
-                 })
-                .catch((error) => console.log(error));
-            }}
+            onSubmit={ handleSubmit}
           >
             <label class = "loginLabel">USUARIO</label>
             <input
@@ -48,6 +57,8 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <p ></p>
+            <p></p>
             <button type="submit" id="buttonLogin" className="btn btn-warning">
               INICIAR SESIÓN
             </button>

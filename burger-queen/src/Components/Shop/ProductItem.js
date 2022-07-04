@@ -1,6 +1,7 @@
 import { getProductsData } from "../../util/getProducts.js";
 import React, { useEffect, useState } from "react";
 import { sendToKitchen } from "../../util/sendOrder.js";
+import { useNavigate } from "react-router";
 
 export const ProductItem = () => {
   const [filteredData, setFilteredData] = useState([]);
@@ -12,6 +13,7 @@ export const ProductItem = () => {
   const [clientName, setClientName] = useState("");
   const [tableNum, setTableNum] = useState("");
   const userId = localStorage.getItem("userId");
+  const navigate = useNavigate();
 
   //Función añadir al carrito de compras
   const addToCart = (id) => {
@@ -155,11 +157,13 @@ export const ProductItem = () => {
                 name="tableNum"
                 onChange={(e) => setTableNum(e.target.value)}
               >
+
                 <option value="null"> -- </option>
                 <option value="1"> 1 </option>
                 <option value="2"> 2 </option>
                 <option value="3"> 3 </option>
                 <option value="4"> 4 </option>
+
               </select>
               {/* Nombre de mesero: <input/> */}
             </div>
@@ -239,7 +243,9 @@ export const ProductItem = () => {
               console.log(orderToKitchen);
               sendToKitchen(orderToKitchen)
                 .then((response) => {
-                  alert("Enviado a cocina");
+                  // alert("Enviado a cocina");
+                  localStorage.setItem("accessToken", response);
+                  navigate("/orders");
                 })
                 .catch((error) => console.log(error));
             }}
