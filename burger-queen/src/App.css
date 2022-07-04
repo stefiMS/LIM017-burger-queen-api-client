@@ -10,10 +10,6 @@
   font-weight: bold
 }
 
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-} */
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -44,6 +40,9 @@
     transform: rotate(360deg);
   }
 }
+.loginLabel{
+  display: block;
+}
 
 #headerLogin{
   display: flex;
@@ -64,8 +63,6 @@ main{
 }
 #containerLogin{
   display:flex;
-  /* justify-content: center;
-  align-items: center; */
   flex-direction: column;
   padding: 3%;
 }
@@ -83,6 +80,7 @@ label{
   padding: 20px;
   margin: 5%;
   background-color: #bf861B;
+  font-weight: bold;
 }
 
 /*styles on breakfast*/
@@ -134,7 +132,7 @@ label{
   border-radius: 5px;
   background-color: #F2C53D;
   color: #262626;
-  font-weight: bolder;
+  font-weight: bold;
   padding: 15px;
   margin: 10px;
 }
@@ -147,22 +145,19 @@ label{
 /*Breakfast*/
 /* .breakfastContainer{ */
 .mealContainer{
-  border: solid 3px;
+  border: dotted;
+  border-color: darkgray;
 }
 
-/* .breakfastContainer>div>h3{ */
-/* .mealContainer>div>h3{
-  background-color: #F2F2F2;
-  padding: 5px;
-  margin: 5px;
-  align-items: center;
-  justify-content: center;
-} */
 
 .productContainer{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  height: 600px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* text-align: center; */
 }
 
 .beveragesContent, .sandwichProduct{
@@ -193,7 +188,7 @@ label{
 }
 
 .cardP{
-  width:100%;
+  width:90%;
 }
 
 .textCard{
@@ -203,10 +198,7 @@ label{
     width: 100%;
     /* height: 30%; */
     display: flex;
-    /* flex-wrap: wrap; */
-    /* justify-content: center; */
     align-items: center;
-    /* align-content: center; */
     font-size: 12px;
     font-weight: bolder;
     flex-direction: column;
@@ -243,10 +235,14 @@ fieldset{
   display: flex;
   background-color: #262626;
   color: #F2F2F2;
+  margin-top: 20px;
 }
 
 .orderProduct{
   display: flex;
+}
+.orderTotal{
+  margin:20px 0 20px 0;
 }
 
 .column1{
@@ -280,6 +276,16 @@ fieldset{
   justify-content: center;
 }
 
+#sendOrderButton{
+  border-radius: 10px;
+  background-color: rgba(38, 38, 38, 8);
+  width: 200px;
+  height: 50px;
+  color: #F2F2F2;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 /* SECTION ORDER.JS */
 
 .orderContainer{
@@ -300,4 +306,36 @@ fieldset{
     align-items: center;
     justify-content: center;
     margin:20px;
+}
+
+/* ERROR NO ACCESS*/
+
+.sectionError{
+  background-color: #F2F2F2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+#noAccessText{
+  color: #262626;
+  margin: 20px;
+  font-size: 30px;
+  align-content: center;
+  padding: 20px;
+  text-transform: uppercase;
+}
+
+#imageNoAccess{
+  width: 30%;
+}
+
+#noAccessButton{
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #262626;
+  color: #F2F2F2;
+  font-weight: bold;
+  margin: 20px;
 }
