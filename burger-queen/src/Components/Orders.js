@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Orders = () => {
   const navigate = useNavigate("");
   const [orders, setOrders] = useState([]);
-  const [productsOrder, setProductsOrder] = useState([]);
+  // const [productsOrder, setProductsOrder] = useState([]);
 
   useEffect(() => {
     const showOrders = () => {
@@ -22,7 +22,7 @@ const Orders = () => {
   // console.log(orders);
   return (
     <>
-      <header id="loginHeader">
+     <header id="loginHeader">
         <nav id="loginNav">
           <img src={logoBurguer} id="logoBurguerNav" alt="logoBurguer" />
           <ul id="optionNav">
@@ -63,31 +63,6 @@ const Orders = () => {
                         )}
                         </tbody>
                       </table>
-                       
-                   {/* <p>Cliente: {order.client}</p>
-                    <p>Mesa: {order.table}</p>
-                    <p>Estado: {order.state}</p>
-                    <details>
-                        <summary>Orden</summary>
-                        <table>
-                        <tbody>
-                        {order.order.map((e) => (
-                            <tr key={e.id}>
-                                <td>{e.item}</td>
-                                <td>{e.count}</td>
-                            </tr>)
-                        )}
-                        </tbody>
-                        </table>
-                    </details>
-                    <button className="btnState" onClick={changeState}> {btnText} </button> */}
-                    {/* export default function OrdersItem({ order, btnText, setState}) { */}
-    
-                  {/* Funcion que cambia el estado de una orden en la coleccion de Firebase
-                    function changeState() {
-                        setState(order.id, btnText);
-                    } */}
-
                   </div>
                   <button className="btnState"> PENDING </button>
                 </div>
