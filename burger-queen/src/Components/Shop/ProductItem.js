@@ -109,21 +109,21 @@ export const ProductItem = () => {
         </div>
 
         <section className="mealContainer">
-          <div className="productContainer">
+          <div className="productContainer" >
             {filteredData.map((item) => {
               return (
-                <div className="productCard" key={item.id}>
+                <div className="productCard" key={item.id} onClick= { () => addToCart (item.id)}>
                   <img className="productImg cardP" src={item.image} />
                   <div className="textCard">
                     <span className="productName cardP">{item.name}</span>
                     <br />
                     <span className="productprice carP">{item.price}</span>
-                    <button
+                    {/* <button
                       disabled={indexesProductsSelected.includes(item.id)}
                       onClick={() => addToCart(item.id)}
                     >
                       Agregar
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               );
