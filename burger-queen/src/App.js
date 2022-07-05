@@ -9,6 +9,7 @@ import Login from './Components/Login.js';
 import Home from './Components/Home.js';
 import Orders from './Components/Orders.js'
 import { ErrorNoAccess } from './Components/ErrorNoAccess.js';
+import { UserManagement } from './Components/Admin/UserManagement';
 import { Products} from './Components/Products';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/orders' element={<Orders/>} />
           <Route path='/products' element={<Products/>} />
           <Route path='/noAccess' element={<ErrorNoAccess/>} />
+          <Route path='/userManagement' element={<UserManagement/>}/>
         </Routes>
         
       </div>
