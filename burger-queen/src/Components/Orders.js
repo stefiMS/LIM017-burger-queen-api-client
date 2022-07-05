@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from "react";
 import logoBurguer from "./../Assets/logoBurguer.png";
-import { getOrders } from "../util/getProducts";
+
 import { useNavigate } from "react-router-dom";
+import { OrderStatus }  from "./orders/Status.js"
+import { getOrders } from "../util/getProducts";
 
 const Orders = () => {
   const navigate = useNavigate("");
-  const [orders, setOrders] = useState([]);
-  const [productsOrder, setProductsOrder] = useState([]);
+  // const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    const showOrders = () => {
-      getOrders()
-        .then((response) => {
-          setOrders(response);
-        })
-        .catch((error) => console.log(error));
-    };
-    showOrders();
-  }, []);
+  // useEffect(() => {
+  //   const showOrders = () => {
+  //     getOrders()
+  //       .then((response) => {
+  //         setOrders(response);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   };
+  //   showOrders();
+  // }, []);
 
   // console.log(orders);
   return (
     <>
-      <header id="loginHeader">
+     <header id="loginHeader">
         <nav id="loginNav">
           <img src={logoBurguer} id="logoBurguerNav" alt="logoBurguer" />
           <ul id="optionNav">
@@ -32,8 +33,11 @@ const Orders = () => {
           </ul>
         </nav>
       </header>
-
       <main>
+        <OrderStatus/>
+      </main>
+
+      {/* <main>
         <h1> Aqui van las ordenes </h1>
         <section id="orders">
           <div className ="orderContainer">
@@ -43,6 +47,7 @@ const Orders = () => {
                   <p id="orderId">Orden N°: 00{item.id} </p>
                   <p id="waiterId"> Mesero: {item.userId}</p>
                   <p id="orderClient">Cliente: {item.client}</p>
+                  <p id="orderTime">{item.dateEntry}</p>
                   <p>Mesa: {item.tableNum}</p>
                   <div id="orderProducts">
                       <table>
@@ -63,39 +68,15 @@ const Orders = () => {
                         )}
                         </tbody>
                       </table>
-                       
-                   {/* <p>Cliente: {order.client}</p>
-                    <p>Mesa: {order.table}</p>
-                    <p>Estado: {order.state}</p>
-                    <details>
-                        <summary>Orden</summary>
-                        <table>
-                        <tbody>
-                        {order.order.map((e) => (
-                            <tr key={e.id}>
-                                <td>{e.item}</td>
-                                <td>{e.count}</td>
-                            </tr>)
-                        )}
-                        </tbody>
-                        </table>
-                    </details>
-                    <button className="btnState" onClick={changeState}> {btnText} </button> */}
-                    {/* export default function OrdersItem({ order, btnText, setState}) { */}
-    
-                  {/* Funcion que cambia el estado de una orden en la coleccion de Firebase
-                    function changeState() {
-                        setState(order.id, btnText);
-                    } */}
-
                   </div>
-                  <button className="btnState"> PENDING </button>
+                  <p id="status">Status: {item.status}</p>
+                  <button className="btnState"> PREPARANDO </button>
                 </div>
               );
             })}
           </div>
         </section>
-      </main>
+      </main> */}
     </>
   );
 };
