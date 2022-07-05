@@ -90,6 +90,8 @@ label{
   align-items: center;
   justify-content: center;
   padding: 5px;
+  background-color: #262626;
+  color:#F2F2F2
 }
 #loginNav{
   display: flex;
@@ -338,4 +340,113 @@ fieldset{
   color: #F2F2F2;
   font-weight: bold;
   margin: 20px;
+}
+
+/* SECTION USERMANAGEMENT*/
+#sectionUserManagement{
+  /* padding: 2%; */
+  background-color: #F2F2F2;
+  color:#282c34
+}
+#titleUserManagement{
+  padding: 2%;
+}
+#titleUserCreate{
+  background-color:#282c34 ;
+  color: #F2F2F2;
+  padding: 1%;
+  border-radius: 15px 15px 0px 0px
+}
+#sectionUserCreate{
+  background-color: rgb(240, 237, 231);
+  margin: 15px;
+}
+
+.containerCreateUser{
+  padding: 1%;
+}
+.rowInputs{
+  display: flex;
+  width: 100%;
+  /* justify-content: space-between; */
+  padding: 5px;
+  align-items: center;
+  flex-direction: column;
+  /* align-content: center; */
+}
+.rowRolUser{
+  display: flex;
+  padding: 5px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.titleLabel{
+  width: 100%;
+}
+
+.inputCreate{
+  width: 60%;
+}
+
+
+#buttonCreateUser{
+  padding: 10px;
+  border-radius: 15px;
+  margin: 15px;
+  background-color: #282c34;
+  color: #F2F2F2;
+  font-weight: bold;
+}
+
+#rolUser{
+  width:60%;
+  padding: 2px;
+}
+.titleLabelUser{
+  width: 100%;
+}
+/* @media screen and (min-width:883px ) { */
+@media screen and (min-width:883px ) {
+  .rowInputs{
+    display: flex;
+    flex-direction: row;
+    /* width: 100%; */
+    justify-content: space-between;
+    /* padding: 5px; */
+    /* align-items: center */
+  }
+  
+  .rowRolUser{
+    display: flex;
+    flex-direction: row;
+    /* padding: 5px; */
+    width: 50%;
+    /* align-items: center; */
+    justify-content: space-between;
+  }
+  .titleLabel{
+    width: 20%;
+  }
+  
+  .inputCreate{
+    width: 30%;
+  }
+
+  #rolUser{
+    width:60%
+  }
+  .titleLabelUser{
+    width: 40%;
+  }
+}
+
+
+
+/* SECTION CREATEUSERS*/
+
+#sectionTableUsers{
+  padding: 2%;
 }
