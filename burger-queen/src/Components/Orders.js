@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import logoBurguer from "./../Assets/logoBurguer.png";
-import { getOrders } from "../util/getProducts";
+
 import { useNavigate } from "react-router-dom";
+import { OrderStatus }  from "./orders/Status.js"
+import { getOrders } from "../util/getProducts";
 
 const Orders = () => {
   const navigate = useNavigate("");
-  const [orders, setOrders] = useState([]);
-  // const [productsOrder, setProductsOrder] = useState([]);
+  // const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    const showOrders = () => {
-      getOrders()
-        .then((response) => {
-          setOrders(response);
-        })
-        .catch((error) => console.log(error));
-    };
-    showOrders();
-  }, []);
+  // useEffect(() => {
+  //   const showOrders = () => {
+  //     getOrders()
+  //       .then((response) => {
+  //         setOrders(response);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   };
+  //   showOrders();
+  // }, []);
 
   // console.log(orders);
   return (
@@ -32,8 +33,11 @@ const Orders = () => {
           </ul>
         </nav>
       </header>
-
       <main>
+        <OrderStatus/>
+      </main>
+
+      {/* <main>
         <h1> Aqui van las ordenes </h1>
         <section id="orders">
           <div className ="orderContainer">
@@ -43,6 +47,7 @@ const Orders = () => {
                   <p id="orderId">Orden N°: 00{item.id} </p>
                   <p id="waiterId"> Mesero: {item.userId}</p>
                   <p id="orderClient">Cliente: {item.client}</p>
+                  <p id="orderTime">{item.dateEntry}</p>
                   <p>Mesa: {item.tableNum}</p>
                   <div id="orderProducts">
                       <table>
@@ -64,13 +69,14 @@ const Orders = () => {
                         </tbody>
                       </table>
                   </div>
-                  <button className="btnState"> PENDING </button>
+                  <p id="status">Status: {item.status}</p>
+                  <button className="btnState"> PREPARANDO </button>
                 </div>
               );
             })}
           </div>
         </section>
-      </main>
+      </main> */}
     </>
   );
 };

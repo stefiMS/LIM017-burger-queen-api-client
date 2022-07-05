@@ -78,6 +78,9 @@ export const ProductItem = () => {
 
   //funcion boton enviar a cocina
 
+
+
+
   return (
     <>
       {/* filtro por tipo de item (desayuno/cena) */}
@@ -234,6 +237,8 @@ export const ProductItem = () => {
                 userId: userId,
                 client: clientName,
                 tableNum: tableNum,
+                dateEntry: new Date().toISOString(),
+                status: 'pending',
                 products: productsSelected.map((x) => ({
                   productId: x.id,
                   name:x.name,
