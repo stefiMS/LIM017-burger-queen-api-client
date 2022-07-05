@@ -16,9 +16,10 @@ const Home = () => {
       <nav id="loginNav">
         <img src={logoBurguer} id="logoBurguerNav" alt="logoBurguer" />
         <ul id="optionNav">
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/orders">Orders</Link></li>
-          <li><Link to="/products">Products</Link></li>
+          <li><Link to="/menu">MENÚ</Link></li>
+          <li><Link to="/orders">PEDIDOS</Link></li>
+          <li><Link to="/products">PRODUCTOS</Link></li>
+          <li><Link to="/userManagement">GESTIÓN DE USUARIOS</Link></li>
           {/* <li><Link to="/">Home</Link></li> */}
 
           {/* <li onClick={() => navigate('/home')}>Home</li>

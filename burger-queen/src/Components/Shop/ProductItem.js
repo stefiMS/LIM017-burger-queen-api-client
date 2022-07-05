@@ -222,7 +222,7 @@ export const ProductItem = () => {
                 );
               })}
             </section>
-            <div className="order total" class= "orderTotal">
+            <div className="orderTotal">
               <div>
                 <span> TOTAL</span>
                 <span className="orderTotal"> {totalSum} </span>
