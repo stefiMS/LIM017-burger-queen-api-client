@@ -12,7 +12,7 @@ return (
             <th scope="col">Roles</th>
             <th scope="col">Correo</th>
             <th scope="col">Contraseña</th>
-            <th scope="col" colspan="2">Icons</th>
+            <th scope="col" colSpan="2">Icons</th>
             {/* <th scope="col">Icons</th> */}
         </tr>
     </thead>

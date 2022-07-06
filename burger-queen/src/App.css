@@ -465,6 +465,12 @@ fieldset{
 
 /* SECTION CREATEUSERS*/
 
+/* .containerCreateProduct{
+  padding: 2px;
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+} */
 #sectionTableUsers{
   padding: 2%;
 }
