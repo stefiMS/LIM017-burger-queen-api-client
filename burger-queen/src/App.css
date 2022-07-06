@@ -463,10 +463,14 @@ fieldset{
 
 
 
-/* SECTION CREATEUSERS*/
+/* SECTION LISTUSERS*/
 
 #sectionTableUsers{
   padding: 2%;
+}
+
+.showList{
+  font-size: 12px;
 }
 
 /*SECTION HOME */

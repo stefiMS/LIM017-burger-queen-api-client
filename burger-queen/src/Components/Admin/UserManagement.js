@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ListUsers } from "./ListUsers";
 import { useNavigate } from "react-router";
 import logoBurguer from "./../../Assets/logoBurguer.png";
-import { createNewUsers } from "../../util/Authentication";
+import { createNewUsers } from "../../util/getUsers";
 
 export const UserManagement = () => {
 
