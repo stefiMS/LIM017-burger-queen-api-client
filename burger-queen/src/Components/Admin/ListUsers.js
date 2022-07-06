@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
 
-export const CreateUsers = () => {
+
+export const ListUsers = () => {
+
+const [createUser, setCreateUser] = useState({});
 
 return (
 <section id='sectionTableUsers'>
@@ -12,7 +16,7 @@ return (
             <th scope="col">Roles</th>
             <th scope="col">Correo</th>
             <th scope="col">Contraseña</th>
-            <th scope="col" colspan="2">Icons</th>
+            <th scope="col" colspan="2">Acciones</th>
             {/* <th scope="col">Icons</th> */}
         </tr>
     </thead>

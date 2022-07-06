@@ -1,5 +1,5 @@
 import axios from "axios";
- 
+import { config } from "./getProducts";
 //const urlAxios = "http://localhost:8081/login";
  
 // export const authentication = (email, password) => {
@@ -49,3 +49,19 @@ export const authentication = (email, password) => {
   });
 }
 
+
+const urlAxiosUsers= 'http://localhost:8081/users'
+
+
+export const createNewUsers = (payload) =>{
+  return new Promise ((resolve, reject) => {
+    axios.post(urlAxiosUsers, payload,  config)
+    .then((response) =>{
+      resolve(response.data)
+      })
+      .catch((error) =>{
+        reject(error)
+      })
+
+  })
+}

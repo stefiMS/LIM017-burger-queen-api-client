@@ -1,5 +1,5 @@
 import axios from "axios";
-import { accessToken } from "./getProducts.js";
+// import { accessToken } from "./getProducts.js";
 import { config } from "./getProducts";
 
 

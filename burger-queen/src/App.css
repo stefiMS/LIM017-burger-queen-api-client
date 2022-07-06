@@ -468,3 +468,18 @@ fieldset{
 #sectionTableUsers{
   padding: 2%;
 }
+
+/*SECTION HOME */
+
+.containerIconHome{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 3%;
+}
+
+.imgHome{
+  border-radius: 50%;
+  width: 20%;
+  margin: 2%;
+}
