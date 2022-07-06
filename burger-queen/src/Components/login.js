@@ -19,7 +19,7 @@ const Login = () => {
           //   showMessage.textContent = 'Debes completar todos los campos solicitados';
           // }else{
            localStorage.setItem("accessToken", response);
-          navigate("/home");
+          navigate("/menu");
           // }
         })
         .catch((error) => console.log(error));

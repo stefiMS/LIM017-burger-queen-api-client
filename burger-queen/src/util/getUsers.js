@@ -1,5 +1,5 @@
-import axios from "axios";;
-import { config } from "./getProducts";;
+import axios from "axios";
+import { config } from "./getProducts";
 
 const urlAxiosUsers= 'http://localhost:8081/users'
 

@@ -20,20 +20,16 @@ export const OrderStatus = () => {
   // display button per status
   
   const displayNextStatusButton = (currentStatus, orderId) => {
-    console.log('test')
     switch (currentStatus){
       case 'pending':
-        return (<button onClick={() => setOrderStatus('al siguiente estado',orderId)}> Pendiente</button>)
+        return (<button onClick={() => setOrderStatus('delivering',orderId)}> Cocinando </button>)
       case 'delivering':
-        return (<button> Preparando</button>)
+        return (<button  onClick={() => setOrderStatus('delivered',orderId)}> Preparado </button>)
       case 'delivered':
-        return (<button> Listo </button>)
+        return (<button> Entregado </button>)
   }}
 
   const setOrderStatus = (newStatus, orderId) => {
-    //aqui va el patch axios :D
-    console.log(orderId);
-    console.log(newStatus)
     const patchRequest = {
       id: orderId,
       status: newStatus,
@@ -85,7 +81,6 @@ return(
                       </table>
                   </div>
                   <p id="status">Status: {item.status}</p>
-                  {/* <button className="btnState"> Preparando </button> */}
                   {displayNextStatusButton(item.status, item.id)}
                 </div>
               );
