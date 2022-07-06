@@ -63,27 +63,28 @@ export const UserManagement = () => {
 
     //Function create User
 
-    const addToNewUser = (e) =>{
-        e.preventDefault();
-        const createNewUser ={
-            // fullname: createUser.fullName,
-            // userId: createUser.userId,
-            // email:  createUser.email,
-            // password: createUser.password,
-            // userRol: createUser.userRol,
-            fullname: fullName,
-            // userId: userId,
-            email:  email,
-            // password: password,
-            userRol: rolUser,
-        }
-        // console.log(createNewUser)
-        createNewUsers (createNewUser)
-          .then((res) => {
-            // localStorage.setItem("accessToken", res);
-            console.log(res)
-          })
-    }
+    // const addToNewUser = (e) =>{
+    //     e.preventDefault();
+    //     const createNewUser ={
+    //         // fullname: createUser.fullName,
+    //         // userId: createUser.userId,
+    //         // email:  createUser.email,
+    //         // password: createUser.password,
+    //         // userRol: createUser.userRol,
+    //         fullname: fullName,
+    //         // userId: userId,
+    //         email:  email,
+    //         // password: password,
+    //         userRol: rolUser,
+    //     }
+    //    console.log(createNewUser)
+    //     createNewUsers (createNewUser)
+    //       .then((res) => {
+    //         // localStorage.setItem("accessToken", res);
+    //         console.log(res)
+    //       })
+    //       .catch((error) =>console.log(error))
+    // }
 
     return (
         <section id="sectionUserManagement">
@@ -102,18 +103,18 @@ export const UserManagement = () => {
             <section id="sectionUserCreate">
                 <h3 id='titleUserCreate'>Creación de usuarios</h3>
                 <section className="containerCreateUser">
-                    <div className="rowInputs">
-                        <label to='nameUserNew' className="titleLabel">Nombres y apellidos:</label>
+                    {/*<div className="rowInputs">
+                         <label to='nameUserNew' className="titleLabel">Nombres y apellidos:</label>
                         <input 
                           type='text'
                           placeholder='Nombres y apellidos'
                           id='nameUserNew'
-                          className='inputCreate'
-                        //   value={createUser.fullName}
+                          className='inputCreate' */}
+                        {/* //   value={createUser.fullName}
                           value={fullName}
                         //   onChange = {handleInputRol}
                           onChange = {(e) => setFullName(e.target.value) }
-                        />
+                        /> */}
                         {/* <label to='userId' className="titleLabel">ID de Usuario:</label>
                         <input
                           type='text'
@@ -123,7 +124,7 @@ export const UserManagement = () => {
                           value={userId}
                           onChange = {(e) => setUserId(e.target.value) }
                         /> */}
-                        <label to='rolUsers' className="titleLabel">Rol de Usuario:</label>
+                        {/* <label to='rolUsers' className="titleLabel">Rol de Usuario:</label>
                         <select 
                           type='text'
                           placeholder='Rol de Usuario'
@@ -132,12 +133,12 @@ export const UserManagement = () => {
                           onChange = {(e) => setRolUser(e.target.value) }
                         >
                                 <option value="null" > -- </option>
-                                <option value="Mesero"> Mesero </option>
-                                <option value="Cocinero"> Cocinero </option>
-                                <option value="Administrador"> Administrador </option>
+                                <option value="waiter"> Mesero </option>
+                                <option value="kitchen"> Cocinero </option>
+                                <option value="admin"> Administrador </option>
                                 
-                        </select>
-                    </div>
+                        </select> 
+                    </div> */}
                     <div className="rowInputs">
                         <label to='emailUser' className="titleLabel">Correo Electrónico:</label>
                         <input
@@ -162,24 +163,43 @@ export const UserManagement = () => {
                           onChange = {(e) => setPassword(e.target.value) }
                         />
                     </div>
-                    {/* <div className="rowRolUser">
+                    <div className="rowRolUser">
                         <label to='rolUsers' className="titleLabelUser">Rol de Usuario:</label>
                         <select 
                           type='text'
                           placeholder='Rol de Usuario'
                           id='rolUsers'
-                        onChange = {(e) => setRolUser(e.target.value) }
+                          onChange = {(e) => setRolUser(e.target.value) }
                         >
                                 <option value="null" > -- </option>
-                                <option value="Mesero"> Mesero </option>
-                                <option value="Cocinero"> Cocinero </option>
-                                <option value="Administrador"> Administrador </option>
+                                <option value="waiter"> Mesero </option>
+                                <option value="kitchen"> Cocinero </option>
+                                <option value="admin"> Administrador </option>
                                 
                         </select>
-                    </div> */}
+                    </div> 
                     <button
                       id='buttonCreateUser'
-                      onClick={addToNewUser}
+                      // onClick={addToNewUser}
+                      onClick={ (e) =>{
+                          e.preventDefault();
+                          const createNewUser ={
+                              // fullname: fullName,
+                              email:  email,
+                              userRol: rolUser,
+                              password: password,
+
+                          }
+                         console.log(createNewUser)
+                          createNewUsers (createNewUser)
+                            .then((res) => {
+                              // localStorage.setItem("accessToken", res);
+                              console.log(res)
+                            })
+                            .catch((error) =>console.log(error))
+                      }
+
+                      }
                     >
                       CREAR USUARIO
                     </button>

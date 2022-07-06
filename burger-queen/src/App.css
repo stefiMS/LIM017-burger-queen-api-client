@@ -453,8 +453,10 @@ fieldset{
     width: 30%;
   }
 
-  #rolUser{
-    width:60%
+  #rolUsers{
+    width:60%;
+    padding: 2px;
+  
   }
   .titleLabelUser{
     width: 40%;

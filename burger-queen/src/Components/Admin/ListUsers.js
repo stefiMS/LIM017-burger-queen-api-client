@@ -22,7 +22,7 @@ return (
     <thead>
         <tr>
             <th scope="col">UserID</th>
-            <th scope="col">Nombres y Apellidos</th>
+            {/* <th scope="col">Nombres y Apellidos</th> */}
             <th scope="col">Roles</th>
             <th scope="col">Correo</th>
             <th scope="col">Contraseña</th>
@@ -35,7 +35,7 @@ return (
           return (
             <tr key={user.id}>
                 <th scope="row">{user.id}</th>
-                <td>{user.fullName}</td>
+                {/* <td>{user.fullName}</td> */}
                 <td>{user.userRol}</td>
                 <td>{user.email}</td>
                 <td>{user.password}</td>
