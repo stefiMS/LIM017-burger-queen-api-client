@@ -34,7 +34,6 @@ export const OrderStatus = () => {
       id: orderId,
       status: newStatus,
     }
-    console.log(patchRequest)
     updateOrderStatus(patchRequest)
   }
  if(orders.length === 0){

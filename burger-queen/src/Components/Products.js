@@ -27,9 +27,9 @@ export const Products = () => {
         <section id="sectionProductCreate">
           <CreateProducts />
         </section>
-      </section>
-      <section>
-        <ProductsList />
+        <section>
+          <ProductsList />
+        </section>
       </section>
     </>
   );
