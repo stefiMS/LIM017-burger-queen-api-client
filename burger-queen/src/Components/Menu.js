@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import Orders from './Orders';
 import Products from './Products';
 
-const Home = () => {
+const Menu = () => {
 
   const navigate = useNavigate ('')
 
@@ -37,4 +37,4 @@ const Home = () => {
 );
 };
 
-export default Home;
+export default Menu;

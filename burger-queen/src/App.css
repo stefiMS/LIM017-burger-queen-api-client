@@ -442,15 +442,23 @@ fieldset {
     width: 30%;
   }
 
+
   #rolUser {
     width: 60%;
+
   }
   .titleLabelUser {
     width: 40%;
   }
 }
 
+
 /* SECTION CREATEUSERS*/
+=======
+
+
+/* SECTION LISTUSERS*/
+
 
 /* .containerCreateProduct{
   padding: 2px;
@@ -461,6 +469,7 @@ fieldset {
 #sectionTableUsers {
   padding: 2%;
 }
+
 /* .containerCreateProduct{
   width: 400px;
   height: 200px;
@@ -593,4 +602,24 @@ i {
 .divModalEdit{
   display: flex;
   flex-direction: column;
+
+
+.showList{
+  font-size: 12px;
+}
+
+/*SECTION HOME */
+
+.containerIconHome{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 3%;
+}
+
+.imgHome{
+  border-radius: 50%;
+  width: 20%;
+  margin: 2%;
+
 }
