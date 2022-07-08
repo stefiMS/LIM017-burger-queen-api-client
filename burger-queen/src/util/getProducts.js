@@ -55,3 +55,31 @@ export const createNewProduct = (payload) => {
       .catch((error) => reject(error))
   })
 }
+
+// Borrar productos
+
+const urlAxiosProductId = (productId) => `http://localhost:8080/products/${productId}`
+
+
+
+export const deleteProduct = (productId) => {
+  return new Promise((resolve, reject) => {
+    axios.delete(urlAxiosProductId(productId), config)
+      .then((response) => {
+        resolve(response)
+      })
+      .catch((error) => reject(error))
+  })
+}
+
+export const editProduct = (payload) => {
+  return new Promise((resolve, reject) => {
+    axios.patch(urlAxiosProductId(payload.id), payload, config)
+      .then((response) => {
+        resolve(response.data)
+      })
+      .catch((error) => {
+        reject(error)
+      })
+  })
+}

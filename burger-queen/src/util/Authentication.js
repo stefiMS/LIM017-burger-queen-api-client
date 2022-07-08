@@ -35,6 +35,8 @@ export const authentication = (email, password) => {
         const responseUserData = response.data.user;
         localStorage.setItem("userRole",  responseUserData.roles.admin);
         localStorage.setItem("userId", responseUserData.id);
+        sessionStorage.setItem("userRole",  responseUserData.roles.admin);
+        sessionStorage.setItem("userId", responseUserData.id);
         const  {accessToken }  = response.data;
         resolve(accessToken);
       }else{
