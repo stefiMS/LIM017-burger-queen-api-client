@@ -118,7 +118,7 @@ export const ProductItem = () => {
             {filteredData.map((item) => {
               return (
                 <div className="productCard" key={item.id} onClick= { () => addToCart (item.id)}>
-                  <img className="productImg cardP" src={item.image} />
+                  <img className="productImg cardP" src={item.image} alt='cardproduct'/>
                   <div className="textCard">
                     <span className="productName cardP">{item.name}</span>
                     <br />

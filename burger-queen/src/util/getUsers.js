@@ -27,3 +27,23 @@ export const getUsers = () =>{
         })
     })
 }
+
+// FUNCION DE PETICION PARA ACTUALIZACION USUARIOS
+
+const urlAxiosUsersUpdate= (uid) => `http://localhost:8081/users/${uid}`
+export const updateUser = (payload) => {
+  return new Promise ((resolve, reject) =>{
+    axios.patch(urlAxiosUsersUpdate, payload, config)
+    .then((response) => {
+      if (!response.ok) {
+        throw Error('Error al actualizar usuario');
+      }
+      return resolve(response);
+    })
+    .catch((error) => {
+      reject (error)
+    })
+
+  })
+  
+};

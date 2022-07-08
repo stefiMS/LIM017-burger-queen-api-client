@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import logoBurguer from "./../Assets/logoBurguer.png";
 
 import { useNavigate } from "react-router-dom";
 import { OrderStatus }  from "./orders/Status.js"
-import { getOrders } from "../util/getProducts";
+// import { getOrders } from "../util/getProducts";
 
 const Orders = () => {
   const navigate = useNavigate("");

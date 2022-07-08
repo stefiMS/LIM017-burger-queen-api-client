@@ -1,14 +1,14 @@
 import logoBurguer from './../Assets/logoBurguer.png'
 import React from "react";
 import { ProductItem } from './Shop/ProductItem';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import Orders from './Orders';
-import Products from './Products';
+// import Orders from './Orders';
+// import Products from './Products';
 
 const Menu = () => {
 
-  const navigate = useNavigate ('')
+  // const navigate = useNavigate ('')
 
   return (
     <>

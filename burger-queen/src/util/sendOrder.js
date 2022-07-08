@@ -5,7 +5,8 @@ import { config } from "./getProducts";
 
 const urlAxiosKitchen = "http://localhost:8081/orders"
 //  const urlAxiosKitchen = "http://localhost:8080/orders"
-const urlAxiosUpdateStatus = (orderId) => `http://localhost:8080/orders/${orderId}`
+// const urlAxiosUpdateStatus = (orderId) => `http://localhost:8080/orders/${orderId}`
+const urlAxiosUpdateStatus = (orderId) => `http://localhost:8081/orders/${orderId}`
 
 export const sendToKitchen = (payload) => {
   return new Promise((resolve, reject) => {

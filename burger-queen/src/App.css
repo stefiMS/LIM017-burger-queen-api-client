@@ -495,3 +495,8 @@ fieldset{
   width: 20%;
   margin: 2%;
 }
+
+/* modal Edit */
+.modalEdit{
+ background-color: rgba(255, 255, 255, 0.445);
+}

@@ -27,6 +27,7 @@ export const OrderStatus = () => {
         return (<button  onClick={() => setOrderStatus('delivered',orderId)}> Preparado </button>)
       case 'delivered':
         return (<button> Entregado </button>)
+      default:
   }}
 
   const setOrderStatus = (newStatus, orderId) => {
