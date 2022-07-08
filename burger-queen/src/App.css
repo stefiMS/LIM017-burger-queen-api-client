@@ -1,17 +1,10 @@
-
-
-
-
-
-
 .App {
   text-align: center;
   background-color: #262626;
   background-size: cover;
-  color: #F2F2F2;
-  font-weight: bold
+  color: #f2f2f2;
+  font-weight: bold;
 }
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -42,121 +35,120 @@
     transform: rotate(360deg);
   }
 }
-.loginLabel{
+.loginLabel {
   display: block;
 }
 
-#headerLogin{
+#headerLogin {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
 }
 
-#logoBurguer{
-  width:20%;
+#logoBurguer {
+  width: 20%;
   margin: 2%;
 }
 
-main{
-  display:flex;
+main {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
-#containerLogin{
-  display:flex;
+#containerLogin {
+  display: flex;
   flex-direction: column;
   padding: 3%;
 }
-label{
-  display:flex;
-  margin:5px;
+label {
+  display: flex;
+  margin: 5px;
 }
-.inputLogin{
+.inputLogin {
   border-radius: 20px;
   padding: 10px;
-  margin:10px;
+  margin: 10px;
 }
-#buttonLogin{
+#buttonLogin {
   border-radius: 20px;
   padding: 20px;
   margin: 5%;
-  background-color: #bf861B;
+  background-color: #bf861b;
   font-weight: bold;
 }
 
 /*styles on breakfast*/
 
-#loginHeader{
+#loginHeader {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5px;
   background-color: #262626;
-  color:#F2F2F2
+  color: #f2f2f2;
 }
-#loginNav{
+#loginNav {
   display: flex;
   width: 100%;
 }
-#optionNav{
+#optionNav {
   display: flex;
   list-style: none;
-  align-items: center ;
+  align-items: center;
   justify-content: flex-start;
   width: 80%;
 }
-#logoBurguerNav{
+#logoBurguerNav {
   width: 9%;
   padding: 2%;
 }
-#optionNav>li{
+#optionNav > li {
   padding: 3%;
   cursor: pointer;
 }
 
-#menuContainer{
+#menuContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width:100%;
-  padding:10px;
+  width: 100%;
+  padding: 10px;
   background-color: white;
-  color:#262626
+  color: #262626;
 }
 
-.buttonsType{
+.buttonsType {
   display: flex;
-  margin:5px;
+  margin: 5px;
   align-items: center;
   justify-content: center;
 }
-.buttonMeal{
+.buttonMeal {
   border-radius: 5px;
-  background-color: #F2C53D;
+  background-color: #f2c53d;
   color: #262626;
   font-weight: bold;
   padding: 15px;
   margin: 10px;
 }
-#menu{
+#menu {
   display: flex;
   flex-direction: column;
-  width:55%;
+  width: 55%;
 }
 
 /*Breakfast*/
 /* .breakfastContainer{ */
-.mealContainer{
+.mealContainer {
   border: dotted;
   border-color: darkgray;
 }
 
-
-.productContainer{
+.productContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -165,13 +157,14 @@ label{
   overflow-y: auto;
 }
 
-.beveragesContent, .sandwichProduct{
+.beveragesContent,
+.sandwichProduct {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   padding: 10px;
 }
-.productCard{
+.productCard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,79 +175,77 @@ label{
   border-radius: 15px;
 }
 
-
-
-.productImg{
+.productImg {
   /* width:70%; */
   height: 70%;
   border-radius: 10px 10px 0px 0px;
 }
 
-.cardP{
-  width:90%;
+.cardP {
+  width: 90%;
 }
 
-.textCard{
+.textCard {
   padding: 10px;
   background: #ecd941;
-    border-radius: 0px 0px 10px 10px;
-    width: 100%;
-    /* height: 30%; */
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    font-weight: bolder;
-    flex-direction: column;
+  border-radius: 0px 0px 10px 10px;
+  width: 100%;
+  /* height: 30%; */
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bolder;
+  flex-direction: column;
 }
 
 /*estilos CSS*/
-#section-ticket{
+#section-ticket {
   display: flex;
   flex-direction: column;
-  width:45%;
-  background-color: #F2F2F2;
+  width: 45%;
+  background-color: #f2f2f2;
   margin: 10px;
   /* padding: 10px; */
   flex-shrink: flex-start;
 }
-.customerInformation{
+.customerInformation {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-fieldset{
+fieldset {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
 
-.cartContainer{
+.cartContainer {
   display: flex;
   flex-direction: column;
 }
 
-.ordersTitle{
+.ordersTitle {
   display: flex;
   background-color: #262626;
-  color: #F2F2F2;
+  color: #f2f2f2;
   margin-top: 20px;
 }
 
-.orderProduct{
+.orderProduct {
   display: flex;
 }
-.orderTotal{
-  margin:20px 0 20px 0;
+.orderTotal {
+  margin: 20px 0 20px 0;
 }
 
-.column1{
+.column1 {
   width: 45%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.column2{
+.column2 {
   width: 35%;
   display: flex;
   flex-wrap: wrap;
@@ -262,65 +253,64 @@ fieldset{
   align-items: center;
 }
 
-.quantity{
-  width:20px;
+.quantity {
+  width: 20px;
   margin: 3px;
-  height:20px;
+  height: 20px;
   padding: 10px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.column3{
+.column3 {
   width: 20%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#sendOrderButton{
+#sendOrderButton {
   border-radius: 10px;
   background-color: rgba(38, 38, 38, 8);
   width: 200px;
   height: 50px;
-  color: #F2F2F2;
+  color: #f2f2f2;
   font-size: 20px;
   font-weight: bold;
 }
 
 /* SECTION ORDER.JS */
 
-.orderContainer{
-
+.orderContainer {
   display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.cardOrder{
-    background-color: beige;
-    color: #262626;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin:20px;
+.cardOrder {
+  background-color: beige;
+  color: #262626;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
 }
 
 /* Button filter for orders */
-.btnOrderFilter{
+.btnOrderFilter {
   display: flex;
-  margin:5px;
+  margin: 5px;
   align-items: center;
   justify-content: center;
 }
-.buttonTypeOrder{
+.buttonTypeOrder {
   border-radius: 5px;
-  background-color: #F2C53D;
+  background-color: #f2c53d;
   color: #262626;
   font-weight: bold;
   padding: 15px;
@@ -330,15 +320,15 @@ fieldset{
 
 /* ERROR NO ACCESS*/
 
-.sectionError{
-  background-color: #F2F2F2;
+.sectionError {
+  background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
 }
-#noAccessText{
+#noAccessText {
   color: #262626;
   margin: 20px;
   font-size: 30px;
@@ -347,43 +337,43 @@ fieldset{
   text-transform: uppercase;
 }
 
-#imageNoAccess{
+#imageNoAccess {
   width: 30%;
 }
 
-#noAccessButton{
+#noAccessButton {
   border-radius: 10px;
   padding: 15px;
   background-color: #262626;
-  color: #F2F2F2;
+  color: #f2f2f2;
   font-weight: bold;
   margin: 20px;
 }
 
 /* SECTION USERMANAGEMENT*/
-#sectionUserManagement{
+#sectionUserManagement {
   /* padding: 2%; */
-  background-color: #F2F2F2;
-  color:#282c34
+  background-color: #f2f2f2;
+  color: #282c34;
 }
-#titleUserManagement{
+#titleUserManagement {
   padding: 2%;
 }
-#titleUserCreate{
-  background-color:#282c34 ;
-  color: #F2F2F2;
+#titleUserCreate {
+  background-color: #282c34;
+  color: #f2f2f2;
   padding: 1%;
-  border-radius: 15px 15px 0px 0px
+  border-radius: 15px 15px 0px 0px;
 }
-#sectionUserCreate{
+#sectionUserCreate {
   background-color: rgb(240, 237, 231);
   margin: 15px;
 }
 
-.containerCreateUser{
+.containerCreateUser {
   padding: 1%;
 }
-.rowInputs{
+.rowInputs {
   display: flex;
   width: 100%;
   /* justify-content: space-between; */
@@ -392,7 +382,7 @@ fieldset{
   flex-direction: column;
   /* align-content: center; */
 }
-.rowRolUser{
+.rowRolUser {
   display: flex;
   padding: 5px;
   width: 100%;
@@ -401,34 +391,33 @@ fieldset{
   flex-direction: column;
 }
 
-.titleLabel{
+.titleLabel {
   width: 100%;
 }
 
-.inputCreate{
+.inputCreate {
   width: 60%;
 }
 
-
-#buttonCreateUser{
+#buttonCreateUser {
   padding: 10px;
   border-radius: 15px;
   margin: 15px;
   background-color: #282c34;
-  color: #F2F2F2;
+  color: #f2f2f2;
   font-weight: bold;
 }
 
-#rolUser{
-  width:60%;
+#rolUser {
+  width: 60%;
   padding: 2px;
 }
-.titleLabelUser{
+.titleLabelUser {
   width: 100%;
 }
 /* @media screen and (min-width:883px ) { */
-@media screen and (min-width:883px ) {
-  .rowInputs{
+@media screen and (min-width: 883px) {
+  .rowInputs {
     display: flex;
     flex-direction: row;
     /* width: 100%; */
@@ -436,8 +425,8 @@ fieldset{
     /* padding: 5px; */
     /* align-items: center */
   }
-  
-  .rowRolUser{
+
+  .rowRolUser {
     display: flex;
     flex-direction: row;
     /* padding: 5px; */
@@ -445,23 +434,21 @@ fieldset{
     /* align-items: center; */
     justify-content: space-between;
   }
-  .titleLabel{
+  .titleLabel {
     width: 20%;
   }
-  
-  .inputCreate{
+
+  .inputCreate {
     width: 30%;
   }
 
-  #rolUser{
-    width:60%
+  #rolUser {
+    width: 60%;
   }
-  .titleLabelUser{
+  .titleLabelUser {
     width: 40%;
   }
 }
-
-
 
 /* SECTION CREATEUSERS*/
 
@@ -471,7 +458,7 @@ fieldset{
   flex-direction: column;
   flex-wrap: wrap;
 } */
-#sectionTableUsers{
+#sectionTableUsers {
   padding: 2%;
 }
 /* .containerCreateProduct{
@@ -480,18 +467,16 @@ fieldset{
 
 }  */
 
-thead{
+thead {
   font-size: x-large;
-
 }
 /* Crear Productos  */
 
-
-.btnAddP{
-   background-color: #F2C53D;
-   border: none;
-   border-radius: 5px;
-   width: 200px;
+.btnAddP {
+  background-color: #f2c53d;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
   height: 50px;
   margin: 20px;
   font-weight: normal;
@@ -500,99 +485,112 @@ thead{
 
 .Modal {
   position: fixed;
-    top: 40%;
-    left: 50%;
-    width: 600px;
-    height: 500px;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
-    background-color: #F2F2F2;
+  top: 40%;
+  left: 50%;
+  width: 600px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-#titleProductCreate{
-  background-color:#282c34 ;
-  color: #F2F2F2;
+#titleProductCreate {
+  background-color: #282c34;
+  color: #f2f2f2;
   padding: 1%;
   border-radius: 15px 15px 0px 0px;
   width: 100%;
   text-align: center;
 }
 
-#nameNewProduct{
-  display:flex;
+#nameNewProduct {
+  display: flex;
   justify-content: flex-start;
   width: 500px;
 }
-.rollProductType{
+.rollProductType {
   display: flex;
   margin: 40px;
 }
-.modalBtns{
+.modalBtns {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 }
 .Overlay {
   position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-} 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-#btnCancelDlt{
+#btnCancelDlt {
   width: 200px;
 }
-/*boton borrar tachito*/
-.btnDelete {
+/*botones de acción en tabla*/
+.btnActions {
   background-color: transparent;
   border: none;
 }
 
-i{
+i {
   font-size: 20px;
   padding: 2px;
 }
 
 /* Modal Delete */
 
-.ModalDlt{
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    padding: 20px;
-    width: 450px;
-    height: 250px;
-    transform: translate(-50%, -50%);
-    border-radius: 20px;
-    background-color: whitesmoke;
+.ModalDlt {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  padding: 20px;
+  width: 450px;
+  height: 250px;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  background-color: whitesmoke;
 }
 
-.textModal{
+.textModal {
   text-align: center;
   font-size: x-large;
   padding-top: inherit;
 }
-.OverlayDlt{
+.OverlayDlt {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0 , 0 , 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
-.btnModalDlt{
+.btnModalDlt {
   display: flex;
   justify-content: center;
 }
 #btnDltDanger,
 #btnDltLight {
   width: 120px;
-  margin-right: 30px ;
-  margin-top: 20px ;
+  margin-right: 30px;
+  margin-top: 20px;
   font-size: x-large;
+}
+
+.Modal > h2 {
+  background-color: #262626;
+  width: 100%;
+  height: 50px;
+  color: #f2f2f2;
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+}
+.divModalEdit{
+  display: flex;
+  flex-direction: column;
 }

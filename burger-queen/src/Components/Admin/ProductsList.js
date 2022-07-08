@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getProductsData, deleteProduct, createNewProduct, editProduct } from "../../util/getProducts";
+import {
+  getProductsData,
+  deleteProduct,
+  createNewProduct,
+  editProduct,
+} from "../../util/getProducts";
 import ReactModal from "react-modal";
 
 export const ProductsList = () => {
@@ -37,7 +42,6 @@ export const ProductsList = () => {
   // show Edit Modal
 
   const handleEditOpenModal = (product) => {
-    console.log("test");
     setActiveProduct(product);
     setShowEditModal(true);
   };
@@ -47,8 +51,6 @@ export const ProductsList = () => {
   };
 
   // edit Product
-
-
 
   return (
     <>
@@ -61,70 +63,72 @@ export const ProductsList = () => {
         overlayClassName="OverlayDlt"
       >
         <h2>Editar producto</h2>
-        Editar el producto:{" "}
+        Editar el producto:
         {activeProduct ? (
           <p>
             {activeProduct.id} {activeProduct.name}
           </p>
         ) : null}
-        <label id="editProductName">Nombre de Producto:</label>
-        <input
-          type="text"
-          placeholder={activeProduct.name}
-          name="editedProductName"
-          value={editedProductName}
-          onChange={(e) => setEditedProductName(e.target.value)}
-        />
-        <label id="editProductName">Precio de Producto:</label>
-        <input
-          type="text"
-          placeholder={activeProduct.price}
-          name="editedProductPrice"
-          value={editedProductPrice}
-          onChange={(e) => setEditedProductPrice(e.target.value)}
-        />
-        <label id="editProductName">Imagen de Producto:</label>
-        <input
-          type="text"
-          placeholder={activeProduct.img}
-          name="editedProductImg"
-          value={editedProductImg}
-          onChange={(e) => setEditedProductImg(e.target.value)}
-        />
-        <label id="editProductName">Tipo de Producto:</label>
-        <select
-          placeholder={activeProduct.type}
-          name="editedProductType"
-          value = {editedProductType}
-          onChange={(e) => setEditedProductType(e.target.value)}
-        >
-          <option value="null"> -- </option>
-          <option value="Breakfast"> Desayuno </option>
-          <option value="Dinner"> Alm/Cena </option>
-        </select>
-
+        <div className="divModalEdit">
+          <label id="editProductName">Nombre de Producto:</label>
+          <input
+            type="text"
+            placeholder={activeProduct.name}
+            name="editedProductName"
+            value={editedProductName}
+            onChange={(e) => setEditedProductName(e.target.value)}
+          />
+          <label id="editProductName">Precio de Producto:</label>
+          <input
+            type="text"
+            placeholder={activeProduct.price}
+            name="editedProductPrice"
+            value={editedProductPrice}
+            onChange={(e) => setEditedProductPrice(e.target.value)}
+          />
+          <label id="editProductName">Imagen de Producto:</label>
+          <input
+            type="text"
+            placeholder={activeProduct.img}
+            name="editedProductImg"
+            value={editedProductImg}
+            onChange={(e) => setEditedProductImg(e.target.value)}
+          />
+          <label id="editProductName">Tipo de Producto:</label>
+          <select
+            placeholder={activeProduct.type}
+            name="editedProductType"
+            value={editedProductType}
+            onChange={(e) => setEditedProductType(e.target.value)}
+          >
+            <option value="null"> -- </option>
+            <option value="Breakfast"> Desayuno </option>
+            <option value="Dinner"> Alm/Cena </option>
+          </select>
+        </div>
         <div className="editModalBtns">
           <button
-          className="btnGoEdit"
-          onClick= {(e) => {
-            e.preventDefault();
-            const editRequest = {
-              id:   activeProduct.id,
-              name: editedProductName,
-              price: editedProductPrice,
-              image: editedProductImg,
-              type: editedProductType
-          };
-          editProduct(editRequest)
-          .then((response) => {
-            console.log(response)
-            alert(' Producto Editado con éxito')
-            window.location.reload(false);
-          })
-          .catch((error) => console.log(error));
-        }}
-          > 
-          Editar producto</button>
+            className="btnGoEdit"
+            onClick={(e) => {
+              e.preventDefault();
+              const editRequest = {
+                id: activeProduct.id,
+                name: editedProductName,
+                price: editedProductPrice,
+                image: editedProductImg,
+                type: editedProductType,
+              };
+              editProduct(editRequest)
+                .then((response) => {
+                  console.log(response);
+                  alert(" Producto Editado con éxito");
+                  window.location.reload(false);
+                })
+                .catch((error) => console.log(error));
+            }}
+          >
+            Editar producto
+          </button>
           <button onClick={handleEditCloseModal}> Cerrar edicion</button>
         </div>
       </ReactModal>
@@ -140,10 +144,10 @@ export const ProductsList = () => {
         {activeProduct ? (
           <>
             <p className="textModal">
-              Estás seguro que quieres borrar el producto{" "}
+              Estás seguro que quieres borrar el producto
               <b>
-                {activeProduct.id},{activeProduct.name}{" "}
-              </b>{" "}
+                {activeProduct.id},{activeProduct.name}
+              </b>
               ?
             </p>
           </>
@@ -186,7 +190,6 @@ export const ProductsList = () => {
               <th scope="col" colSpan="2">
                 Acciones
               </th>
-              {/* <th scope="col">Icons</th> */}
             </tr>
           </thead>
           <tbody>
@@ -199,13 +202,16 @@ export const ProductsList = () => {
                   <td>{product.image}</td>
                   <td>{product.type}</td>
                   <td>
-                    <button onClick={() => handleEditOpenModal(product)}>
+                    <button
+                      className="btnActions"
+                      onClick={() => handleEditOpenModal(product)}
+                    >
                       <i className="fa-solid fa-pen-to-square"></i>
                     </button>
                   </td>
                   <td id="buttonDelete">
                     <button
-                      className="btnDelete"
+                      className="btnActions"
                       onClick={() => handleOpenModal(product)}
                     >
                       <i className="fa-solid fa-trash-can" />
