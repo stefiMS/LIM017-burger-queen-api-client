@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import  { getOrders }  from "../../util/getProducts"
+import  { getOrders }  from "../../util/FunctionProducts"
 import  { updateOrderStatus } from "../../util/sendOrder"
 
 export const OrderStatus = () => {

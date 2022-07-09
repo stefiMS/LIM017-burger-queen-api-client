@@ -453,10 +453,6 @@ fieldset {
 }
 
 
-/* SECTION CREATEUSERS*/
-=======
-
-
 /* SECTION LISTUSERS*/
 
 
@@ -602,7 +598,7 @@ i {
 .divModalEdit{
   display: flex;
   flex-direction: column;
-
+}
 
 .showList{
   font-size: 12px;

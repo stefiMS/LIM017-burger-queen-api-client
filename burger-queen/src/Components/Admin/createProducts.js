@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createNewProduct, editProduct } from "../../util/getProducts";
+import { createNewProduct, editProduct } from "../../util/FunctionProducts";
 import ReactModal from "react-modal";
 
 export const CreateProducts = () => {

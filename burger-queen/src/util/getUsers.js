@@ -1,5 +1,5 @@
 import axios from "axios";
-import { config } from "./getProducts";
+import { config } from "./FunctionProducts";
 
 const urlAxiosUsers= 'http://localhost:8081/users'
 
@@ -27,3 +27,22 @@ export const getUsers = () =>{
         })
     })
 }
+
+// FUNCION DE PETICION PARA ACTUALIZACION USUARIOS
+
+const urlAxiosUsersUpdate= (uid) => `http://localhost:8081/users/${uid}`
+
+export const updateUser = (payload) => {
+  return new Promise ((resolve, reject) =>{
+    axios.patch(urlAxiosUsersUpdate(payload.id), payload, config)
+      .then((response) => {
+        // if (!response.ok) {
+        //   throw Error('Error al actualizar usuario');
+        // }
+        resolve(response.data);
+      })
+      .catch((error) => {
+        reject (error)
+      })
+  })
+};

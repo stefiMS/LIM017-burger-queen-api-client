@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {getProductsData} from './../../util/getProducts.js'
+import {getProductsData} from './../../util/FunctionProducts.js'
 
 jest.mock('axios');
 

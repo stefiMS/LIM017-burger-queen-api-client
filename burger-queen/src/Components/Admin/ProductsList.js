@@ -4,7 +4,7 @@ import {
   deleteProduct,
   createNewProduct,
   editProduct,
-} from "../../util/getProducts";
+} from "../../util/FunctionProducts.js";
 import ReactModal from "react-modal";
 
 export const ProductsList = () => {
@@ -159,7 +159,7 @@ export const ProductsList = () => {
             onClick={() =>
               deleteProduct(activeProduct.id)
                 .then((resolve) => {
-                  resolve;
+                  
                   alert("Borrado con exito");
                   window.location.reload(false);
                 })
