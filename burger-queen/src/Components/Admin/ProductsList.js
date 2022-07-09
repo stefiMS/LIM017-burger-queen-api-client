@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import {
   getProductsData,
   deleteProduct,
-  createNewProduct,
   editProduct,
-} from "../../util/getProducts";
+} from "../../util/FunctionProducts";
 import ReactModal from "react-modal";
 
 export const ProductsList = () => {

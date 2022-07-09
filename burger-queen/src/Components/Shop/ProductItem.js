@@ -1,6 +1,6 @@
-import { getProductsData } from "../../util/getProducts.js";
+import { getProductsData } from "../../util/FunctionProducts.js";
 import React, { useEffect, useState } from "react";
-import { sendToKitchen } from "../../util/sendOrder.js";
+import { sendToKitchen } from "../../util/FunctionOrder.js";
 import { useNavigate } from "react-router";
 
 export const ProductItem = () => {

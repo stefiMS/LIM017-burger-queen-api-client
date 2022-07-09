@@ -1,6 +1,6 @@
 import axios from "axios";
-import { accessToken } from "./getProducts.js";
-import { config } from "./getProducts";
+import { accessToken } from "./FunctionProducts.js";
+import { config } from "./FunctionProducts";
 
 
 //const urlAxiosKitchen = "http://localhost:8081/orders"
