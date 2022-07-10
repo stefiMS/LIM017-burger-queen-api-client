@@ -3,16 +3,15 @@ import { ListUsers } from "./ListUsers";
 import { useNavigate } from "react-router";
 import logoBurguer from "./../../Assets/logoBurguer.png";
 import { createNewUsers } from "../../util/getUsers";
+import ReactModal from "react-modal";
 
 export const UserManagement = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [rolUser, setRolUser] = useState({});
+    const [rolUser, setRolUser] = useState('');
     
     const navigate = useNavigate("");
-
-    
 
     //Function create User
     const addToNewUser = (e) =>{
@@ -24,9 +23,17 @@ export const UserManagement = () => {
         password: password
       }
       createNewUsers (createNewUser)
-            .then((res) => console.log(res))
-            .catch((error) =>console.log(error))
+       .then((res) => console.log(res))
+       .catch((error) =>console.log(error))
     }
+  
+    //HOOKS para mostrar modal
+
+    const [showModal, setShowModal] = useState(false);
+
+    const handleOpenModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
+  
 
 
     return (
@@ -43,11 +50,30 @@ export const UserManagement = () => {
                 </nav>
             </header>
             <h2 id='titleUserManagement'>GESTIÓN DE USUARIOS</h2>
-            <section id="sectionUserCreate">
+            <button 
+               className="btnAddP" 
+               onClick={handleOpenModal}>
+              <i className="fa-solid fa-plus" />
+              AGREGAR USUARIO
+            </button>
+            <ReactModal 
+              isOpen={showModal}
+              contentLabel="Modal Add Users"
+              ariaHideApp={false}
+              onRequestClose={handleCloseModal}
+              className="Modal"
+              overlayClassName="Overlay"
+            >
+            {/* <section id="sectionUserCreate"> */}
                 <h3 id='titleUserCreate'>Creación de usuarios</h3>
                 <section className="containerCreateUser">
                     <div className="rowInputs">
-                        <label to='emailUser' className="titleLabel">Correo Electrónico:</label>
+                        <label 
+                          to='emailUser'
+                          className="titleLabel"
+                        >
+                          Correo Electrónico:
+                        </label>
                         <input
                           type='email'
                           placeholder='Email de Usuario'
@@ -67,9 +93,10 @@ export const UserManagement = () => {
                         />
                     </div>
                     <div className="rowRolUser">
-                        <label to='rolUsers' className="titleLabelUser">Rol de Usuario:</label>
+                        <label to='rolUsers'  className="titleLabelUser">
+                          Rol de Usuario:
+                        </label>
                         <select 
-                          type='text'
                           placeholder='Rol de Usuario'
                           id='rolUsers'
                           onChange = {(e) => setRolUser(e.target.value) }
@@ -81,16 +108,28 @@ export const UserManagement = () => {
                                 
                         </select>
                     </div> 
-                    <button
-                      id='buttonCreateUser'
-                      onClick={ addToNewUser }
-                    >
-                      CREAR USUARIO
-                    </button>
                     <hr/>
+                    <div className="modalBtns">
+                      <button
+                        id='buttonCreateUser'
+                        className ="btn btn-success"
+                        onClick={ addToNewUser }
+                      >
+                        CREAR USUARIO
+                      </button>
+                      <button
+                        id= "btnCancelUser"
+                        className="btn btn-secondary"
+                        onClick={handleCloseModal}>Cancelar 
+                      </button>
+                    </div>        
                 </section>
-            </section>
-            <ListUsers/>     
+            {/* </section> */}
+            </ReactModal>
+            
+            <section>
+              <ListUsers/>
+            </section>   
         </section>
     
     )

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { getUsers } from "../../util/getUsers";
+import { deleteUser, getUsers } from "../../util/getUsers";
 import ReactModal from "react-modal";
 import { updateUser } from "../../util/getUsers";
 
@@ -92,7 +92,16 @@ export const ListUsers = () => {
           })
           .catch((error) => console.log(error));
     }
+  //Función borrar usuario
 
+  const buttonDeleteUser = () =>{
+        deleteUser(activeUser.id)
+          .then(() => {      
+            alert("Borrado con exito");
+            window.location.reload(false);
+          })
+          .catch((error) => console.log(error))
+  }
 
 
     return (
@@ -109,7 +118,7 @@ export const ListUsers = () => {
             Editar Usuario:
             {activeUser ? (
                 <p>
-                    {activeUser.id}, {activeUser.email}
+                    {activeUser.id} : {activeUser.email}
                 </p>
             ) :null }
             <div className=" divModalEdit rowInputs">
@@ -118,7 +127,7 @@ export const ListUsers = () => {
                   type='email'
                   placeholder={activeUser.email}
                   id='emailUserEdit'
-                  name="email"
+                  name="editedUserEmail"
                   className="inputCreate"
                   value={editedUserEmail}
                   onChange = {(e) => setEditedUserEmail(e.target.value) }
@@ -128,19 +137,19 @@ export const ListUsers = () => {
                   type='password'
                   placeholder= {activeUser.password}
                   id='passwordUserEdit'
-                  name="password"
+                  name="editedUserPassword"
                   className="inputCreate"
                   value={editedUserPassword}
                   onChange = {(e) => setEditedUserPassword(e.target.value) }
                 />
             </div>
             <div className="rowRolUser">
-                <label to='rolUsers' className="titleLabelUser">Rol de Usuario:</label>
+                <label to='rolUsersEdit' className="titleLabelUser">Rol de Usuario:</label>
                 <select 
                   type='text'
                   placeholder= {activeUser.roles}
-                  id='rolUsers'
-                  name='rolUser'
+                  id='rolUsersEdit'
+                  name='editedUserRol'
                   value={editedUserRol}
                   onChange={(e) => setEditedUserRol(e.target.value)}
                 //   onChange = {(e) => setRolUser(e.target.value) }
@@ -157,12 +166,48 @@ export const ListUsers = () => {
                 className="btnGoEdit"
                 onClick={editUpdate}
               >
-                Editar Usuario
+                EDITAR USUARIO
               </button>
-              <button onClick={handleEditCloseModal}>Cancelar</button>
+              <button onClick={handleEditCloseModal}>CANCELAR</button>
             </div>
         </ReactModal>
-    
+        <ReactModal
+          isOpen={showModal}
+          ariaHideApp={false}
+          contentLabel="Delete Modal"
+          onRequestClose={handleCloseModal}
+          className="ModalDlt"
+          overlayClassName="OverlayDlt"
+        >
+          {activeUser ? (
+          <>
+            <p className="textModal">
+              ¿Estás seguro que quieres eliminar  este usuario?
+              <b>
+                {activeUser.id},{activeUser.email}
+              </b>
+              ?
+            </p>
+          </>
+          ) : null}
+          <div className="btnModalDlt">
+            <button
+              // id="btnDltDanger"
+              className="btn btn-danger"
+              onClick={ buttonDeleteUser }
+            >
+             ELIMINAR
+            </button>
+            <button
+              onClick={handleCloseModal}
+              // id="btnDltLight"
+              className="btn btn-light border border-secondary"
+            >
+              CANCELAR
+            </button>
+          </div>
+        </ReactModal>
+
         <section id='sectionTableUsers'>
             <table className="table table-warning table-striped table-hover showList">
                 <thead>
@@ -179,11 +224,21 @@ export const ListUsers = () => {
                     return (
                         <tr key={user.id}>
                             <th scope="row">{user.id}</th>
-                            <td>{user.userRol}</td>
+                            <td>{user.roles}</td>
                             <td>{user.email}</td>
                             <td>{user.password}</td>
-                            <td><i className="fa-solid fa-pen-to-square"></i></td>
-                            <td><i className="fa-regular fa-trash-can"></i></td>
+                            <td>
+                              <i className="fa-solid fa-pen-to-square"
+                              onClick={() => handleEditOpenModal(user)}
+                              >          
+                              </i>
+                            </td>
+                            <td>
+                              <i className="fa-regular fa-trash-can"
+                              onClick={() => handleOpenModal(user)}
+                              >
+                              </i>
+                            </td>
                         </tr>
                         
                         )}

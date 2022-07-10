@@ -58,8 +58,8 @@ export const createNewProduct = (payload) => {
 
 // Borrar productos
 
-const urlAxiosProductId = (productId) => `http://localhost:8080/products/${productId}`
-
+// const urlAxiosProductId = (productId) => `http://localhost:8080/products/${productId}`
+const urlAxiosProductId = (productId) => `http://localhost:8081/products/${productId}`
 
 
 export const deleteProduct = (productId) => {
