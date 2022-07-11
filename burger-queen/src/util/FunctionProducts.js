@@ -8,7 +8,7 @@ const urlApiOrders = "http://localhost:8081/orders";
 
 
 export const accessToken = localStorage.getItem("accessToken");
-// console.log(accessToken)
+
 
 export const config = {
   headers: {

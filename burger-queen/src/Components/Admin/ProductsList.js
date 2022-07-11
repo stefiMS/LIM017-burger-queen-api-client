@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   getProductsData,
   deleteProduct,
-  createNewProduct,
   editProduct,
 } from "../../util/FunctionProducts.js";
 import ReactModal from "react-modal";

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { config } from "./FunctionProducts";
 
-const urlAxiosUsers= 'http://localhost:8081/users'
+// const urlAxiosUsers= 'http://localhost:8081/users'
+const urlAxiosUsers= 'http://localhost:8080/users'
 
 export const createNewUsers = (payload) =>{
   return new Promise ((resolve, reject) => {
@@ -30,7 +31,8 @@ export const getUsers = () =>{
 
 // FUNCION DE PETICION PARA ACTUALIZACION USUARIOS
 
-const urlAxiosUsersId= (uid) => `http://localhost:8081/users/${uid}`
+// const urlAxiosUsersId= (uid) => `http://localhost:8081/users/${uid}`
+const urlAxiosUsersId= (uid) => `http://localhost:8080/users/${uid}`
 
 export const updateUser = (payload) => {
   return new Promise ((resolve, reject) =>{
