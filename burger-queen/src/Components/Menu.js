@@ -3,8 +3,7 @@ import React from "react";
 import { ProductItem } from './Shop/ProductItem';
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import Orders from './Orders';
-import Products from './Products';
+
 
 const Home = () => {
 
@@ -20,11 +19,6 @@ const Home = () => {
           <li><Link to="/orders">PEDIDOS</Link></li>
           <li><Link to="/products">PRODUCTOS</Link></li>
           <li><Link to="/userManagement">GESTIÓN DE USUARIOS</Link></li>
-          {/* <li><Link to="/">Home</Link></li> */}
-
-          {/* <li onClick={() => navigate('/home')}>Home</li>
-          <li onClick={() => navigate('/orders')}>Orders</li>
-          <li>Table</li> */}
         </ul>
       </nav>
       

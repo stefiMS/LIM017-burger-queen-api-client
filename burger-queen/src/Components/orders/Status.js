@@ -18,6 +18,7 @@ export const OrderStatus = () => {
     showOrders();
   }, []);
 
+console.log(orders)
 
 
   // display button per status
@@ -75,7 +76,14 @@ export const OrderStatus = () => {
 
         <div className="btnOrderFilter">
           <button className="buttonTypeOrder btn btn-warning">Todo</button>
-          <button className="buttonTypeOrder btn btn-warning"> Pending </button>
+          <button className="buttonTypeOrder btn btn-warning"
+          onClick={(e) => {
+            e.preventDefault();
+            let pendingOrders = orders.filter(
+              (item) => item.status === "pending"
+            )
+          }}
+          > Pending </button>
           <button className="buttonTypeOrder btn btn-warning"> Listos </button>
           <button className="buttonTypeOrder btn btn-warning"> Entregados </button>
         </div>
