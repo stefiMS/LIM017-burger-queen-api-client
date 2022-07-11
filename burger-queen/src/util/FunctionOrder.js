@@ -3,11 +3,11 @@ import { accessToken } from "./FunctionProducts.js";
 import { config } from "./FunctionProducts";
 
 
-//const urlAxiosKitchen = "http://localhost:8081/orders"
-// const urlAxiosUpdateStatus = (orderId) => `http://localhost:8081/orders/${orderId}`
+const urlAxiosKitchen = "http://localhost:8081/orders"
+const urlAxiosUpdateStatus = (orderId) => `http://localhost:8081/orders/${orderId}`
 
-const urlAxiosKitchen = "http://localhost:8080/orders"
-const urlAxiosUpdateStatus = (orderId) => `http://localhost:8080/orders/${orderId}`
+// const urlAxiosKitchen = "http://localhost:8080/orders"
+// const urlAxiosUpdateStatus = (orderId) => `http://localhost:8080/orders/${orderId}`
 
 // const urlAxiosUpdateStatus = (orderId) => `http://localhost:8080/orders/${orderId}`
 

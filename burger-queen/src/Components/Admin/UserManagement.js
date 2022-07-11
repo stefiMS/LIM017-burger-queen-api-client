@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ListUsers } from "./ListUsers";
 import { useNavigate } from "react-router";
 import logoBurguer from "./../../Assets/logoBurguer.png";
-import { createNewUsers } from "../../util/getUsers";
+import { createNewUsers } from "../../util/FunctionUsers";
 
 export const UserManagement = () => {
 
@@ -25,7 +25,7 @@ export const UserManagement = () => {
               password: password,
           }
           createNewUsers (createNewUser)
-            .then((res) => console.log(res))
+            .then((res) =>  window.location.reload(false))
             .catch((error) =>console.log(error))
 
     }
