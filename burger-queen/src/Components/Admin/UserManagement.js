@@ -6,8 +6,6 @@ import { createNewUsers } from "../../util/getUsers";
 
 export const UserManagement = () => {
 
-    // const [fullName, setFullName] = useState ('');
-    // const [userId, setUserId] =useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rolUser, setRolUser] = useState({});
@@ -23,11 +21,9 @@ export const UserManagement = () => {
          
           const createNewUser ={
               email:  email,
-              roles: {rolUser: true},
+              roles: {admin: rolUser === "true"},
               password: password,
-
           }
-        //  console.log(createNewUser)
           createNewUsers (createNewUser)
             .then((res) => console.log(res))
             .catch((error) =>console.log(error))
@@ -58,9 +54,7 @@ export const UserManagement = () => {
                           placeholder='Email de Usuario'
                           id='emailUser'
                           className="inputCreate"
-                        //   value={createUser.email}
                           value={email}
-                        //   onChange = {handleInputRol}
                           onChange = {(e) => setEmail(e.target.value) }
                         />
                         <label to='passwordUser' className="titleLabel">Contraseña</label>
@@ -69,9 +63,9 @@ export const UserManagement = () => {
                           placeholder='Contraseña'
                           id='passwordUser'
                           className="inputCreate"
-                        //   value={createUser.contraseña}
+
                           value={password}
-                        //   onChange = {handleInputRol}
+
                           onChange = {(e) => setPassword(e.target.value) }
                         />
                     </div>
@@ -81,14 +75,11 @@ export const UserManagement = () => {
                           type='text'
                           placeholder='Rol de Usuario'
                           id='rolUsers'
-                          
                           onChange = {(e) => setRolUser(e.target.value) }
                         >
                                 <option value="null" > -- </option>
                                 <option value="true"> SI </option>
                                 <option value="false"> NO </option>
-                                {/* <option value="admin"> Administrador </option> */}
-                                
                         </select>
                     </div> 
                     <button
