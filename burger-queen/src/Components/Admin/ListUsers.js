@@ -42,7 +42,7 @@ export const ListUsers = () => {
   
     //hook para capturar id del usuario a actualizar
    
-    const [modalDelete, setModalDelete] = useState(false);
+    // const [modalDelete, setModalDelete] = useState(false);
          
     // const handleChange = (e) =>{
     //     const {name, value}=e.target;
@@ -216,7 +216,7 @@ export const ListUsers = () => {
                         <th scope="col">Roles</th>
                         <th scope="col">Correo</th>
                         <th scope="col">Contraseña</th>
-                        <th scope="col" colspan="2">Acciones</th>
+                        <th scope="col" colSpan="2">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>

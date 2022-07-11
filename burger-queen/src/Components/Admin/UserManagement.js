@@ -3,15 +3,47 @@ import { ListUsers } from "./ListUsers";
 import { useNavigate } from "react-router";
 import logoBurguer from "./../../Assets/logoBurguer.png";
 import { createNewUsers } from "../../util/getUsers";
-import ReactModal from "react-modal";
+// import ReactModal from "react-modal";
 
 export const UserManagement = () => {
-
+    const navigate = useNavigate("");
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rolUser, setRolUser] = useState('');
     
-    const navigate = useNavigate("");
+    // const rolUsersValue = [
+    //   { userValue : 'admin'},
+    //   { userValue: 'waiter'},
+    //   { userValue: 'kitchen'}
+    // ]
+    
+
+    // const objCreation = (objValues) => {
+    //   let selectedRol;
+    //   switch (rol) {
+    //     case 'admin':
+    //       selectedRol = { admin: true };
+    //       break;
+    //     case 'kitchen':
+    //       selectedRol = { kitchen: true };
+    //       break;
+    //     case 'waiter':
+    //       selectedRol = { waiter: true };
+    //       break;
+    //     default:
+    //       selectedRol = { waiter: true };
+    //       break;
+    //   }
+  
+    //   return {
+    //     email: objValues.email,
+    //     password: objValues.password,
+    //     roles: selectedRol,
+    //   };
+    // };
+
+
+    
 
     //Function create User
     const addToNewUser = (e) =>{
@@ -19,20 +51,23 @@ export const UserManagement = () => {
       const createNewUser =
       {
         email:  email,
-        roles: rolUser,
-        password: password
+        password: password,
+        // roles: { admin: true},
+        roles: rolUser
+        
       }
-      createNewUsers (createNewUser)
-       .then((res) => console.log(res))
+      createNewUsers(createNewUser)
+      // createNewUsers(objCreation(email, password, rolUser))
+       .then((res) => window.location.reload(false))
        .catch((error) =>console.log(error))
     }
   
     //HOOKS para mostrar modal
 
-    const [showModal, setShowModal] = useState(false);
+    // const [showModal, setShowModal] = useState(false);
 
-    const handleOpenModal = () => setShowModal(true);
-    const handleCloseModal = () => setShowModal(false);
+    // const handleOpenModal = () => setShowModal(true);
+    // const handleCloseModal = () => setShowModal(false);
   
 
 
@@ -50,7 +85,7 @@ export const UserManagement = () => {
                 </nav>
             </header>
             <h2 id='titleUserManagement'>GESTIÓN DE USUARIOS</h2>
-            <button 
+            {/* <button 
                className="btnAddP" 
                onClick={handleOpenModal}>
               <i className="fa-solid fa-plus" />
@@ -63,8 +98,8 @@ export const UserManagement = () => {
               onRequestClose={handleCloseModal}
               className="Modal"
               overlayClassName="Overlay"
-            >
-            {/* <section id="sectionUserCreate"> */}
+            > */}
+            <section id="sectionUserCreate">
                 <h3 id='titleUserCreate'>Creación de usuarios</h3>
                 <section className="containerCreateUser">
                     <div className="rowInputs">
@@ -101,6 +136,13 @@ export const UserManagement = () => {
                           id='rolUsers'
                           onChange = {(e) => setRolUser(e.target.value) }
                         >
+                          {/* {rolUsersValue.map((rol) =>{
+                            <option key={rol.userValue} name='rol' value={rol.userValue}>
+                              {rol.userValue}
+                            </option>
+                          })
+                          } */}
+
                                 <option value="null" > -- </option>
                                 <option value="waiter"> Mesero </option>
                                 <option value="kitchen"> Cocinero </option>
@@ -117,15 +159,15 @@ export const UserManagement = () => {
                       >
                         CREAR USUARIO
                       </button>
-                      <button
+                      {/* <button
                         id= "btnCancelUser"
                         className="btn btn-secondary"
                         onClick={handleCloseModal}>Cancelar 
-                      </button>
+                      </button> */}
                     </div>        
                 </section>
-            {/* </section> */}
-            </ReactModal>
+            </section>
+            {/* </ReactModal> */}
             
             <section>
               <ListUsers/>

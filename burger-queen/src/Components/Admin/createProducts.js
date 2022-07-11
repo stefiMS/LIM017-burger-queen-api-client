@@ -106,7 +106,7 @@ export const CreateProducts = () => {
                 };
                 createNewProduct(postNewProduct)
                   .then((response) => {
-                    alert("Producto creado con éxito");
+                    // alert("Producto creado con éxito");
                     window.location.reload(false);
                   })
                   .catch((error) => console.log(error));
