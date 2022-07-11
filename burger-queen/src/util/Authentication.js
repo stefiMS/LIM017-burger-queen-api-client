@@ -28,7 +28,7 @@ export const authentication = (email, password) => {
     axios.post(urlAxios, { email, password })
     .then((response) => {
       const  { status  }  = response;
-      // console.log(response)
+
 
       if (status === 200) {
         const responseUserData = response.data.user;
@@ -43,9 +43,7 @@ export const authentication = (email, password) => {
       }
     })
     .catch((error) => {
-      // console.log(error)
       reject(error);
-      // console.log(error)
     })
   });
 }
