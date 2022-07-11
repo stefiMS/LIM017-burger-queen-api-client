@@ -4,6 +4,7 @@ import { config } from "./FunctionProducts";
 // const urlAxiosUsers= 'http://localhost:8081/users'
 const urlAxiosUsers= 'http://localhost:8080/users'
 
+
 export const createNewUsers = (payload) =>{
   return new Promise ((resolve, reject) => {
     axios.post(urlAxiosUsers, payload,  config)
@@ -33,6 +34,7 @@ export const getUsers = () =>{
 
 // const urlAxiosUsersId= (uid) => `http://localhost:8081/users/${uid}`
 const urlAxiosUsersId= (uid) => `http://localhost:8080/users/${uid}`
+er
 
 export const updateUser = (payload) => {
   return new Promise ((resolve, reject) =>{
