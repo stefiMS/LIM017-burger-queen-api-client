@@ -280,6 +280,7 @@ fieldset {
   font-weight: bold;
 }
 
+
 /* SECTION ORDER.JS */
 
 .orderContainer {
@@ -299,6 +300,12 @@ fieldset {
   align-items: center;
   justify-content: center;
   margin: 20px;
+  width: 350px;
+  height: 450px;
+}
+
+.tittleCard{
+  font-size: medium;
 }
 
 /* Button filter for orders */

@@ -3,73 +3,32 @@ import { ListUsers } from "./ListUsers";
 import { useNavigate } from "react-router";
 import logoBurguer from "./../../Assets/logoBurguer.png";
 import { createNewUsers } from "../../util/getUsers";
-// import ReactModal from "react-modal";
 
 export const UserManagement = () => {
-    const navigate = useNavigate("");
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [rolUser, setRolUser] = useState('');
+    const [rolUser, setRolUser] = useState({});
     
-    // const rolUsersValue = [
-    //   { userValue : 'admin'},
-    //   { userValue: 'waiter'},
-    //   { userValue: 'kitchen'}
-    // ]
-    
-
-    // const objCreation = (objValues) => {
-    //   let selectedRol;
-    //   switch (rol) {
-    //     case 'admin':
-    //       selectedRol = { admin: true };
-    //       break;
-    //     case 'kitchen':
-    //       selectedRol = { kitchen: true };
-    //       break;
-    //     case 'waiter':
-    //       selectedRol = { waiter: true };
-    //       break;
-    //     default:
-    //       selectedRol = { waiter: true };
-    //       break;
-    //   }
+    const navigate = useNavigate("");
   
-    //   return {
-    //     email: objValues.email,
-    //     password: objValues.password,
-    //     roles: selectedRol,
-    //   };
-    // };
-
-
-    
+     
 
     //Function create User
+
     const addToNewUser = (e) =>{
-      e.preventDefault();
-      const createNewUser =
-      {
-        email:  email,
-        password: password,
-        // roles: { admin: true},
-        roles: rolUser
-        
-      }
-      createNewUsers(createNewUser)
-      // createNewUsers(objCreation(email, password, rolUser))
-       .then((res) => window.location.reload(false))
-       .catch((error) =>console.log(error))
+        e.preventDefault();
+         
+          const createNewUser ={
+              email:  email,
+              roles: {admin: rolUser === "true"},
+              password: password,
+          }
+          createNewUsers (createNewUser)
+            .then((res) => console.log(res))
+            .catch((error) =>console.log(error))
+
     }
-  
-    //HOOKS para mostrar modal
-
-    // const [showModal, setShowModal] = useState(false);
-
-    // const handleOpenModal = () => setShowModal(true);
-    // const handleCloseModal = () => setShowModal(false);
-  
-
 
     return (
         <section id="sectionUserManagement">
@@ -128,28 +87,24 @@ export const UserManagement = () => {
                         />
                     </div>
                     <div className="rowRolUser">
-                        <label to='rolUsers'  className="titleLabelUser">
-                          Rol de Usuario:
-                        </label>
+                        <label to='rolUsers' className="titleLabelUser">Administrador:</label>
                         <select 
+                          type='text'
                           placeholder='Rol de Usuario'
                           id='rolUsers'
                           onChange = {(e) => setRolUser(e.target.value) }
                         >
-                          {/* {rolUsersValue.map((rol) =>{
-                            <option key={rol.userValue} name='rol' value={rol.userValue}>
-                              {rol.userValue}
-                            </option>
-                          })
-                          } */}
-
                                 <option value="null" > -- </option>
-                                <option value="waiter"> Mesero </option>
-                                <option value="kitchen"> Cocinero </option>
-                                <option value="admin"> Administrador </option>
-                                
+                                <option value="true"> SI </option>
+                                <option value="false"> NO </option>
                         </select>
                     </div> 
+                    <button
+                      id='buttonCreateUser'
+                      onClick={addToNewUser}
+                    >
+                      CREAR USUARIO
+                    </button>
                     <hr/>
                     <div className="modalBtns">
                       <button
@@ -167,11 +122,7 @@ export const UserManagement = () => {
                     </div>        
                 </section>
             </section>
-            {/* </ReactModal> */}
-            
-            <section>
-              <ListUsers/>
-            </section>   
+            <ListUsers/>     
         </section>
     
     )
