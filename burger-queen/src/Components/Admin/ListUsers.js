@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { deleteUser, getUsers } from "../../util/getUsers";
+import React, { useEffect, useState } from "react";
+import { deleteUser, getUsers, updateUser } from "../../util/FunctionUsers";
 import ReactModal from "react-modal";
-import { updateUser } from "../../util/getUsers";
+
 
 export const ListUsers = () => {
   //hooks para traer al usuario creado
@@ -128,7 +127,6 @@ export const ListUsers = () => {
             name="editedUserRol"
             value={editedUserRol}
             onChange={(e) => setEditedUserRol(e.target.value)}
-            //   onChange = {(e) => setRolUser(e.target.value) }
           >
             <option value="true"> Sí </option>
             <option value="false"> No </option>
