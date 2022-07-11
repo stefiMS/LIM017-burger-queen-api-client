@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createNewProduct } from "../../util/FunctionProducts";
+import { createNewProduct, editProduct } from "../../util/FunctionProducts";
 import ReactModal from "react-modal";
 
 export const CreateProducts = () => {
@@ -106,7 +106,7 @@ export const CreateProducts = () => {
                 };
                 createNewProduct(postNewProduct)
                   .then((response) => {
-                    alert("Producto creado con éxito");
+                    // alert("Producto creado con éxito");
                     window.location.reload(false);
                   })
                   .catch((error) => console.log(error));

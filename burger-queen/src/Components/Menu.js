@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 
-const Home = () => {
+const Menu = () => {
 
   const navigate = useNavigate ('')
 
@@ -31,4 +31,4 @@ const Home = () => {
 );
 };
 
-export default Home;
+export default Menu;

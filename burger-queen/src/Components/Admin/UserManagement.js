@@ -1,11 +1,38 @@
-import React from "react";
-import { CreateUsers } from "./CreateUsers";
+import React, { useState } from "react";
+import { ListUsers } from "./ListUsers";
 import { useNavigate } from "react-router";
 import logoBurguer from "./../../Assets/logoBurguer.png";
+import { createNewUsers } from "../../util/getUsers";
 
 export const UserManagement = () => {
 
+    // const [fullName, setFullName] = useState ('');
+    // const [userId, setUserId] =useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [rolUser, setRolUser] = useState({});
+    
     const navigate = useNavigate("");
+  
+     
+
+    //Function create User
+
+    const addToNewUser = (e) =>{
+        e.preventDefault();
+         
+          const createNewUser ={
+              email:  email,
+              roles: {rolUser: true},
+              password: password,
+
+          }
+        //  console.log(createNewUser)
+          createNewUsers (createNewUser)
+            .then((res) => console.log(res))
+            .catch((error) =>console.log(error))
+
+    }
 
     return (
         <section id="sectionUserManagement">
@@ -25,34 +52,55 @@ export const UserManagement = () => {
                 <h3 id='titleUserCreate'>Creación de usuarios</h3>
                 <section className="containerCreateUser">
                     <div className="rowInputs">
-                        <label to='nameUserNew' className="titleLabel">Nombres y apellidos:</label>
-                        <input type='text' placeholder='Nombres y apellidos' id='nameUserNew' className='inputCreate'/>
-                        <label to='userId' className="titleLabel">ID de Usuario:</label>
-                        <input type='text' placeholder='UserID' id='userId' className="inputCreate"/>
-                    </div>
-                    <div className="rowInputs">
                         <label to='emailUser' className="titleLabel">Correo Electrónico:</label>
-                        <input type='email' placeholder='Email de Usuario' id='emailUser' className="inputCreate" />
+                        <input
+                          type='email'
+                          placeholder='Email de Usuario'
+                          id='emailUser'
+                          className="inputCreate"
+                        //   value={createUser.email}
+                          value={email}
+                        //   onChange = {handleInputRol}
+                          onChange = {(e) => setEmail(e.target.value) }
+                        />
                         <label to='passwordUser' className="titleLabel">Contraseña</label>
-                        <input type='password' placeholder='Contraseña' id='passwordUser' className="inputCreate" />
+                        <input 
+                          type='password'
+                          placeholder='Contraseña'
+                          id='passwordUser'
+                          className="inputCreate"
+                        //   value={createUser.contraseña}
+                          value={password}
+                        //   onChange = {handleInputRol}
+                          onChange = {(e) => setPassword(e.target.value) }
+                        />
                     </div>
                     <div className="rowRolUser">
-                        <label to='rolUser' className="titleLabelUser">Rol de Usuario:</label>
-                        <select type='text' placeholder='Rol de Usuario' id='rolUser' >
-                                <option value="null" selected> -- </option>
-                                <option value="Mesero"> Mesero </option>
-                                <option value="Cocinero"> Cocinero </option>
-                                <option value="Administrador"> Administrador </option>
+                        <label to='rolUsers' className="titleLabelUser">Administrador:</label>
+                        <select 
+                          type='text'
+                          placeholder='Rol de Usuario'
+                          id='rolUsers'
+                          
+                          onChange = {(e) => setRolUser(e.target.value) }
+                        >
+                                <option value="null" > -- </option>
+                                <option value="true"> SI </option>
+                                <option value="false"> NO </option>
+                                {/* <option value="admin"> Administrador </option> */}
                                 
                         </select>
-                    </div>
-                    <button id='buttonCreateUser'>CREAR USUARIO</button>
+                    </div> 
+                    <button
+                      id='buttonCreateUser'
+                      onClick={addToNewUser}
+                    >
+                      CREAR USUARIO
+                    </button>
                     <hr/>
                 </section>
             </section>
-            <CreateUsers/>
-    
-    
+            <ListUsers/>     
         </section>
     
     )
