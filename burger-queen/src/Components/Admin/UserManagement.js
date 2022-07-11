@@ -44,11 +44,30 @@ export const UserManagement = () => {
                 </nav>
             </header>
             <h2 id='titleUserManagement'>GESTIÓN DE USUARIOS</h2>
+            {/* <button 
+               className="btnAddP" 
+               onClick={handleOpenModal}>
+              <i className="fa-solid fa-plus" />
+              AGREGAR USUARIO
+            </button>
+            <ReactModal 
+              isOpen={showModal}
+              contentLabel="Modal Add Users"
+              ariaHideApp={false}
+              onRequestClose={handleCloseModal}
+              className="Modal"
+              overlayClassName="Overlay"
+            > */}
             <section id="sectionUserCreate">
                 <h3 id='titleUserCreate'>Creación de usuarios</h3>
                 <section className="containerCreateUser">
                     <div className="rowInputs">
-                        <label to='emailUser' className="titleLabel">Correo Electrónico:</label>
+                        <label 
+                          to='emailUser'
+                          className="titleLabel"
+                        >
+                          Correo Electrónico:
+                        </label>
                         <input
                           type='email'
                           placeholder='Email de Usuario'
@@ -63,9 +82,7 @@ export const UserManagement = () => {
                           placeholder='Contraseña'
                           id='passwordUser'
                           className="inputCreate"
-
                           value={password}
-
                           onChange = {(e) => setPassword(e.target.value) }
                         />
                     </div>
@@ -89,6 +106,20 @@ export const UserManagement = () => {
                       CREAR USUARIO
                     </button>
                     <hr/>
+                    <div className="modalBtns">
+                      <button
+                        id='buttonCreateUser'
+                        className ="btn btn-success"
+                        onClick={ addToNewUser }
+                      >
+                        CREAR USUARIO
+                      </button>
+                      {/* <button
+                        id= "btnCancelUser"
+                        className="btn btn-secondary"
+                        onClick={handleCloseModal}>Cancelar 
+                      </button> */}
+                    </div>        
                 </section>
             </section>
             <ListUsers/>     

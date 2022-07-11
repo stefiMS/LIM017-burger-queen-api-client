@@ -30,26 +30,7 @@ export const ListUsers = () => {
   const [editedUserPassword, setEditedUserPassword] = useState("");
   const [editedUserRol, setEditedUserRol] = useState("");
 
-  //     const initialUserCreate = {
-  //         email: "",
-  //         password: "",
-  //         rolUser: '',
-  //     };
-  // const [currentUserCreated, setCurrentUserCreated] = useState(initialUserCreate)
-
-  //hook para capturar id del usuario a actualizar
-
-  // const [modalDelete, setModalDelete] = useState(false);
-
-  // const handleChange = (e) =>{
-  //     const {name, value}=e.target;
-  //     setCurrentUserCreated( prevState=>({
-  //     ...prevState,
-  //     [name]: value
-  //     }))
-  //     console.log(currentUserCreated);
-  // }
-
+ 
   // Función que abre y cierra el modal
 
   const handleOpenModal = (user) => {
