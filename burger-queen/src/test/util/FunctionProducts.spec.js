@@ -3,7 +3,7 @@ import {createNewProduct, getProductsData, editProduct, getOrders} from '../../u
 
 jest.mock('axios');
 
-const urlApiProducts = "http://localhost:8081/products";
+// const urlApiProducts = "http://localhost:8081/products";
 
 const objProduct = 
 {
