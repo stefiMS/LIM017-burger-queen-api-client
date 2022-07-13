@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {createNewProduct, getProductsData, editProduct, getOrders} from '../../util/FunctionProducts.js'
+import {createNewProduct, getProductsData, editProduct, getOrders, deleteProduct} from '../../util/FunctionProducts.js'
 
 jest.mock('axios');
 
@@ -33,6 +33,17 @@ const objProduct =
        dataEntry: "2022-06-21 17:52:10",
       }] 
 
+
+  const product = {
+      
+            id: 1,
+            image: "https://i.imgur.com/kqnYsST.jpg",
+            name: "Sandwich de jamon y queso",
+            price: 15,
+            type: "Breakfast",
+            dataEntry: "2022-06-22 17:52:10",
+        }
+
 //Función getProducts
 
 describe('getProductsData',() =>{
@@ -59,7 +70,6 @@ describe('getProductsData',() =>{
 // Función getOrders
 describe('getOrders',() =>{
   test('should get products from menu ',() =>{
-
 
     axios.get.mockResolvedValue(objProduct)
       return getOrders()
@@ -90,6 +100,7 @@ describe('editProduct',() =>{
 
     const objProductId = {
    
+
          id: 1,
          image: "https://i.imgur.com/kqnYsST.jpg",
          name: "Sandwich de jamon y queso",
@@ -98,25 +109,40 @@ describe('editProduct',() =>{
          dataEntry: "2022-06-21 17:52:10",
     }
   
-    const productEdit = {
-      
-        id: 1,
-        image: "https://i.imgur.com/kqnYsST.jpg",
-        name: "Sandwich de jamon y queso",
-        price: 15,
-        type: "Breakfast",
-        dataEntry: "2022-06-22 17:52:10",
-    }
-    // const id= 1
-
-    axios.patch.mockResolvedValue( objProductId)
-     return editProduct()
+   axios.patch.mockResolvedValue( { data: objProductId})
+     return editProduct(objProductId)
       .then((res) =>{
-          expect(res).toBe(productEdit)
+          expect(res).toStrictEqual(objProductId)
       })
-
+  })
+  test('should show error when the product is edited ',() =>{
+    axios.delete.mockRejectedValue({})
+     return editProduct(product)
+      .catch((err) =>{
+          expect(err).toStrictEqual({})
+    })
   })
 })
+
+//Función delete
+describe('deleteProduct',() =>{
+  test('should delete products ',() =>{
+    axios.delete.mockResolvedValue([])
+    return deleteProduct(data)
+    .then((res) =>{
+        expect(res).toStrictEqual([])
+    })
+  })
+  test('should show error when the product is deleted ',() =>{
+    axios.delete.mockRejectedValue([])
+    return deleteProduct(data)
+    .catch((res) =>{
+        expect(res).toStrictEqual([])
+    })
+  })
+})
+
+
 
 // productId => `http://localhost:8081/products/${productId}`
 // http://localhost:8081/products/13

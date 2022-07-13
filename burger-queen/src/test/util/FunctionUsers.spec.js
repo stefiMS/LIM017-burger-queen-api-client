@@ -50,9 +50,48 @@ describe('getUsers',() =>{
        .then((res)=>{
         expect((res)).toStrictEqual(dataUser)
        })
-
     })
 })
+
+//Función delete usuarios
+describe('deleteUser',() =>{
+  test('should delete users',() =>{
+  
+    axios.delete.mockResolvedValue([])
+    return deleteUser(objUser)
+     .then((res)=>{
+      expect((res)).toStrictEqual([])
+     })
+  })
+  test('should show error when the product is not deleted ',() =>{
+    axios.delete.mockRejectedValue(objUser)
+     return deleteUser(dataUser)
+      .catch((err) =>{
+          expect(err).toBe(dataUser)
+    })
+  })
+})
+
+
+// Función actualizar usuarios
+describe('updateUser',() =>{
+  test('should edit and update users',() =>{
+  
+    axios.patch.mockResolvedValue(objUser)
+    return updateUser(dataUser)
+     .then((res)=>{
+      expect((res)).toStrictEqual(dataUser)
+     })
+  })
+  test('should show error when the product is updated ',() =>{
+    axios.delete.mockRejectedValue({})
+     return updateUser(dataUser)
+      .catch((err) =>{
+          expect(err).toBe({})
+    })
+  })
+})
+
 
 
 
