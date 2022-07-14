@@ -26,15 +26,6 @@ export const UserManagement = () => {
           createNewUsers (createNewUser)
             .then((res) =>  window.location.reload(false))
             .catch((error) =>console.log(error))
-
-    const createNewUser = {
-      email: email,
-      roles: { admin: rolUser === "true" },
-      password: password,
-    };
-    createNewUsers(createNewUser)
-      .then((res) => window.location.reload(false))
-      .catch((error) => console.log(error));
   };
 
   // Hooks para el modal

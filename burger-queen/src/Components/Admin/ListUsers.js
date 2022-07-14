@@ -1,15 +1,7 @@
-<<<<<<< user-router
 import React, { useEffect, useState } from "react";
 import { deleteUser, getUsers, updateUser } from "../../util/FunctionUsers";
 import ReactModal from "react-modal";
 
-=======
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { deleteUser, getUsers } from "../../util/FunctionUsers";
-import ReactModal from "react-modal";
-import { updateUser } from "../../util/FunctionUsers";
->>>>>>> order
 
 export const ListUsers = () => {
   //hooks para traer al usuario creado
