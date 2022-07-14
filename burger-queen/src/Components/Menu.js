@@ -12,7 +12,8 @@ const Menu = () => {
     <>
     <header id="loginHeader">
       <nav id="loginNav">
-        <img src={logoBurguer} id="logoBurguerNav" alt="logoBurguer" />
+        <img src={logoBurguer} id="logoBurguerNav" alt="logoBurguer" 
+        onClick={ () => navigate("/home")} />
         <ul id="optionNav">
           <li><Link to="/menu">MENÚ</Link></li>
           <li><Link to="/orders">PEDIDOS</Link></li>
