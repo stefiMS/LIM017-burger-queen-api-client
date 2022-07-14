@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import {createNewProduct, getProductsData, editProduct, getOrders, deleteProduct} from '../../util/FunctionProducts.js'
 
 jest.mock('axios');
@@ -57,11 +57,11 @@ describe('getProductsData',() =>{
 
     })
     test('should not  get products from API ',() =>{
-      const errProduct =
-      axios.get.mockRejectedValue(null)
+      
+      axios.get.mockRejectedValue(AxiosError)
       return getProductsData()
        .catch((err)=>{
-        expect((err)).toBe(null)
+        expect((err)).toBe(AxiosError)
        })
 
     })
@@ -77,6 +77,13 @@ describe('getOrders',() =>{
             expect(res).toStrictEqual(data)
           })
   })
+  test('should not get product ',() =>{
+    axios.get.mockRejectedValue(AxiosError)
+     return getOrders(product)
+      .catch((err) =>{
+          expect(err).toStrictEqual(AxiosError)
+    })
+  })
 })
 
 //Función Crear productos 
@@ -89,7 +96,13 @@ describe('createNewProduct',() =>{
       .then((res) =>{
           expect(res).toStrictEqual(data)
       })
-
+  })
+  test('should show error because the product is not created ',() =>{
+    axios.post.mockRejectedValue(AxiosError)
+     return createNewProduct(product)
+      .catch((err) =>{
+          expect(err).toStrictEqual(AxiosError)
+    })
   })
 })
 
@@ -116,10 +129,10 @@ describe('editProduct',() =>{
       })
   })
   test('should show error when the product is edited ',() =>{
-    axios.delete.mockRejectedValue({})
+    axios.patch.mockRejectedValue(product)
      return editProduct(product)
       .catch((err) =>{
-          expect(err).toStrictEqual({})
+          expect(err).toStrictEqual(product)
     })
   })
 })
@@ -128,16 +141,16 @@ describe('editProduct',() =>{
 describe('deleteProduct',() =>{
   test('should delete products ',() =>{
     axios.delete.mockResolvedValue([])
-    return deleteProduct(data)
-    .then((res) =>{
-        expect(res).toStrictEqual([])
+     return deleteProduct(data)
+      .then((res) =>{
+          expect(res).toStrictEqual([])
     })
   })
   test('should show error when the product is deleted ',() =>{
     axios.delete.mockRejectedValue([])
-    return deleteProduct(data)
-    .catch((res) =>{
-        expect(res).toStrictEqual([])
+     return deleteProduct(data)
+      .catch((res) =>{
+          expect(res).toStrictEqual([])
     })
   })
 })

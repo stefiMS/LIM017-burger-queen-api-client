@@ -65,7 +65,7 @@ export const deleteProduct = (productId) => {
     axios.delete(urlAxiosProductId(productId), config)
       .then((response) => {
         resolve(response)
-        console.log(response)
+        // console.log(response)
       })
       .catch((error) => reject(error))
   })
@@ -75,7 +75,7 @@ export const editProduct = (payload) => {
   return new Promise((resolve, reject) => {
     axios.patch(urlAxiosProductId(payload.id), payload, config)
       .then((response) => {
-        console.log(response)
+        // console.log(response)
         resolve(response.data)
         
       })

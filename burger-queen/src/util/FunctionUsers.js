@@ -11,7 +11,7 @@ export const createNewUsers = (payload) =>{
     .then((response) =>{
       resolve(response.data)
       // alert('hola')
-      console.log(response.data)
+      // console.log(response.data)
       })
       .catch((error) =>{
         reject(error)
@@ -45,7 +45,7 @@ export const updateUser = (payload) => {
       .then((response) => {
 
            resolve(response.data);
-           console.log(res.data)
+          //  console.log(res.data)
       })
       .catch((error) => {
         reject (error)
@@ -58,7 +58,7 @@ export const deleteUser = (userId) =>{
     axios.delete(urlAxiosUsersId(userId), config)
       .then((res) =>{
         resolve(res)
-        console.log(res)
+        // console.log(res)
       })
       .catch((err) => reject (err))
   })

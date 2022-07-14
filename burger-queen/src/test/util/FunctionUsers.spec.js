@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { createNewUsers, getUsers, updateUser, deleteUser } from "../../util/FunctionUsers"; 
 
 jest.mock('axios');
@@ -26,6 +26,12 @@ const objUser =
             roles: {admin: true}
         }]
 
+        const dataUserEdit =  {
+          email: "alf@burger.com",
+          id: 7,
+          password: "$2a$10$YzpON3GAaupH2IpwV4RnvOD3EMrY9nEtwm4j9JvpUbBaXnbB.MHeK",
+          roles: {admin: true}
+      }
 
 //Función crear nuevos usuarios
 
@@ -37,7 +43,14 @@ describe('createNewUsers',() =>{
        .then((res)=>{
         expect((res)).toStrictEqual(dataUser)
        })
+    })
+    test('should not create  product ',() =>{
 
+      axios.post.mockRejectedValue(AxiosError)
+        return createNewUsers()
+        .catch((err)=>{
+          expect((err)).toStrictEqual(AxiosError)
+       })
     })
 })
 
@@ -49,6 +62,13 @@ describe('getUsers',() =>{
       return getUsers()
        .then((res)=>{
         expect((res)).toStrictEqual(dataUser)
+       })
+    })
+    test('should not get  product ',() =>{
+      axios.get.mockRejectedValue([])
+        return getUsers(objUser)
+        .catch((err)=>{
+          expect((err)).toStrictEqual([])
        })
     })
 })
@@ -64,10 +84,10 @@ describe('deleteUser',() =>{
      })
   })
   test('should show error when the product is not deleted ',() =>{
-    axios.delete.mockRejectedValue(objUser)
-     return deleteUser(dataUser)
+    axios.delete.mockRejectedValue(dataUser)
+     return deleteUser(objUser)
       .catch((err) =>{
-          expect(err).toBe(dataUser)
+          expect(err).toStrictEqual(dataUser)
     })
   })
 })
@@ -84,10 +104,10 @@ describe('updateUser',() =>{
      })
   })
   test('should show error when the product is updated ',() =>{
-    axios.delete.mockRejectedValue({})
-     return updateUser(dataUser)
+     axios.patch.mockRejectedValue(dataUserEdit)
+     return updateUser(dataUserEdit)
       .catch((err) =>{
-          expect(err).toBe({})
+          expect(err).toStrictEqual(dataUserEdit)
     })
   })
 })
