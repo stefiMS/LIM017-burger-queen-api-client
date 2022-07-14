@@ -17,18 +17,22 @@ export const  RoutesUser = () => {
 
     return (
     <>
-     <Routes>
+     
         
             if(user.roles.admin === true){
+                <Routes>
             ( <>
                     <Route path='/home' element={<Home />} />
                     <Route path="/menu" element={<Menu />} />
                     <Route path="/orders" element={<Orders />} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/userManagement" element={<UserManagement />} />
-              {/* </Route> */}
+              
               </>
-            )}
+              
+            )
+            </Routes>
+            }
             else {(<Route path="*" element={<ErrorNoAccess />}  />)}
 
         
@@ -55,7 +59,7 @@ export const  RoutesUser = () => {
         // <Route path="/noAccess" element={<ErrorNoAccess />} />
         // <Route path="/userManagement" element={<UserManagement />} /> */}
 
-    </Routes>
+    {/* </Routes> */}
     </>
     )
 }
