@@ -5,6 +5,7 @@ import logoBurguer from "./../../Assets/logoBurguer.png";
 import { createNewUsers } from "../../util/FunctionUsers";
 import ReactModal from "react-modal";
 
+
 export const UserManagement = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,8 +15,17 @@ export const UserManagement = () => {
 
   //Function create User
 
+
   const addToNewUser = (e) => {
-    e.preventDefault();
+    e.preventDefault();    
+          const createNewUser ={
+              email:  email,
+              roles: {admin: rolUser === "true"},
+              password: password,
+          }
+          createNewUsers (createNewUser)
+            .then((res) =>  window.location.reload(false))
+            .catch((error) =>console.log(error))
 
     const createNewUser = {
       email: email,
