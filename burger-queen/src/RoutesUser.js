@@ -11,47 +11,73 @@ export const  RoutesUser = () => {
 
     // sessionStorage.setItem("userRole",  responseUserData.roles.admin);
     // sessionStorage.setItem("userId", responseUserData.id)
-    const accessUser = JSON.parse(sessionStorage.getItem('user'));
+    const accessUser = sessionStorage.getItem('userRole');
+
+  //   console.log(accessUser)
 
     
-
-    return (
-    <>
-     
-        
-            if(user.roles.admin === true){
-                <Routes>
-            ( <>
-                    <Route path='/home' element={<Home />} />
-                    <Route path="/menu" element={<Menu />} />
-                    <Route path="/orders" element={<Orders />} />
-                    <Route path="/products" element={<Products />} />
-                    <Route path="/userManagement" element={<UserManagement />} />
-              
+  return(
+   <>
+      <Routes>
+         
+          { accessUser ===  true
+          ?(
+              <>
+                <Route path='/home' element={<Home />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/userManagement" element={<UserManagement />} />
               </>
-              
-            )
-            </Routes>
-            }
-            else {(<Route path="*" element={<ErrorNoAccess />}  />)}
+          )
+          :(<Route path="*" element={<ErrorNoAccess />}  />)
 
-        
-        
-            if(user.roles.admin === false){
-            ( <>
-                    <Route path='/home' element={<Home />} />
-                    <Route path="/menu" element={<Menu />} />
-                    <Route path="/orders" element={<Orders />} />
-                    {/* <Route path="/products" element={<Products />} />
-                    <Route path="/userManagement" element={<UserManagement />} /> */}
-              {/* </Route> */}
+          }
+          { accessUser===  false
+         
+          ?(
+              <>
+                <Route path='/home' element={<Home />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/orders" element={<Orders />} />
               </>
-            )}
-            else{ (<Route path="*" element={<ErrorNoAccess />}  />)
+          )
+          :(<Route path="*" element={<ErrorNoAccess />}  />)
 
-              }
+          }
 
-        {/* <Route path='*' element={<ErrorNoAccess/>} />  */}
+
+         <Route path="*" element={<ErrorNoAccess />}  />
+      </Routes>
+   
+   
+   
+   </> 
+   
+
+
+  )
+
+} 
+
+
+
+
+
+
+        {/* <Route path{ accessUser?.userRole.roles.admin
+          ?(
+              <>
+                <Route path='/home' element={<Home />} />
+                <Route path="/menu" element={<Menu />} />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/userManagement" element={<UserManagement />} />
+              </>
+          )
+          :(<Route path="*" element={<ErrorNoAccess />}  />)
+
+          }='*' element={<ErrorNoAccess/>} />  */}
         {/* // <Route path="/home" element={<Home />} />
         // <Route path="/menu" element={<Menu />} />
         // <Route path="/orders" element={<Orders />} />
@@ -59,7 +85,9 @@ export const  RoutesUser = () => {
         // <Route path="/noAccess" element={<ErrorNoAccess />} />
         // <Route path="/userManagement" element={<UserManagement />} /> */}
 
-    {/* </Routes> */}
-    </>
-    )
+    {/* </Routes>
 }
+    </>
+     */}
+
+  

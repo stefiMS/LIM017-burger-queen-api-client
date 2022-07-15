@@ -33,8 +33,10 @@ export const authentication = (email, password) => {
       if (status === 200) {
         const responseUserData = response.data.user;
         localStorage.setItem("userRole",  responseUserData.roles.admin);
+      
         localStorage.setItem("userId", responseUserData.id);
         sessionStorage.setItem("userRole",  responseUserData.roles.admin);
+        console.log(sessionStorage.setItem("userRole",  responseUserData.roles.admin))
         sessionStorage.setItem("userId", responseUserData.id);
         const  {accessToken }  = response.data;
         resolve(accessToken);
