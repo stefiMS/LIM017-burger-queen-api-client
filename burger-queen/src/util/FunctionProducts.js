@@ -1,10 +1,10 @@
 import axios from "axios";
 
-// const urlApiProducts = "http://localhost:8081/products";
-// const urlApiOrders = "http://localhost:8081/orders";
+const urlApiProducts = "http://localhost:8081/products";
+const urlApiOrders = "http://localhost:8081/orders";
 
-const urlApiProducts = "http://localhost:8080/products";
-const urlApiOrders = "http://localhost:8080/orders";
+// const urlApiProducts = "http://localhost:8080/products";
+// const urlApiOrders = "http://localhost:8080/orders";
 
 
 export const accessToken = localStorage.getItem("accessToken");
@@ -56,14 +56,14 @@ export const createNewProduct = (payload) => {
 
 // Borrar productos
 
-// const urlAxiosProductId = (productId) => `http://localhost:8080/products/${productId}`
+//  const urlAxiosProductId = (productId) => `http://localhost:8080/products/${productId}`
 const urlAxiosProductId = (productId) => `http://localhost:8081/products/${productId}`
 
 
 export const deleteProduct = (productId) => {
   return new Promise((resolve, reject) => {
     axios.delete(urlAxiosProductId(productId), config)
-    console.log(urlAxiosProductId(productId))
+    // console.log(urlAxiosProductId(productId))
       .then((response) => {
         resolve(response)
         console.log(response)

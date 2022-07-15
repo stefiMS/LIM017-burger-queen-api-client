@@ -19,8 +19,8 @@ import axios from "axios";
 //   });
 // };
 
-// const urlAxios = "http://localhost:8081/login";
-  const urlAxios = "http://localhost:8080/login";
+ const urlAxios = "http://localhost:8081/login";
+  // const urlAxios = "http://localhost:8080/login";
 
 export const authentication = (email, password) => {
 
@@ -32,6 +32,8 @@ export const authentication = (email, password) => {
 
       if (status === 200) {
         const responseUserData = response.data.user;
+        console.log(responseUserData)
+        console.log(response.data)
         localStorage.setItem("userRole",  responseUserData.roles.admin);
         localStorage.setItem("userId", responseUserData.id);
         sessionStorage.setItem("userRole",  responseUserData.roles.admin);
