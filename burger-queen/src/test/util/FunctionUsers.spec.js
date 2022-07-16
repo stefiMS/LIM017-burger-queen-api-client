@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { createNewUsers, getUsers, updateUser, deleteUser } from "../../util/FunctionUsers"; 
 
-jest.mock('axios');
+jest.mock('axios'); 
 
 const objUser = 
         {
