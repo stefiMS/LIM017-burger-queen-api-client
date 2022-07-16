@@ -1,6 +1,8 @@
 import axios, { AxiosError } from "axios";
 import {sendToKitchen, updateOrderStatus} from "../../util/FunctionOrder"
+
 jest.mock('axios');
+
 const productOrder = [
     {
       client: "JOEL",
@@ -10,12 +12,14 @@ const productOrder = [
                 productId: 2,
                 name: "Hamburguesa c/ queso",
                 qty: 1,
-                }],
+                 }],
+
       status: "pending",
       tableNum: "3",
       userId: "1"
     }
 ]
+
 describe('sendToKitchen ',() =>{
     test('should send the products to kitchen ',() =>{
         axios.post.mockResolvedValue({data: productOrder})
@@ -32,6 +36,7 @@ describe('sendToKitchen ',() =>{
             })
     })
 })
+
 describe('updateOrderStatus ',() =>{
     test('should change order status',() =>{
         axios.patch.mockResolvedValue({ data: productOrder})
@@ -48,4 +53,5 @@ describe('updateOrderStatus ',() =>{
             })
     })
 })
+
 // []. axioserror

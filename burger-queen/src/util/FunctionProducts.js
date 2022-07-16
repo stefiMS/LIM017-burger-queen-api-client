@@ -63,10 +63,10 @@ const urlAxiosProductId = (productId) => `http://localhost:8081/products/${produ
 export const deleteProduct = (productId) => {
   return new Promise((resolve, reject) => {
     axios.delete(urlAxiosProductId(productId), config)
-    // console.log(urlAxiosProductId(productId))
+
       .then((response) => {
         resolve(response)
-        console.log(response)
+        // console.log(response)
       })
       .catch((error) => reject(error))
   })
@@ -76,8 +76,9 @@ export const editProduct = (payload) => {
   return new Promise((resolve, reject) => {
     axios.patch(urlAxiosProductId(payload.id), payload, config)
       .then((response) => {
+        // console.log(response)
         resolve(response.data)
-        console.log(response.data)
+        
       })
       .catch((error) => {
         reject(error)

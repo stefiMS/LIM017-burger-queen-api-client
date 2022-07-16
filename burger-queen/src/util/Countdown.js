@@ -11,7 +11,7 @@ export const MyStopwatch = ({ startTime, endTime }) => {
   
     return (
     <>
-    <div>
+    <div  data-testid="resultCount">
       <p>Terminado en : </p>
       <p> {result} </p>
     </div>
