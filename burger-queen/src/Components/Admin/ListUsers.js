@@ -184,7 +184,7 @@ export const ListUsers = () => {
               <th scope="col">UserID</th>
               <th scope="col">Roles</th>
               <th scope="col">Correo</th>
-              <th scope="col">Contraseña</th>
+              {/* <th scope="col">Contraseña</th> */}
               <th scope="col" colSpan="2">
                 Acciones
               </th>
@@ -197,7 +197,7 @@ export const ListUsers = () => {
                   <th scope="row">{user.id}</th>
                   <td>{user.roles.admin?.toString()}</td>
                   <td>{user.email}</td>
-                  <td>{user.password}</td>
+                  {/* <td>{user.password}</td> */}
                   <td>
                     <i
                       className="fa-solid fa-pen-to-square"

@@ -13,6 +13,7 @@ const productOrder = [
                 name: "Hamburguesa c/ queso",
                 qty: 1,
                  }],
+
       status: "pending",
       tableNum: "3",
       userId: "1"
