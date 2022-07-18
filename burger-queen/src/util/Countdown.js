@@ -10,12 +10,10 @@ export const MyStopwatch = ({ startTime, endTime }) => {
   const result = new Date(duration).toISOString().slice(11, 19);
   
     return (
-    <>
-    <div  data-testid="resultCount">
-      <p>Terminado en : </p>
-      <p> {result} </p>
-    </div>
-    </>
+     <div  >
+        <p>Terminado en : </p>
+        <p data-testid="resultCount"> {result} </p>
+     </div>
     );
   };
 

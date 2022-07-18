@@ -2,26 +2,27 @@ import { MyStopwatch } from '../../util/Countdown.js';
 import '@testing-library/jest-dom';
 import Countdown from '../../util/Countdown';
 import React, { createElement } from 'react';
+import { render, screen } from '@testing-library/react';
 
 describe("MyStopwatch", () => {
-        const startTime = 0
+    const startTime = '2022-06-21 17:52:10'
+    const endTime = '2022-06-21 17:58:10'
+    const duration = Date.parse(endTime) - Date.parse(startTime);
+    // console.log(duration)
+    const result = new Date(duration).toISOString().slice(11, 19);
 
-        const  endTime = 18
-        const duration = 18
-        // const duration = Date.parse(endTime) - Date.parse(startTime);
-        const result = 
-        // const result = new Date(duration).toISOString().slice(11, 19);
-        console.log(result)
+    // console.log(result)
     it("should return total time of preparing plate", () => {
-        const div = document.createElement('div')
-        ReactDOM.render(<p></p>, div)
-    })
-    it("should return null when the  startTime or  endTime are diferentes", () => {
-        
-        const  endTimeNull = 13
-        expect(MyStopwatch(0,endTimeNull)).toBe(null)
-         
-    })
+        const watchTimer = MyStopwatch ({ startTime, endTime });
 
+        render(watchTimer);
+       
+        expect( screen.getByTestId('resultCount').textContent).toContain(result)
+    })
+    it(" it should return null when there is no startTime or endTime", () => {
 
+        const endTimeNull = null;
+        expect(MyStopwatch(0, endTimeNull)).toBe(null)
+
+    })
 })
