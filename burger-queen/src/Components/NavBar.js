@@ -3,6 +3,7 @@ import logoBurguer from "./../Assets/logoBurguer.png";
 import { useNavigate } from "react-router";
 
 export const NavBar = () => {
+  console.log(useNavigate)
   const navigate = useNavigate("");
 
   return (
@@ -10,6 +11,7 @@ export const NavBar = () => {
       <img
         src={logoBurguer}
         id="logoBurguerNav"
+        data-testid="burgerHome"
         alt="logoBurguer"
         onClick={() => navigate("/home")}
       />

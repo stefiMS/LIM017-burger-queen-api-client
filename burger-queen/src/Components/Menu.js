@@ -1,7 +1,7 @@
 import React from "react";
 import { ProductItem } from './Shop/ProductItem';
 import { useNavigate } from "react-router-dom";
-import { NavBar } from './Nav';
+import { NavBar } from './NavBar';
 
 const Menu = () => {
 
