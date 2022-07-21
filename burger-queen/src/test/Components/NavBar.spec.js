@@ -17,35 +17,22 @@ import { fireEvent, render, userEvent, screen } from "@testing-library/react";
 
 
 describe('Nav Bar', () => {
-  it('It does something', () => {
+  it('show  views', () => {
 
     const history = createMemoryHistory({ initialEntries: ['/home'] });
 
-    render(<Router location={history.location} navigator={history}></Router>)
+    render(
+    <Router location={history.location} navigator={history}>
+        <NavBar />
+    </Router>)
     
-    
-    // render(
-    //   <MemoryRouter history={history}>
-    //     <NavBar />
-    //   </MemoryRouter>)
+  
+        fireEvent.click(screen.getByTestId('burgerHome'));
+        fireEvent.click(screen.getByTestId('menu'));
+        fireEvent.click(screen.getByTestId('orders'));
+        fireEvent.click(screen.getByTestId('products'));
+        fireEvent.click(screen.getByTestId('userManagement'));
+    // expect(screen.getByTestId('burgerHome')).toBeInTheDocument();
 
-
-
-    // const handleHome = jest.fn()
-    // const menu = screen.getByText("PEDIDOS");
-    // const products = screen.getByText("PRODUCTOS");
-
-    // fireEvent.click(home);
-
-    // expect(history.location.pathname).toBe();
-
-    // fireEvent.click(next);
-    // const navb = render(<img  />)
-    // expect(history.location.pathname).toBe(Urls.Start);
-
-    // fireEvent.click(navb);
-
-    // expect(screen.getByTestId('burgerHome')).toBe()
-    // // expect (handleHome.mock.calls).toHaveLength(1)
   })
 });
