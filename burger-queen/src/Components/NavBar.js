@@ -3,7 +3,6 @@ import logoBurguer from "./../Assets/logoBurguer.png";
 import { useNavigate } from "react-router";
 
 export const NavBar = () => {
-  console.log(useNavigate)
   const navigate = useNavigate("");
 
   return (
