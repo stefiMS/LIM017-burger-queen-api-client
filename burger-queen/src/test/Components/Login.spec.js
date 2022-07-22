@@ -30,7 +30,7 @@ describe('login', () => {
 
         fireEvent.change(emailInput, { target: { value: 'anita.borg@systers.xyz' } });
         fireEvent.change(passwordInput, { target: { value: '123456' } });
-        fireEvent.click(buttonLogin);
+        fireEvent.submit(buttonLogin);
 
 
         expect().toBe()
