@@ -10,12 +10,16 @@ const Login = () => {
 
   const handleSubmit = (e) =>{
       e.preventDefault();
+      console.log('hhhhh')
       authentication(email, password)
         .then((response) => {
+          console.log('hola')
           localStorage.setItem("accessToken", response);
           navigate("/home");
         })
-        .catch((error) => console.log(error));
+        .catch((error) =>
+        { console.log('err')
+          console.log(error)});
   }
 
 
