@@ -1,6 +1,6 @@
-import { getProductsData } from "../../util/getProducts.js";
+import { getProductsData } from "../../util/FunctionProducts.js";
 import React, { useEffect, useState } from "react";
-import { sendToKitchen } from "../../util/sendOrder.js";
+import { sendToKitchen } from "../../util/FunctionOrder.js";
 import { useNavigate } from "react-router";
 
 export const ProductItem = () => {
@@ -77,6 +77,9 @@ export const ProductItem = () => {
   };
 
   //funcion boton enviar a cocina
+
+
+
 
   return (
     <>
@@ -219,7 +222,7 @@ export const ProductItem = () => {
                 );
               })}
             </section>
-            <div className="order total" class= "orderTotal">
+            <div className="orderTotal">
               <div>
                 <span> TOTAL</span>
                 <span className="orderTotal"> {totalSum} </span>
@@ -234,6 +237,8 @@ export const ProductItem = () => {
                 userId: userId,
                 client: clientName,
                 tableNum: tableNum,
+                dateEntry: new Date().toISOString(),
+                status: 'pending',
                 products: productsSelected.map((x) => ({
                   productId: x.id,
                   name:x.name,

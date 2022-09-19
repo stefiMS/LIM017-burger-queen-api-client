@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import logoBurguer from "./../Assets/logoBurguer.png";
-import { useState } from "react";
 import { authentication } from "../util/Authentication.js";
 import { useNavigate } from "react-router-dom";
- 
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -11,21 +10,19 @@ const Login = () => {
 
   const handleSubmit = (e) =>{
       e.preventDefault();
+      console.log('hhhhh')
       authentication(email, password)
         .then((response) => {
-          // if(email === '' || password === ''){
-          //   const message = document.createElement('p');
-          //   const showMessage =message.setAttribute('class','showMessage')
-          //   showMessage.textContent = 'Debes completar todos los campos solicitados';
-          // }else{
-           localStorage.setItem("accessToken", response);
+          console.log('hola')
+          localStorage.setItem("accessToken", response);
           navigate("/home");
-          // }
         })
-        .catch((error) => console.log(error));
+        .catch((error) =>
+        { console.log('err')
+          console.log(error)});
   }
 
- 
+
   return (
     <>
       <header>
@@ -45,7 +42,6 @@ const Login = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {/* <p> resultado: {email}</p> */}
 
             <label className ="loginLabel">CONTRASEÑA</label>
 
